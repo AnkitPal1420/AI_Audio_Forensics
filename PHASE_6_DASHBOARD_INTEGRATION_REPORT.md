@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6.8 — DASHBOARD INTEGRATION REPORT
 ## Scientific Validation Workspace, Calibration Displays & Artifact Export
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -55,3 +57,4 @@ In strict compliance with Phase 5 platform hardening, all data tables inside the
 - **Syntax & Compilation:** Verified via `compileall` (0 errors).
 - **Daemon Status:** Live on port 8501 (`http://localhost:8501`).
 - **Phase 6.8 Status:** Fully implemented and validated.
+

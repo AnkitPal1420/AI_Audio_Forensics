@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6.4 — PROBABILITY CALIBRATION & THRESHOLD VALIDATION REPORT
 ## Brier Score, Expected Calibration Error & Forensic Decision Thresholds
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -105,3 +107,4 @@ To ensure scientific and legal validity, the system adopts a 3-tier forensic ope
 ## 5. CONCLUSION & STATUS
 
 Phase 6.4 demonstrates that **Platt-scaled SVM provides superior calibration (ECE = 2.25%)** over linear baselines. Implementing a **calibrated triage band ($P < 0.30$ vs. $P \ge 0.80$)** eliminates over 55% of false alarms on unseen speakers, satisfying the forensic reliability criteria of Phase 6.4.
+

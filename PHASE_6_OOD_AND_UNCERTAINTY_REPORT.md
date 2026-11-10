@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6.6 — OUT-OF-DISTRIBUTION & UNCERTAINTY VALIDATION REPORT
 ## Statistical Manifold Screening, Mahalanobis Distance & Forensic Triage
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -80,3 +82,4 @@ To prevent ambiguity in investigative reports, the system formalizes a 6-tier tr
 ## 5. CONCLUSION & STATUS
 
 Phase 6.6 demonstrates that **multivariate Mahalanobis distance provides a mathematically principled boundary** for forensic speech manifolds, successfully separating clean speech from out-of-distribution acoustic anomalies.
+

@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6.2 — SPEAKER-INDEPENDENT & SOURCE-INDEPENDENT EVALUATION REPORT
 ## Disjoint Group Evaluation, Cross-Validation & Voice Conversion Provenance
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -122,3 +124,4 @@ To prevent conclusions from resting on a single arbitrary split, full 8-fold Lea
 1. **Threshold Recalibration (Phase 6.4):** The default classification threshold of $0.50$ must be shifted upwards (e.g. to $0.75 - 0.85$) to enforce high specificity ($> 90\%$) and protect authentic speech from false accusation.
 2. **Multi-Model Consensus:** The Soft-Voting Ensemble and Logistic Regression must be incorporated to temper SVM edge-case overconfidence.
 3. **Forensic Evidentiary Disclaimer:** The forensic report template must explicitly state that automated classifiers have a baseline False Acceptance Rate of $\sim 28\%$ on uncalibrated out-of-domain speakers.
+

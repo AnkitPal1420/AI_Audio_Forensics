@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6 — TESTING & VERIFICATION REPORT
 ## Automated Regression Suite, Parity Checks & Robustness Audits
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -62,3 +64,4 @@ tests/test_phase6_validation_robustness.py .........                       [100%
 4. **`test_calibration_metrics_brier_and_ece`:** Confirms calibration calculation accuracy across uniform probability bins.
 5. **`test_robustness_telephony_bandpass`:** Confirms that telephony bandpass filtering attenuates high frequencies (> 95% reduction).
 6. **`test_phase6_documentation_reports_exist`:** Asserts the physical presence and non-zero size of all Phase 6 reports.
+

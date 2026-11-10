@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6.7 — FORENSIC ERROR ANALYSIS & SCIENTIFIC RELIABILITY REPORT
 ## Grouped Bootstrap Confidence Intervals, FAR/FRR Trade-Offs & Acoustic Failure Modes
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -93,3 +95,4 @@ When presenting this system's findings in court proceedings:
 1. **Never Report a Binary Score Without Error Bounds:** The expert must report the 95% confidence interval for balanced accuracy: $[60.64\%, 80.63\%]$.
 2. **Explicitly Disclose the Known Error Rate:** On unseen subjects, the False Acceptance Rate is **$29.33\%$**. The jury must be informed that approximately 3 out of 10 genuine recordings from unknown speakers may trigger a false positive indicator.
 3. **Sole Evidence Prohibition:** Machine learning classification must **never** be admitted as sole proof of audio fabrication; it serves strictly as an investigative screening tool requiring corroboration by cryptographic chain of custody, device imaging, and witness testimony.
+

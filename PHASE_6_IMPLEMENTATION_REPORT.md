@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6 — IMPLEMENTATION REPORT
 ## Advanced Forensic Validation & Scientific Reliability Architecture
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -79,3 +81,4 @@ Rather than treating the existing Phase 3/4/5 architecture as a self-contained t
   "pass_rate": "100.0%"
 }
 ```
+

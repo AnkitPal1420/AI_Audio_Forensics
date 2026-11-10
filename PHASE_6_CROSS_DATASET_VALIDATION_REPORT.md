@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6.3 — CROSS-DATASET & UNSEEN-GENERATOR VALIDATION REPORT
 ## External Generalization on the Fake-or-Real (FoR) Benchmark
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -101,3 +103,4 @@ Under Federal Rule of Evidence 702 and Daubert/Frye admissibility standards:
 1. **Known Error Rates:** The known False Negative Rate (FNR) on external acoustic re-recordings is **$92.00\%$** ($46/50$). An examiner testifying in court must state that acoustic re-recording renders this detection pipeline ineffective.
 2. **Channel Authenticity Requirement:** Automated analysis should only be attempted on direct digital extractions (bitstream extractions from devices), never on re-recorded microphone eavesdropping or room surveillance audio.
 3. **Mandatory Out-of-Distribution Warning:** If an exhibit's spectral profile indicates acoustic room coloration, the examination status must be downgraded to `INDETERMINATE (RE_RECORDED_CHANNEL)`.
+

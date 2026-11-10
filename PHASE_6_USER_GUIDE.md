@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6 — OPERATOR & INVESTIGATOR USER GUIDE
 ## Scientific Validation, Error Disclosures & Operational Workspaces
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -61,3 +63,4 @@
 # Run channel robustness and calibration tests
 .\.venv314\Scripts\python.exe -m pytest tests/test_phase6_validation_robustness.py -v
 ```
+

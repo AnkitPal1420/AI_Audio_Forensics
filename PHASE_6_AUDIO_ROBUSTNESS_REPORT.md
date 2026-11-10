@@ -1,3 +1,5 @@
+﻿> **⚠ SUPERSEDED IN PART — read PHASE_6_ERRATA_AND_VERIFIED_METRICS.md first. This report contains numbers/claims later found to be unverified or incorrect (e.g. feature parity, cross-dataset generalization, calibration independence, threshold selection, test counts). Where they conflict, the errata and results/phase6_verified_metrics.json govern.**
+
 # PHASE 6.5 — AUDIO ROBUSTNESS & CHANNEL DEGRADATION REPORT
 ## Stress-Testing Against Acoustic Noise, Telephony & Compression Channels
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
@@ -83,3 +85,4 @@ To comply with digital forensic best practices (SWGDE Guidelines):
 1. **Mandatory Quality Pre-Screening:** The quality screening module in `src/audio_quality.py` must reject audio exhibits with estimated $\text{SNR} < 15$ dB.
 2. **Telephony Exclusion Protocol:** If an exhibit's effective bandwidth is identified as $\le 3,500$ Hz (telephone audio), automated classification must be suppressed and flagged as `INDETERMINATE (BANDWIDTH_RESTRICTED_TELEPHONY)`.
 3. **Derivative Sample Preservation:** Representative degraded audio files generated during stress testing are persisted in `results/robustness/derivative_samples/` for auditability and laboratory inspection.
+
