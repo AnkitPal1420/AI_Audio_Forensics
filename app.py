@@ -23,6 +23,7 @@ import datetime
 import tempfile
 import json
 import sqlite3
+import uuid
 import streamlit as st
 import numpy as np
 
@@ -52,7 +53,9 @@ from src.auth import (
     bootstrap_admin_user,
     create_user_session,
     has_permission,
+    hash_password,
     require_permission,
+    validate_password_complexity,
     validate_session,
 )
 from src.backup_manager import create_system_backup
