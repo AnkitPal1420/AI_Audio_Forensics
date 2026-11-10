@@ -28,6 +28,7 @@ MODEL_REGISTRY = {
     "calibrated_svm": "calibrated_svm_model.joblib",
     "random_forest": "rf_model.joblib",
     "logistic_regression": "logistic_regression_model.joblib",
+    "ensemble": "ensemble_voting_model.joblib",
     "best_model": "best_model.joblib",
 }
 

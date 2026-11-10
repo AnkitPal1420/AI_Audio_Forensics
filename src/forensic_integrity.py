@@ -130,3 +130,4 @@ def record_analysis_event(
 
     logger.info("Recorded forensic audit trail event for evidence ID: %s", event_payload.get("evidence_id"))
     return dest
+

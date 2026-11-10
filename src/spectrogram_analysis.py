@@ -394,3 +394,4 @@ def generate_forensic_visualizations(
     saved_figures["mel_mfcc"] = mel_path
 
     return saved_figures
+
