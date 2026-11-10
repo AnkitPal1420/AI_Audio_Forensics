@@ -1,0 +1,38 @@
+{
+  "audio": {
+    "sample_rate": 16000,
+    "mono": true,
+    "normalize": true
+  },
+  "features": {
+    "n_mfcc": 20,
+    "n_fft": 2048,
+    "hop_length": 512,
+    "n_mels": 40,
+    "n_chroma": 12,
+    "spectral_rolloff_percentile": 0.85
+  },
+  "training": {
+    "train_ratio": 0.70,
+    "val_ratio": 0.15,
+    "test_ratio": 0.15,
+    "random_seed": 42,
+    "dataset_source": "dataset/metadata/DATASET-balanced.csv",
+    "recordings_features": "results/reports/extracted_features.csv"
+  },
+  "paths": {
+    "real_audio": "dataset/real",
+    "synthetic_audio": "dataset/fake",
+    "preprocessed_audio": "dataset/preprocessed",
+    "manifest": "dataset/evidence_manifest.json",
+    "features_csv": "results/reports/extracted_features.csv",
+    "models": "models",
+    "best_model": "models/best_model.joblib",
+    "model_metadata": "models/model_metadata.json",
+    "reports": "results/reports",
+    "graphs": "results/graphs"
+  },
+  "reproducibility": {
+    "random_seed": 42
+  }
+}

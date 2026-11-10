@@ -1,0 +1,56 @@
+# Python environments and packaging
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.egg-info/
+
+# Test, notebook, and tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Local configuration and temporary files
+.env
+.env.*
+!.env.example
+*.tmp
+*.temp
+*.log
+~$*
+
+# Audio data: keep the dataset directories empty in version control
+dataset/**/*.wav
+dataset/**/*.flac
+dataset/**/*.mp3
+dataset/**/*.ogg
+dataset/**/*.m4a
+dataset/**/*.aac
+dataset/**/*.wma
+
+# Generated model artifacts and checkpoints
+models/*
+!models/.gitkeep
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.keras
+*.pt
+*.pth
+*.onnx
+*.ckpt
+
+# Generated results
+results/*
+!results/.gitkeep
+!results/reports/
+!results/graphs/
