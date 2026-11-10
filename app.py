@@ -187,6 +187,34 @@ seed_default_cases_and_exhibits(db)
 engine = DeepfakeDetectionEngine()
 
 
+def render_styled_table(data: list[dict]):
+    """Renders tabular data as an Apple-styled HTML table without requiring pandas."""
+    if not data:
+        st.info("No records to display.")
+        return
+    headers = list(data[0].keys())
+    th_html = "".join(
+        f"<th style='padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 600; color: #86868b; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255,255,255,0.1);'>{h}</th>"
+        for h in headers
+    )
+    rows_html = []
+    for row in data:
+        td_html = "".join(
+            f"<td style='padding: 9px 12px; font-size: 13px; color: #f5f5f7; border-bottom: 1px solid rgba(255,255,255,0.05);'>{row.get(h, '')}</td>"
+            for h in headers
+        )
+        rows_html.append(f"<tr>{td_html}</tr>")
+    table_html = f"""
+    <div style='overflow-x: auto; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin: 8px 0 16px 0;'>
+      <table style='width: 100%; border-collapse: collapse; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, sans-serif;'>
+        <thead><tr style='background: rgba(255,255,255,0.03);'>{th_html}</tr></thead>
+        <tbody>{''.join(rows_html)}</tbody>
+      </table>
+    </div>
+    """
+    st.markdown(table_html, unsafe_allow_html=True)
+
+
 def main():
     # Sidebar Navigation
     with st.sidebar:
@@ -306,7 +334,7 @@ def render_home_dashboard():
                     "Status": c["status"],
                     "Created": c["created_at"][:10],
                 })
-            st.dataframe(case_data, use_container_width=True, hide_index=True)
+            render_styled_table(case_data)
         else:
             st.info("No cases created yet.")
 
@@ -419,7 +447,7 @@ def render_case_management():
                                 "Sampling Rate": f"{e['sample_rate']:,} Hz",
                                 "SHA-256 Digest": e["sha256_hash"][:16] + "...",
                             })
-                        st.dataframe(ev_table, use_container_width=True, hide_index=True)
+                        render_styled_table(ev_table)
                     else:
                         st.info("No audio evidence exhibits uploaded to this case yet.")
         else:
@@ -702,7 +730,7 @@ def render_ai_detection():
                         "Genuine Prob": f"{m_v.get('probability_genuine', 0.0):.2%}" if m_v.get("probability_genuine") is not None else "N/A",
                         "Confidence": f"{m_v.get('confidence', 0.0):.2%}",
                     })
-            st.table(m_data)
+            render_styled_table(m_data)
 
 
 # =============================================================================
@@ -773,7 +801,7 @@ def render_integrity_verification():
     st.markdown("#### 📜 Historical Integrity Audits for this Exhibit")
     checks = db.list_integrity_checks(evidence_id=exhibit["evidence_id"])
     if checks:
-        st.dataframe(checks, use_container_width=True, hide_index=True)
+        render_styled_table(checks)
     else:
         st.info("No prior integrity audits recorded for this exhibit.")
 
@@ -865,7 +893,7 @@ def render_examination_history():
 
         exams = db.list_examinations(label=lbl_filter, case_id=case_filter if case_filter else None)
         if exams:
-            st.dataframe(exams, use_container_width=True, hide_index=True)
+            render_styled_table(exams)
         else:
             st.info("No examinations matching filter.")
 
