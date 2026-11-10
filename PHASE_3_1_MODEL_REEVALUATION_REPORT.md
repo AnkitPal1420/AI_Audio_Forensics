@@ -131,3 +131,4 @@ All models, schemas, and performance summaries were serialized:
 - Baseline models successfully retrained and evaluated without data leakage.
 - Wilson confidence intervals computed and documented.
 - Historical models preserved in `models/baseline_phase3/`.
+

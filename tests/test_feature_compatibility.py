@@ -73,3 +73,4 @@ def test_mfcc_scale_consistency_regression():
     # MFCC1 for typical amplitude should be negative in standard dB representation
     assert feats["mfcc1"] < 0.0, f"Expected negative mfcc1 in dB-scale, got {feats['mfcc1']}"
     assert -800.0 <= feats["mfcc1"] <= 0.0
+

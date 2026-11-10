@@ -86,3 +86,4 @@ The dual reliability diagram and confidence histogram were saved to:
 - Calibrated pipeline serialized to `models/calibrated_svm_model.joblib`.
 - Reliability diagram generated at `results/graphs/svm_reliability_diagram.png`.
 - Ad-hoc uncalibrated sigmoid claims removed from documentation.
+

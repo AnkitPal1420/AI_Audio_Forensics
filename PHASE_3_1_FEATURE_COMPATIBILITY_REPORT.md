@@ -124,3 +124,4 @@ All automated unit tests in `tests/test_feature_compatibility.py` and `tests/tes
 - **Status:** **ACCEPTED & RESOLVED**
 - Training, slice generation, and inference pipelines now use **identical mathematical feature extraction**.
 - No systematic MFCC scale mismatch remains.
+
