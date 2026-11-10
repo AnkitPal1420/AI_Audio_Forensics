@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Automated Production Deployment & Health Verification Script for AI Audio Forensics.
 .DESCRIPTION

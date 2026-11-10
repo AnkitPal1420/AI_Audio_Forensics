@@ -113,6 +113,11 @@ def align_features(raw_features: Dict[str, float], expected_feature_names: List[
     return np.array([vector], dtype=np.float32)
 
 
+# Alias for backward compatibility
+align_feature_vector = align_features
+
+
+
 def predict_audio(
     path: AudioPath,
     model_name: str = "calibrated_svm",

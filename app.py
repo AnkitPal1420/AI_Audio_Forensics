@@ -325,67 +325,94 @@ def render_landing_page():
         [data-testid="stSidebar"], [data-testid="stHeader"] { display: none !important; }
         .stApp {
             background:
-                radial-gradient(circle at 15% 20%, rgba(255, 0, 128, 0.55) 0%, transparent 40%),
-                radial-gradient(circle at 85% 25%, rgba(0, 200, 255, 0.55) 0%, transparent 42%),
-                radial-gradient(circle at 50% 85%, rgba(140, 80, 255, 0.60) 0%, transparent 45%),
-                radial-gradient(circle at 80% 80%, rgba(0, 255, 170, 0.35) 0%, transparent 35%),
-                #07070f !important;
-            background-size: 200% 200%;
-            animation: bgShift 14s ease-in-out infinite alternate;
+                radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.45) 0%, transparent 40%),
+                radial-gradient(circle at 80% 25%, rgba(6, 182, 212, 0.45) 0%, transparent 45%),
+                radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.50) 0%, transparent 50%),
+                #0a0b14 !important;
+            background-attachment: fixed;
         }
-        @keyframes bgShift { from { background-position: 0% 0%; } to { background-position: 100% 100%; } }
+        .main .block-container {
+            max-width: 720px !important;
+            padding-top: 10vh !important;
+            padding-bottom: 5vh !important;
+        }
         .landing-card {
-            max-width: 620px; margin: 12vh auto 0 auto; padding: 3rem 2rem 1.5rem 2rem;
+            padding: 3.2rem 2.5rem 2rem 2.5rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 32px;
-            backdrop-filter: blur(22px) saturate(160%);
-            -webkit-backdrop-filter: blur(22px) saturate(160%);
-            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 28px;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            margin-bottom: 1.5rem;
         }
         .landing-title {
-            font-size: 3.1rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
-            background: linear-gradient(90deg, #ff4fa3, #ffb347, #38e8ff, #a57bff);
-            background-size: 250% 100%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: titleFlow 6s linear infinite;
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #f43f5e 0%, #ec4899 30%, #a855f7 60%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.8rem;
         }
-        @keyframes titleFlow { to { background-position: 250% 0; } }
-        .landing-sub { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.6rem; }
-        .st-key-start_btn { display: flex; justify-content: center; margin-top: -1.2rem; }
-        .st-key-start_btn button {
-            width: 84px !important; height: 84px !important; min-height: 84px !important;
-            border-radius: 50% !important; padding: 0 !important;
-            font-size: 2.4rem !important; line-height: 1 !important; color: #fff !important;
-            background: linear-gradient(135deg, rgba(255,79,163,0.55), rgba(56,232,255,0.55)) !important;
-            border: 2px solid rgba(255,255,255,0.55) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 28px rgba(56,232,255,0.55), 0 0 60px rgba(255,79,163,0.35);
-            transition: transform .25s ease, box-shadow .25s ease;
+        .landing-sub {
+            color: rgba(241, 245, 249, 0.75);
+            font-size: 1.05rem;
+            font-weight: 400;
+            line-height: 1.5;
         }
-        .st-key-start_btn button:hover {
+        /* Center the Start button */
+        div[data-testid="stButton"] {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0.8rem 0 0.4rem 0;
+        }
+        div[data-testid="stButton"] button {
+            width: 82px !important;
+            height: 82px !important;
+            min-height: 82px !important;
+            border-radius: 50% !important;
+            font-size: 2.2rem !important;
+            color: #ffffff !important;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.75), rgba(6, 182, 212, 0.75)) !important;
+            border: 2px solid rgba(255, 255, 255, 0.55) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.55), 0 0 60px rgba(236, 72, 153, 0.35);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        div[data-testid="stButton"] button:hover {
             transform: scale(1.12);
-            box-shadow: 0 0 40px rgba(56,232,255,0.9), 0 0 90px rgba(255,79,163,0.6);
+            box-shadow: 0 0 45px rgba(6, 182, 212, 0.85), 0 0 90px rgba(236, 72, 153, 0.6);
+            border-color: #ffffff !important;
         }
         .start-label {
-            text-align: center; color: #fff; font-weight: 700; letter-spacing: 0.35em;
-            text-transform: uppercase; font-size: 0.95rem; margin: 0.9rem 0 2rem 0;
-            text-shadow: 0 0 14px rgba(56,232,255,0.8);
+            text-align: center;
+            color: #f8fafc;
+            font-weight: 700;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-size: 1rem;
+            margin-top: 0.4rem;
+            text-shadow: 0 0 16px rgba(6, 182, 212, 0.8);
         }
         </style>
         <div class="landing-card">
             <div class="landing-title">AI_Audio_Forensics</div>
-            <div class="landing-sub">Synthetic &amp; deepfake voice analysis for criminal investigations</div>
-            <div style="height: 3.2rem;"></div>
+            <div class="landing-sub">Synthetic &amp; Deepfake Voice Analysis Platform for Criminal Investigations</div>
         </div>
         """,
         unsafe_allow_html=True,
     )
-    if st.button("➜", key="start_btn"):
-        st.session_state["entered"] = True
-        st.rerun()
-    st.markdown('<div class="start-label">Start</div>', unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col2:
+        if st.button("➜", key="start_btn"):
+            st.session_state["entered"] = True
+            st.rerun()
+        st.markdown('<div class="start-label">Start</div>', unsafe_allow_html=True)
 
 
 def main():
