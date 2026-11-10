@@ -12,8 +12,6 @@ Forensic Rules:
 - Feature importance highlights algorithmic decision influence, NOT real-world physical tampering.
 """
 
-from __future__ import annotations
-
 import json
 import logging
 import uuid

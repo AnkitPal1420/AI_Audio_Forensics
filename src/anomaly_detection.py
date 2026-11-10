@@ -6,8 +6,6 @@ and energy) and applies unsupervised outlier detection (Isolation Forest / Local
 to flag statistical anomalies in vocal recordings.
 """
 
-from __future__ import annotations
-
 import logging
 import uuid
 from dataclasses import asdict, dataclass

@@ -40,7 +40,8 @@ scratch/**/*.wav
 # Generated model artifacts and checkpoints
 models/*
 !models/.gitkeep
-*.joblib
+!models/*.joblib
+!models/*.json
 *.pkl
 *.pickle
 *.h5

@@ -9,8 +9,6 @@ All detected events are flagged as objective MEASUREMENTS or INVESTIGATIVE INDIC
 never as definitive proof of malicious tampering.
 """
 
-from __future__ import annotations
-
 import logging
 import uuid
 from dataclasses import asdict, dataclass

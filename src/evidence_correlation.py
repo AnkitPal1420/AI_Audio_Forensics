@@ -8,8 +8,6 @@ Enables forensic investigators to correlate two audio exhibits within a case:
 - Relational persistence in SQLite evidence_comparisons table.
 """
 
-from __future__ import annotations
-
 import json
 import logging
 import uuid

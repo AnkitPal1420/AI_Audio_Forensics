@@ -11,8 +11,6 @@ recordings (MFCC profile cosine similarity and Euclidean distance).
 ALL results are marked EXPERIMENTAL_INDETERMINATE and explicitly prohibit speaker identity claims.
 """
 
-from __future__ import annotations
-
 import logging
 import uuid
 from dataclasses import asdict, dataclass

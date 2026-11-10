@@ -12,8 +12,16 @@ Phase 5 Forensic Web Dashboard:
 
 from __future__ import annotations
 
-import datetime
+import os
+import sys
 from pathlib import Path
+
+# Ensure repository root is on sys.path for cloud containers (Streamlit Cloud, Docker, etc.)
+_REPO_ROOT = Path(__file__).resolve().parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+import datetime
 import tempfile
 import json
 import sqlite3

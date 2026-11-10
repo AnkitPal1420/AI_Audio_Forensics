@@ -11,8 +11,6 @@ spectral rolloff, and energy concentration) to hypothesize candidate vocoder/arc
 ALL outputs are classified as EXPERIMENTAL_HYPOTHESIS and require independent confirmation.
 """
 
-from __future__ import annotations
-
 import logging
 import uuid
 from dataclasses import asdict, dataclass
