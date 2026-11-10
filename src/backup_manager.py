@@ -7,8 +7,6 @@ Implements court-grade disaster recovery procedures:
 - Automated restoration engine with PRAGMA integrity_check verification.
 """
 
-from __future__ import annotations
-
 import hashlib
 import json
 import logging

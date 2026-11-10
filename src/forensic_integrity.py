@@ -7,8 +7,6 @@ Adheres to ISO/IEC 27037 technical principles for digital evidence management:
 - Append-only forensic event logging (audit trail) with UTC timestamps and environment details.
 """
 
-from __future__ import annotations
-
 import hashlib
 import json
 import logging

@@ -1,7 +1,5 @@
 """SQLite database management and data access layer for forensic cases and evidence."""
 
-from __future__ import annotations
-
 import json
 import logging
 import sqlite3

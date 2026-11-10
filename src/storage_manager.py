@@ -7,8 +7,6 @@ Ensures strict segregation of digital assets adhering to ISO/IEC 27037 principle
 - storage/reports/           : Formal Markdown and PDF examination reports
 """
 
-from __future__ import annotations
-
 import ctypes
 import logging
 import os

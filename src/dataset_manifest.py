@@ -4,8 +4,6 @@ Inspects every audio exhibit, extracts metadata, tracks source-to-conversion
 relationships, and generates an auditable, group-labeled 1-second slice dataset.
 """
 
-from __future__ import annotations
-
 import csv
 import json
 import logging

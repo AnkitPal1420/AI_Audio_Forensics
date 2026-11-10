@@ -9,8 +9,6 @@ Implements weighted posterior probability combination to minimize variance
 and provide robust cross-speaker generalization.
 """
 
-from __future__ import annotations
-
 import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union

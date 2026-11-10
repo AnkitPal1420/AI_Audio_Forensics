@@ -5,8 +5,6 @@ from the Fake-or-Real (FoR) benchmark archive (C:\\Users\\ANKIT\\Downloads\\arch
 testing on completely unseen speakers, text, and acoustic synthesis conditions.
 """
 
-from __future__ import annotations
-
 import csv
 import json
 import logging

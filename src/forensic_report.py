@@ -15,8 +15,6 @@ Generates formal, 10-section forensic analysis reports for legal and investigati
 Supports both GitHub-flavored Markdown (.md) and PDF document generation.
 """
 
-from __future__ import annotations
-
 import datetime
 import logging
 from pathlib import Path

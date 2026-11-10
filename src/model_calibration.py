@@ -5,8 +5,6 @@ Implements rigorous probability calibration using CalibratedClassifierCV
 Expected Calibration Error (ECE), log loss, and reliability diagrams.
 """
 
-from __future__ import annotations
-
 import logging
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple, Union

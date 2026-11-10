@@ -15,8 +15,6 @@ Enforces strict forensic standards:
 - Complete artifact serialization with cryptographic hashes and training audit trail.
 """
 
-from __future__ import annotations
-
 import csv
 import datetime
 import json

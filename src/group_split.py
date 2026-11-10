@@ -4,8 +4,6 @@ Enforces speaker-disjoint and recording-disjoint partitioning to prevent
 temporal, speaker, and acoustic channel leakage across evaluation splits.
 """
 
-from __future__ import annotations
-
 import csv
 import logging
 from pathlib import Path

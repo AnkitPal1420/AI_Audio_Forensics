@@ -10,8 +10,6 @@ Phase 5 Forensic Web Dashboard:
 - Historical Case Audit Trail and KPI Analytics.
 """
 
-from __future__ import annotations
-
 import os
 import sys
 from pathlib import Path

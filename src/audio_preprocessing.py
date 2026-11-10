@@ -9,8 +9,6 @@ This module provides reproducible, forensically sound audio preprocessing:
 - Generates comprehensive dataset manifests and summaries.
 """
 
-from __future__ import annotations
-
 import hashlib
 import json
 import logging

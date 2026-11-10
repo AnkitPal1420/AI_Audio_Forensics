@@ -12,8 +12,6 @@ All figures adhere to forensic publication standards with precise axes, units,
 and sampling parameters.
 """
 
-from __future__ import annotations
-
 import logging
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple, Union

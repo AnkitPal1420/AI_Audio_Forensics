@@ -7,8 +7,6 @@ Evaluates trained acoustic models against real-world forensic degradations:
 4. Physical acoustic re-recording channels from external forensic benchmarks.
 """
 
-from __future__ import annotations
-
 import csv
 import logging
 from pathlib import Path

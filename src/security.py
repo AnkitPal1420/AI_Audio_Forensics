@@ -8,8 +8,6 @@ Adheres to OWASP Top 10 Security Guidelines:
 - Strict filename and path traversal sanitization.
 """
 
-from __future__ import annotations
-
 import hashlib
 import json
 import logging

@@ -6,8 +6,6 @@ Separates log streams according to digital forensic compliance:
 3. logs/audit_events.jsonl : Evidentiary audit events (ISO/IEC 27037 immutable event stream).
 """
 
-from __future__ import annotations
-
 import json
 import logging
 import os

@@ -18,8 +18,6 @@ Outputs definitive REAL or SYNTHETIC classifications only within validated domai
 strictly returning INDETERMINATE for compromised, out-of-distribution, or ambiguous audio.
 """
 
-from __future__ import annotations
-
 import datetime
 import logging
 from pathlib import Path

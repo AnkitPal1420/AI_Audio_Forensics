@@ -9,8 +9,6 @@ folders containing multiple audio exhibits in a single auditable run:
 - Maintains compliance with ISO/IEC 27037 digital evidence intake standards.
 """
 
-from __future__ import annotations
-
 import csv
 import datetime
 import json
