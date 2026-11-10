@@ -244,6 +244,7 @@ def main():
                 "🔒 Evidence Integrity Verification",
                 "📄 Forensic Report Center",
                 "📜 Examination Audit Trail",
+                "📊 Scientific Validation & Reliability",
                 "⚙️ System Settings & Diagnostics",
             ],
             index=0,
@@ -281,6 +282,8 @@ def main():
         render_report_center()
     elif page == "📜 Examination Audit Trail":
         render_examination_history()
+    elif page == "📊 Scientific Validation & Reliability":
+        render_scientific_validation_workspace()
     else:
         render_settings_and_diagnostics()
 
@@ -908,7 +911,178 @@ def render_examination_history():
 
 
 # =============================================================================
-# 9. System Settings & Diagnostics
+# 9. Scientific Validation & Model Reliability (Phase 6)
+# =============================================================================
+def render_scientific_validation_workspace():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">Scientific Validation & Model Reliability</div>
+            <div class="lab-subtitle">
+                Independent forensic audit, cross-dataset generalization benchmarks, probability calibration, and channel robustness analysis.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Status Overview Cards
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown(
+            """
+            <div class="card">
+                <div style="font-size: 0.75rem; color: #86868b; text-transform: uppercase; font-weight: 600;">Feature Pipeline Parity</div>
+                <div style="font-size: 1.1rem; font-weight: 800; color: #3fb950; margin: 4px 0;">VALIDATED (Δ = 0.0)</div>
+                <div style="font-size: 0.8rem; color: #a1a1a6;">26 canonical features mathematically aligned.</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with c2:
+        st.markdown(
+            """
+            <div class="card">
+                <div style="font-size: 0.75rem; color: #86868b; text-transform: uppercase; font-weight: 600;">Speaker Independence</div>
+                <div style="font-size: 1.1rem; font-weight: 800; color: #38bdf8; margin: 4px 0;">LOSO AUC: 77.58%</div>
+                <div style="font-size: 0.8rem; color: #a1a1a6;">8-fold cross-validation on held-out subjects.</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with c3:
+        st.markdown(
+            """
+            <div class="card">
+                <div style="font-size: 0.75rem; color: #86868b; text-transform: uppercase; font-weight: 600;">Telephony Vulnerability</div>
+                <div style="font-size: 1.1rem; font-weight: 800; color: #f85149; margin: 4px 0;">COLLAPSE (Recall: 0%)</div>
+                <div style="font-size: 0.8rem; color: #a1a1a6;">G.711 bandpass attenuates vocoder artifacts.</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    t_loso, t_cross, t_calib, t_robust, t_ood, t_export = st.tabs([
+        "🧑‍🔬 Speaker Independence",
+        "🌐 Cross-Dataset (FoR)",
+        "⚖️ Calibration & Thresholds",
+        "🔊 Robustness Stress Tests",
+        "🛡️ OOD Manifold",
+        "📥 Phase 6 Reports",
+    ])
+
+    with t_loso:
+        st.markdown("#### 🧑‍🔬 8-Fold Leave-One-Speaker-Out (LOSO) Cross-Validation")
+        st.caption("Each subject was held out entirely as test data while models were trained on the remaining 7 subjects.")
+        loso_data = [
+            {"Held-Out Subject": "biden", "Samples": 1055, "Accuracy": "57.35%", "Balanced Acc": "61.52%", "ROC-AUC": "0.7414", "Status": "Passable"},
+            {"Held-Out Subject": "linus", "Samples": 1145, "Accuracy": "45.24%", "Balanced Acc": "47.53%", "ROC-AUC": "0.4798", "Status": "Severe Shift"},
+            {"Held-Out Subject": "margot", "Samples": 534, "Accuracy": "81.65%", "Balanced Acc": "65.69%", "ROC-AUC": "0.7996", "Status": "Validated"},
+            {"Held-Out Subject": "musk", "Samples": 1055, "Accuracy": "43.70%", "Balanced Acc": "49.15%", "ROC-AUC": "0.6626", "Status": "Acoustic Shift"},
+            {"Held-Out Subject": "obama", "Samples": 1055, "Accuracy": "64.17%", "Balanced Acc": "68.15%", "ROC-AUC": "0.8684", "Status": "Validated"},
+            {"Held-Out Subject": "ryan", "Samples": 548, "Accuracy": "96.72%", "Balanced Acc": "94.60%", "ROC-AUC": "0.9912", "Status": "Exceptional"},
+            {"Held-Out Subject": "taylor", "Samples": 1055, "Accuracy": "54.60%", "Balanced Acc": "59.45%", "ROC-AUC": "0.7682", "Status": "Passable"},
+            {"Held-Out Subject": "trump", "Samples": 1055, "Accuracy": "66.16%", "Balanced Acc": "69.75%", "ROC-AUC": "0.8952", "Status": "Validated"},
+            {"Held-Out Subject": "8-FOLD MACRO MEAN", "Samples": 7502, "Accuracy": "63.70%", "Balanced Acc": "64.48%", "ROC-AUC": "0.7758", "Status": "Summary Benchmark"},
+        ]
+        render_styled_table(loso_data)
+
+    with t_cross:
+        st.markdown("#### 🌐 Generalization to External Benchmark (Fake-or-Real Benchmark)")
+        st.caption("Evaluated on 300 independent, unseen audio files: 200 clean TTS and 100 acoustic re-recordings.")
+        cross_data = [
+            {"Model": "Calibrated SVM", "Dataset Subset": "FoR 2-sec Clean (TTS)", "Files": 200, "Accuracy": "51.50%", "Precision": "51.90%", "Recall": "41.00%", "Specificity": "62.00%", "F1": "0.4581"},
+            {"Model": "Calibrated SVM", "Dataset Subset": "FoR Re-recorded Acoustic", "Files": 100, "Accuracy": "38.00%", "Precision": "20.00%", "Recall": "8.00%", "Specificity": "68.00%", "F1": "0.1143"},
+            {"Model": "Random Forest", "Dataset Subset": "FoR 2-sec Clean (TTS)", "Files": 200, "Accuracy": "39.50%", "Precision": "37.04%", "Recall": "30.00%", "Specificity": "49.00%", "F1": "0.3315"},
+            {"Model": "Random Forest", "Dataset Subset": "FoR Re-recorded Acoustic", "Files": 100, "Accuracy": "35.00%", "Precision": "24.14%", "Recall": "14.00%", "Specificity": "56.00%", "F1": "0.1772"},
+            {"Model": "Logistic Regression", "Dataset Subset": "FoR 2-sec Clean (TTS)", "Files": 200, "Accuracy": "23.00%", "Precision": "1.79%", "Recall": "1.00%", "Specificity": "45.00%", "F1": "0.0128"},
+            {"Model": "Logistic Regression", "Dataset Subset": "FoR Re-recorded Acoustic", "Files": 100, "Accuracy": "37.00%", "Precision": "0.00%", "Recall": "0.00%", "Specificity": "74.00%", "F1": "0.0000"},
+        ]
+        render_styled_table(cross_data)
+        st.warning("Forensic Finding: Physical acoustic re-recording masks high-frequency vocoder cues, reducing SVM detection recall from 41% to 8%. Automated classification should be restricted to direct digital extractions.")
+
+    with t_calib:
+        st.markdown("#### ⚖️ Probability Calibration & Threshold Optimization")
+        c_k1, c_k2, c_k3 = st.columns(3)
+        c_k1.metric("Validation Brier Score", "0.0968", help="Lower is better, ideal=0.0")
+        c_k2.metric("Validation ECE", "2.25%", help="Expected Calibration Error across 10 bins")
+        c_k3.metric("Calibration Slope", "1.01", help="Ideal slope is 1.00")
+
+        st.markdown("##### Operational Threshold Comparison (Test Partition: 2,110 slices)")
+        thresh_data = [
+            {"Threshold Level": "Default (0.50)", "Accuracy": "59.81%", "Balanced Acc": "63.96%", "Precision": "51.88%", "Recall": "94.18%", "Specificity": "33.75%", "False Positives": 795, "Evaluation": "Excessive False Accusation"},
+            {"Threshold Level": "Balanced (0.65)", "Accuracy": "66.59%", "Balanced Acc": "69.02%", "Precision": "57.47%", "Recall": "86.70%", "Specificity": "51.33%", "False Positives": 584, "Evaluation": "Moderate Triage"},
+            {"Threshold Level": "Forensic Recommended (0.80)", "Accuracy": "70.62%", "Balanced Acc": "70.61%", "Precision": "64.59%", "Recall": "70.55%", "Specificity": "70.67%", "False Positives": 352, "Evaluation": "55.7% Fewer False Alarms"},
+            {"Threshold Level": "Strict Screening (0.85)", "Accuracy": "70.90%", "Balanced Acc": "69.82%", "Precision": "67.79%", "Recall": "61.98%", "Specificity": "77.67%", "False Positives": 268, "Evaluation": "High Courtroom Conservatism"},
+        ]
+        render_styled_table(thresh_data)
+
+    with t_robust:
+        st.markdown("#### 🔊 Channel Degradation Stress-Testing (9 Conditions)")
+        robust_data = [
+            {"Acoustic Channel Condition": "Clean Baseline (16 kHz)", "Accuracy": "60.00%", "Recall": "80.00%", "F1-Score": "0.6667", "Forensic Vulnerability": "None (Reference)"},
+            {"Acoustic Channel Condition": "Gaussian Noise (SNR 30 dB)", "Accuracy": "65.00%", "Recall": "80.00%", "F1-Score": "0.6957", "Forensic Vulnerability": "Resilient"},
+            {"Acoustic Channel Condition": "Gaussian Noise (SNR 20 dB)", "Accuracy": "50.00%", "Recall": "30.00%", "F1-Score": "0.3750", "Forensic Vulnerability": "Moderate Noise Masking"},
+            {"Acoustic Channel Condition": "Gaussian Noise (SNR 10 dB)", "Accuracy": "45.00%", "Recall": "10.00%", "F1-Score": "0.1538", "Forensic Vulnerability": "Severe Noise Masking"},
+            {"Acoustic Channel Condition": "G.711 Telephony (300-3400 Hz)", "Accuracy": "50.00%", "Recall": "0.00%", "F1-Score": "0.0000", "Forensic Vulnerability": "TOTAL BLIND SPOT"},
+            {"Acoustic Channel Condition": "Lossy Codec (Mu-law 8-bit)", "Accuracy": "65.00%", "Recall": "90.00%", "F1-Score": "0.7200", "Forensic Vulnerability": "Resilient Companding"},
+            {"Acoustic Channel Condition": "Reverberation (RT60 = 0.3s)", "Accuracy": "60.00%", "Recall": "60.00%", "F1-Score": "0.6000", "Forensic Vulnerability": "Partial Comb Smearing"},
+            {"Acoustic Channel Condition": "Digital Clipping (Threshold 0.7)", "Accuracy": "65.00%", "Recall": "70.00%", "F1-Score": "0.6667", "Forensic Vulnerability": "Mild Harmonic Distortion"},
+            {"Acoustic Channel Condition": "Narrowband Resampling (8 kHz)", "Accuracy": "60.00%", "Recall": "50.00%", "F1-Score": "0.5556", "Forensic Vulnerability": "Aliasing Degradation"},
+        ]
+        render_styled_table(robust_data)
+
+        chart_img = root / "results" / "graphs" / "robustness_performance_comparison.png"
+        if chart_img.is_file():
+            st.image(str(chart_img), caption="Diagnostic Performance Decay under Environmental & Channel Stress")
+
+    with t_ood:
+        st.markdown("#### 🛡️ Out-of-Distribution Screening & Manifold Bounds")
+        st.markdown(
+            """
+            Statistical screening uses regularized Ledoit-Wolf Mahalanobis distance ($D_M$) to reject exhibits that fall outside human vocal tract covariances.
+            """
+        )
+        ood_table = [
+            {"Audio Domain": "Training In-Domain (n=4,844)", "Mean Distance (D_M)": "3.91", "99th Percentile Threshold": "6.93", "Outlier Ratio": "1.00%"},
+            {"Audio Domain": "Validation Slices (n=548)", "Mean Distance (D_M)": "3.71", "99th Percentile Threshold": "6.93", "Outlier Ratio": "0.36%"},
+            {"Audio Domain": "Unseen Test Subjects (n=2,110)", "Mean Distance (D_M)": "4.43", "99th Percentile Threshold": "6.93", "Outlier Ratio": "1.94%"},
+            {"Audio Domain": "External FoR Benchmark (n=300)", "Mean Distance (D_M)": "4.96", "99th Percentile Threshold": "6.93", "Outlier Ratio": "0.00%"},
+        ]
+        render_styled_table(ood_table)
+
+    with t_export:
+        st.markdown("#### 📥 Export Phase 6 Independent Validation Reports")
+        reports = [
+            ("PHASE_6_PRE_IMPLEMENTATION_AUDIT.md", "Phase 6.0 Pre-Implementation Audit"),
+            ("PHASE_6_FEATURE_PIPELINE_VALIDATION_REPORT.md", "Phase 6.1 Feature Parity & Determinism"),
+            ("PHASE_6_SPEAKER_INDEPENDENT_EVALUATION_REPORT.md", "Phase 6.2 Speaker Independence & LOSO"),
+            ("PHASE_6_CROSS_DATASET_VALIDATION_REPORT.md", "Phase 6.3 Cross-Dataset (FoR Benchmark)"),
+            ("PHASE_6_CALIBRATION_AND_THRESHOLD_REPORT.md", "Phase 6.4 Calibration & Threshold Tuning"),
+            ("PHASE_6_AUDIO_ROBUSTNESS_REPORT.md", "Phase 6.5 Channel Robustness Stress Tests"),
+            ("PHASE_6_OOD_AND_UNCERTAINTY_REPORT.md", "Phase 6.6 Out-of-Distribution Manifolds"),
+            ("PHASE_6_FORENSIC_RELIABILITY_REPORT.md", "Phase 6.7 Error Analysis & Bootstrap CIs"),
+        ]
+
+        c_col1, c_col2 = st.columns(2)
+        for idx, (fname, desc) in enumerate(reports):
+            fpath = root / fname
+            target_col = c_col1 if idx % 2 == 0 else c_col2
+            with target_col:
+                if fpath.is_file():
+                    target_col.download_button(
+                        f"📄 {desc}",
+                        data=fpath.read_text(encoding="utf-8"),
+                        file_name=fname,
+                        mime="text/markdown",
+                        key=f"dl_p6_{idx}",
+                    )
+                else:
+                    target_col.info(f"{fname} (Pending generation)")
+
+
+# =============================================================================
+# 10. System Settings & Diagnostics
 # =============================================================================
 def render_settings_and_diagnostics():
     st.markdown(

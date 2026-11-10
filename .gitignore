@@ -35,6 +35,7 @@ dataset/**/*.ogg
 dataset/**/*.m4a
 dataset/**/*.aac
 dataset/**/*.wma
+scratch/**/*.wav
 
 # Generated model artifacts and checkpoints
 models/*

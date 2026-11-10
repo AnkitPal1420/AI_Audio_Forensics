@@ -97,6 +97,68 @@ def apply_lossy_codec_simulation(waveform: np.ndarray, mu: int = 255) -> np.ndar
     return expanded.astype(np.float32)
 
 
+def apply_reverberation(
+    waveform: np.ndarray,
+    rt60: float = 0.3,
+    sample_rate: int = 16_000,
+    seed: int = 42,
+) -> np.ndarray:
+    """Simulate acoustic room reverberation via synthetic room impulse response convolution."""
+    samples = np.asarray(waveform, dtype=np.float32)
+    if samples.size == 0 or rt60 <= 0:
+        return samples
+
+    # Length of RIR based on RT60
+    rir_len = int(round(rt60 * sample_rate))
+    t = np.linspace(0.0, rt60, rir_len, endpoint=False, dtype=np.float32)
+    decay = np.exp(-3.0 * np.log(10.0) * t / rt60)
+
+    rng = np.random.RandomState(seed)
+    noise = rng.normal(0.0, 1.0, rir_len).astype(np.float32)
+    rir = decay * noise
+    rir = rir / np.sqrt(np.sum(rir**2) + 1e-10)
+
+    # Convolve via FFT
+    n_conv = samples.size + rir_len - 1
+    # Next power of 2 for fast FFT
+    n_fft = 1 << (n_conv - 1).bit_length()
+    s_fft = np.fft.rfft(samples, n=n_fft)
+    r_fft = np.fft.rfft(rir, n=n_fft)
+    reverbed = np.fft.irfft(s_fft * r_fft, n=n_fft)[:samples.size].astype(np.float32)
+
+    peak = np.max(np.abs(reverbed))
+    if peak > 0:
+        reverbed = reverbed / peak
+    return reverbed
+
+
+def apply_clipping(waveform: np.ndarray, threshold: float = 0.70) -> np.ndarray:
+    """Simulate microphone or ADC pre-amp digital saturation clipping."""
+    samples = np.asarray(waveform, dtype=np.float32)
+    clipped = np.clip(samples, -threshold, threshold)
+    peak = np.max(np.abs(clipped))
+    if peak > 0:
+        clipped = clipped / peak
+    return clipped.astype(np.float32)
+
+
+def apply_resampling_stress(
+    waveform: np.ndarray,
+    intermediate_sr: int = 8_000,
+    target_sr: int = 16_000,
+) -> np.ndarray:
+    """Simulate narrowband telecommunication downsampling (8 kHz) and upsampling to 16 kHz."""
+    samples = np.asarray(waveform, dtype=np.float32)
+    duration = float(samples.size / target_sr)
+    down_len = int(round(duration * intermediate_sr))
+    orig_times = np.linspace(0.0, duration, samples.size, endpoint=False)
+    down_times = np.linspace(0.0, duration, down_len, endpoint=False)
+
+    downsampled = np.interp(down_times, orig_times, samples).astype(np.float32)
+    reconstructed = np.interp(orig_times, down_times, downsampled).astype(np.float32)
+    return reconstructed
+
+
 def evaluate_model_robustness(
     model: Any,
     test_audio_paths: Sequence[Union[str, Path]],
@@ -127,6 +189,9 @@ def evaluate_model_robustness(
         ("Gaussian Noise (SNR 10 dB)", lambda w: add_gaussian_noise(w, snr_db=10.0)),
         ("Telephony Bandpass (300-3400 Hz)", lambda w: apply_telephony_bandpass(w, sample_rate=sample_rate)),
         ("Lossy Codec (Mu-law 8-bit)", lambda w: apply_lossy_codec_simulation(w)),
+        ("Reverberation (RT60=0.3s)", lambda w: apply_reverberation(w, rt60=0.3, sample_rate=sample_rate)),
+        ("Digital Clipping (Threshold=0.7)", lambda w: apply_clipping(w, threshold=0.70)),
+        ("Narrowband Resampling (8 kHz)", lambda w: apply_resampling_stress(w, intermediate_sr=8000, target_sr=sample_rate)),
     ]
 
     results: Dict[str, Dict[str, float]] = {}
