@@ -1,76 +1,123 @@
 # FORENSIC AUDIO EXAMINATION REPORT
 
-**Case Identifier:** `CASE-20261110-001`  
-**Examination Date:** 2026-11-10 06:53:08 UTC  
-**Examiner:** Automated Audio Forensics Unit  
-**Laboratory:** AI Audio Forensics Investigation Unit  
-**Status:** Completed Examination  
+**Document Type:** Formal Forensic Intelligence Examination  
+**Adherence Standard:** ISO/IEC 27037 Technical Principles  
+**Laboratory:** AI Audio Forensics Investigation & Research Unit  
 
 ---
 
-## 1. Evidence Description & Chain of Custody
+## 1. Case Information
 
-The digital audio exhibit described below was received for acoustic authenticity evaluation:
+| Case Attribute | Value |
+|---|---|
+| **Case Identifier** | `CASE-20261110-001` |
+| **Evidence Tracking ID** | `EVID-EB4898F2-linus-original-D` |
+| **Lead Examiner** | Automated Audio Forensics Unit |
+| **Examination Timestamp** | 2026-11-10T07:08:46.933558+00:00 |
+| **Analysis Status** | **COMPLETED** |
 
-| Attribute | Specification |
+---
+
+## 2. Evidence Information & Chain of Custody
+
+The submitted digital audio exhibit was cataloged and secured prior to analysis:
+
+| Evidence Attribute | Recorded Specification |
 |---|---|
 | **Exhibit Filename** | `linus-original-DEMO.mp3` |
-| **Evidence File Size** | 1,188,736 bytes |
-| **Cryptographic Hash (SHA-256)** | `eb4898f2fd1990e031a76666a505cb751c65a1188c9851ba2b2fa0dfab8f2c03` |
+| **Intake Cryptographic Hash (SHA-256)** | `eb4898f2fd1990e031a76666a505cb751c65a1188c9851ba2b2fa0dfab8f2c03` |
 | **Container Format** | MP3 |
+| **File Size** | 1,188,736 bytes |
+| **Acquisition Duration** | 60.00 seconds |
 | **Original Sampling Rate** | 44100 Hz |
-| **Audio Duration** | 60.00 seconds |
-
-*Verification Note: Cryptographic SHA-256 hash was generated upon intake to ensure evidence integrity throughout processing.*
-
----
-
-## 2. Signal Preprocessing & Feature Extraction Methodology
-
-The audio exhibit was analyzed using standardized, reproducible signal processing transforms:
-
-1. **Standardisation:** Downmixed to single-channel (mono) floating-point representation and resampled to 16,000 Hz. Peak amplitude normalized to 1.0 while preserving silence.
-2. **Feature Extraction:** Evaluated across 9 standard acoustic and spectral dimensions:
-   - 20 Mel-Frequency Cepstral Coefficients (MFCCs)
-   - Spectral Centroid (spectral brightness / center of mass)
-   - Spectral Bandwidth (frequency spread)
-   - Spectral Rolloff (85% cumulative energy threshold)
-   - Zero-Crossing Rate (time-domain frequency indicator)
-   - Root-Mean-Square (RMS) Energy (amplitude dynamics)
-   - Chroma Feature Representation (12 semitone pitch classes)
-   - Spectral Contrast (peak-to-valley energy difference across octave sub-bands)
-   - Spectral Flatness (Wiener entropy / tonality vs. noisiness)
-3. **Classification Model:** Classified using trained `SVM`.
+| **Channel Count** | 2 channel(s) |
+| **Bitstream Immutability** | **CONFIRMED UNALTERED** (Cryptographic verification matched intake hash) |
 
 ---
 
-## 3. Examination Findings & Results
+## 3. Examination Methodology
 
-Based on statistical acoustic evaluation and machine learning inference, the findings are:
+1. **Signal Ingestion & Preprocessing:** Non-destructive audio standardisation was conducted in memory. Signals were converted to single-channel (mono) floating-point arrays and resampled to 16,000 Hz. Peak normalization was applied while preserving acoustic silence.
+2. **Deterministic Feature Extraction:** 26 standardized acoustic and spectral features were computed:
+   - 20 Mel-Frequency Cepstral Coefficients (MFCCs, Slaney 128-band area normalization, $10\log_{10}$ dB scaling).
+   - Spectral Centroid, Bandwidth, and Rolloff (85% energy percentile).
+   - Zero-Crossing Rate (ZCR) and Root-Mean-Square (RMS) Energy.
+   - Chroma Pitch Class Distribution.
+3. **Domain Validation:** Standardized distance ($z$-score) evaluated against empirical training distribution bounds to detect out-of-distribution (OOD) artifacts.
+4. **Machine Learning Inference:** Evaluated via trained forensic classifiers (`calibrated_svm`) with calibrated probability estimation.
 
-- **Classification Finding:** **GENUINE**
-- **Decision Confidence:** **100.00%**
-- **Posterior Probability (Synthetic Deepfake):** **0.00%**
-- **Posterior Probability (Genuine Speech):** **100.00%**
+---
+
+## 4. Acoustic Quality & Feature Distribution Analysis
+
+- **Signal-to-Noise Ratio (SNR):** 27.1 dB
+- **Clipping Ratio:** 0.00%
+- **Silence Fraction:** 0.37%
+- **Domain Status:** `IN_DISTRIBUTION` (Max feature $z$-score: 1.45)
+
+---
+
+## 5. Machine Learning Results
+
+### Primary Classification Finding:
+- **Class Determination:** **GENUINE**
+- **Decision Confidence:** **99.54%**
+- **Decision Function Score:** `N/A`
+- **Calibrated Posterior Probability (Synthetic):** **0.46%**
+- **Calibrated Posterior Probability (Genuine):** **99.54%**
+
+### Multi-Model Consensus Analysis:
+| Model Name | Classification | Synthetic Posterior | Confidence |
+|---|---|---|---|
+| `calibrated_svm` | **GENUINE** | 0.46% | 99.54% |
+| `random_forest` | **GENUINE** | 12.23% | 87.77% |
+| `logistic_regression` | **GENUINE** | 17.67% | 82.33% |
+
 
 ### Forensic Assessment Statement:
-> Acoustic feature analysis by SVM indicates strong consistency with genuine human speech (posterior probability estimate: 100.00%).
+> The machine-learning system classified the submitted recording as consistent with genuine human speech within the validated evaluation domain (posterior probability estimate: 99.54%). This result is an analytical indicator and does not provide definitive proof of authenticity.
 
 ---
 
-## 4. Evidentiary Limitations & Technical Boundaries
+## 6. Visual Evidence & Spectrogram Analysis
 
-Forensic voice analysis is inherently bounded by acoustic and acquisition conditions:
-1. **Transcoding & Codec Compression:** MP3, AAC, and telephony codecs introduce spectral quantization artifacts that can mimic or obscure vocoder synthesis cues.
-2. **Channel Variability:** Varying acoustic environments, microphone responses, and room reverberation may alter high-frequency spectral rolloff.
-3. **Out-of-Domain Voice Generators:** Performance was calibrated on speech synthesis and voice conversion systems; novel zero-shot generative models may exhibit varying anomaly patterns.
+High-resolution visual acoustic representations generated during examination:
+- **Overview Figure:** `[forensic_overview_linus-original-DEMO.png](C:/Users/ANKIT/OneDrive/Desktop/AI_Audio_Forensics/results/graphs/forensic_overview_linus-original-DEMO.png)`
+- **Spectrogram Figure:** `[spectrogram_linus-original-DEMO.png](C:/Users/ANKIT/OneDrive/Desktop/AI_Audio_Forensics/results/graphs/spectrogram_linus-original-DEMO.png)`
+- **Mel_Mfcc Figure:** `[mel_mfcc_linus-original-DEMO.png](C:/Users/ANKIT/OneDrive/Desktop/AI_Audio_Forensics/results/graphs/mel_mfcc_linus-original-DEMO.png)`
+
+
+---
+
+## 7. Evidentiary Limitations & Technical Boundaries
+
+Forensic voice analysis is inherently bounded by signal acquisition conditions:
+1. **Telephony & Bandpass Filtering:** G.711 telephony codecs attenuate acoustic energy above 3,400 Hz, removing vocoder phase cues and increasing false positive risk.
+2. **Acoustic Noise:** Signal-to-noise ratios below 20 dB degrade spectral centroid and higher MFCC stability.
+3. **Cross-Speaker Generalization:** Statistical classifiers may exhibit elevated false alarm rates on unfamiliar voice profiles not represented in the training corpus.
 
 ---
 
-## 5. Mandatory Forensic Disclaimer
+## 8. Forensic Conclusion
 
-> **IMPORTANT LEGAL NOTICE:**  
-> This examination report provides an investigative intelligence screening assessment based on automated acoustic signal analysis. In accordance with digital forensics principles (referencing ISO/IEC 27037 guidelines and SWGDE recommendations), this finding does **not** constitute definitive legal proof of authentic human origin or criminal forgery. It must be evaluated in conjunction with corroborating investigative evidence, witness testimony, and verified chain of custody.
+The machine-learning system classified the submitted recording as consistent with genuine human speech within the validated evaluation domain (posterior probability estimate: 99.54%). This result is an analytical indicator and does not provide definitive proof of authenticity.
 
 ---
-*End of Formal Report.*
+
+## 9. Integrity Statement
+
+The undersigned examiner certifies:
+1. The evidence was ingested and analyzed using non-destructive, read-only protocols.
+2. The cryptographic SHA-256 hash was verified prior to and immediately following all computational transformations.
+3. No modification or overwriting of original evidence was performed.
+
+---
+
+## 10. Technical References
+
+- **ISO/IEC 27037:2012:** Information technology — Security techniques — Guidelines for identification, collection, acquisition and preservation of digital evidence.
+- **Scientific Working Group on Digital Evidence (SWGDE):** Best Practices for Forensic Audio Analysis.
+- **Signal Processing Framework:** NumPy 2.2.3, Scikit-Learn 1.6.1, SoundFile 0.13.1, Python 3.14.3.
+
+---
+*End of Formal Forensic Report.*
