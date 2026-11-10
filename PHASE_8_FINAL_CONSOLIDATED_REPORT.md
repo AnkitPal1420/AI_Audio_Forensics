@@ -3,9 +3,9 @@
 **Project:** AI-Based Voice Analysis for Detecting Synthetic and Deepfake Audio in Criminal Investigations  
 **Project Root:** `AI_Audio_Forensics`  
 **Phase:** 8 — Production Deployment, Cybersecurity & Forensic System Operationalization  
-**Version:** 8.0.0-RELEASE  
+**Version:** 8.0.0-CANDIDATE  
 **Date:** November 2026  
-**Status:** COMPLETE, AUDITED & OPERATIONALLY DEPLOYED  
+**Status:** COMPLETE, AUDITED & HARDENED PRODUCTION CANDIDATE  
 
 ---
 

@@ -269,6 +269,25 @@ def check_permission(session: Optional[UserSession], action: str) -> bool:
     return has_permission(session.role, action)
 
 
+def require_permission(session_id: Optional[str], action: str, db: ForensicDatabase) -> UserSession:
+    """Server-side authorization gate: re-validate the session against the database and
+    confirm the role currently stored for the user permits `action`.
+
+    The role is re-read from the users table (not from client/session-state copies), so a
+    demoted or deactivated account loses access immediately. Raises on any failure.
+    """
+    session = validate_session(session_id, db)
+    if not session:
+        raise InsufficientPermissionsError("Authentication required: session missing, expired or revoked.")
+    user = db.get_user_by_id(session.user_id)
+    if not user or not user.is_active:
+        raise InsufficientPermissionsError("Account is deactivated or no longer exists.")
+    if not has_permission(user.role, action):
+        logger.warning("RBAC denial: user '%s' (%s) attempted '%s'", user.username, user.role, action)
+        raise InsufficientPermissionsError(f"Role '{user.role}' is not authorized for '{action}'.")
+    return session
+
+
 # =============================================================================
 # Initial User Provisioning (Zero-Hardcoded Secrets)
 # =============================================================================

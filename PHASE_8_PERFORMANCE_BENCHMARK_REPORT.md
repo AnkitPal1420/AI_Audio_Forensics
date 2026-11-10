@@ -18,14 +18,15 @@ Phase 8.7 profiles the computational latency, algorithmic throughput, memory con
 
 | Pipeline Stage | Evaluated Workload | Execution Time (ms) | Peak RAM Usage | Computational Bottleneck |
 | :--- | :--- | :--- | :--- | :--- |
-| **Audio Loading & Resampling** | 60-second MP3 $\to$ 16 kHz mono float32 | **169.8 ms** | $\approx 22 \text{ MB}$ | `soundfile` decoding and `scipy.signal.resample_poly` |
+| **Audio Loading & Resampling** | 60-second MP3 $\to$ 16 kHz mono float32 | **169.8 ms** | **42.35 MB** (tracemalloc) | `soundfile` decoding and `scipy.signal.resample_poly` |
 | **Forensic Feature Extraction** | 20-MFCC filterbank + statistics (60s audio) | **308.0 ms** | $\approx 35 \text{ MB}$ | Short-time Fourier transform & Mel filterbank dot-products |
 | **Classifier Inference** | Calibrated SVM (single 26-feature vector) | **36.1 ms** | $\approx 15 \text{ MB}$ | RBF kernel matrix evaluation |
 | **Signal Tampering Analysis** | 5.0-second window STFT + flux + RMS step | **103.8 ms** | $\approx 18 \text{ MB}$ | Multi-frame STFT magnitude calculation |
 | **Acoustic Anomaly Detection** | 5.0-second window Isolation Forest (100 trees) | **215.7 ms** | $\approx 42 \text{ MB}$ | Recursive randomized binary tree splits |
 | **Explainable AI Attribution** | Monte Carlo Shapley Sampling ($M=35$ iterations) | **1,775.9 ms** | $\approx 38 \text{ MB}$ | Repeated permutation model evaluation |
-| **Database Query Latency** | Case lookup + exhibit retrieval (SQLite WAL) | **1.2 ms** | $< 2 \text{ MB}$ | In-memory B-tree index lookup |
-| **Hot Database Backup** | Full online snapshot (`forensics.db` 500 KB) | **14.5 ms** | $\approx 8 \text{ MB}$ | Page-by-page copy via `Connection.backup()` |
+| **Database Query Latency** | `list_cases()` (avg over 200 iterations) | **2.31 ms** | $< 2 \text{ MB}$ | SQLite WAL index retrieval |
+| **Database Exhibit Lookup** | `list_all_evidence()` (avg over 50 iterations) | **1.99 ms** | $< 2 \text{ MB}$ | SQLite table scan & row mapping |
+| **Hot Database Backup** | Live SQLite snapshot (`Connection.backup()` 104 KB) | **29.11 ms** | $\approx 8 \text{ MB}$ | Transaction-safe page copy |
 
 ---
 

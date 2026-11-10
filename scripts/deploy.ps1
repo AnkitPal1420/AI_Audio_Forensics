@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Automated Production Deployment & Health Verification Script for AI Audio Forensics.
 .DESCRIPTION
@@ -64,18 +64,34 @@ print('All model artifacts verified intact against cryptographic manifest.')
 
 # 5. Bootstrap Initial Admin User if Empty
 Write-Host "[+] Checking user provisioning status..." -ForegroundColor Yellow
-& $PythonExe -c "
+$userCount = & $PythonExe -c "from database.database import ForensicDatabase; db = ForensicDatabase(); print(len(db.list_users()))"
+if ([int]$userCount -eq 0) {
+    Write-Host "[!] No administrator account detected." -ForegroundColor Yellow
+    $adminPwd = $env:ADMIN_PASSWORD
+    if (-not $adminPwd) {
+        $secPwd = Read-Host "Enter initial administrator password (min 12 chars, upper, lower, digit, symbol)" -AsSecureString
+        $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secPwd)
+        $adminPwd = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($BSTR)
+    }
+    if (-not $adminPwd) {
+        Write-Error "Administrator password must not be empty."
+    }
+    $env:TEMP_BOOTSTRAP_PWD = $adminPwd
+    & $PythonExe -c "
+import os
 from database.database import ForensicDatabase
 from src.auth import bootstrap_admin_user
 
 db = ForensicDatabase()
-users = db.list_users()
-if not users:
-    u, pwd = bootstrap_admin_user(db, username='admin')
-    print(f'BOOTSTRAP NOTICE: Initial Admin User created (Username: admin, Password: {pwd})')
-else:
-    print(f'User directory intact ({len(users)} registered user(s)).')
+pwd = os.environ.pop('TEMP_BOOTSTRAP_PWD', None)
+u, _ = bootstrap_admin_user(db, username='admin', password=pwd)
+print(f'Administrator user {u.username} provisioned successfully.')
 "
+    $env:TEMP_BOOTSTRAP_PWD = $null
+} else {
+    Write-Host "[+] User directory intact ($userCount registered user(s))." -ForegroundColor Green
+}
 
 # 6. Run Test Suite Validation (Optional)
 if (-not $SkipTests) {

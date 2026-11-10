@@ -41,10 +41,12 @@ from src.audio_quality import assess_audio_quality, assess_feature_distribution
 from src.auth import (
     AccountLockedError,
     AuthenticationError,
+    InsufficientPermissionsError,
     authenticate_user,
     bootstrap_admin_user,
     create_user_session,
     has_permission,
+    require_permission,
     validate_session,
 )
 from src.backup_manager import create_system_backup
@@ -315,7 +317,83 @@ def render_login_screen():
     st.markdown("</div>", unsafe_allow_html=True)
 
 
+def render_landing_page():
+    """Vibrant glassmorphism welcome screen: project name, circular arrow button, 'Start'."""
+    st.markdown(
+        """
+        <style>
+        [data-testid="stSidebar"], [data-testid="stHeader"] { display: none !important; }
+        .stApp {
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255, 0, 128, 0.55) 0%, transparent 40%),
+                radial-gradient(circle at 85% 25%, rgba(0, 200, 255, 0.55) 0%, transparent 42%),
+                radial-gradient(circle at 50% 85%, rgba(140, 80, 255, 0.60) 0%, transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 170, 0.35) 0%, transparent 35%),
+                #07070f !important;
+            background-size: 200% 200%;
+            animation: bgShift 14s ease-in-out infinite alternate;
+        }
+        @keyframes bgShift { from { background-position: 0% 0%; } to { background-position: 100% 100%; } }
+        .landing-card {
+            max-width: 620px; margin: 12vh auto 0 auto; padding: 3rem 2rem 1.5rem 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 32px;
+            backdrop-filter: blur(22px) saturate(160%);
+            -webkit-backdrop-filter: blur(22px) saturate(160%);
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        .landing-title {
+            font-size: 3.1rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+            background: linear-gradient(90deg, #ff4fa3, #ffb347, #38e8ff, #a57bff);
+            background-size: 250% 100%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: titleFlow 6s linear infinite;
+        }
+        @keyframes titleFlow { to { background-position: 250% 0; } }
+        .landing-sub { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 0.6rem; }
+        .st-key-start_btn { display: flex; justify-content: center; margin-top: -1.2rem; }
+        .st-key-start_btn button {
+            width: 84px !important; height: 84px !important; min-height: 84px !important;
+            border-radius: 50% !important; padding: 0 !important;
+            font-size: 2.4rem !important; line-height: 1 !important; color: #fff !important;
+            background: linear-gradient(135deg, rgba(255,79,163,0.55), rgba(56,232,255,0.55)) !important;
+            border: 2px solid rgba(255,255,255,0.55) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 28px rgba(56,232,255,0.55), 0 0 60px rgba(255,79,163,0.35);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .st-key-start_btn button:hover {
+            transform: scale(1.12);
+            box-shadow: 0 0 40px rgba(56,232,255,0.9), 0 0 90px rgba(255,79,163,0.6);
+        }
+        .start-label {
+            text-align: center; color: #fff; font-weight: 700; letter-spacing: 0.35em;
+            text-transform: uppercase; font-size: 0.95rem; margin: 0.9rem 0 2rem 0;
+            text-shadow: 0 0 14px rgba(56,232,255,0.8);
+        }
+        </style>
+        <div class="landing-card">
+            <div class="landing-title">AI_Audio_Forensics</div>
+            <div class="landing-sub">Synthetic &amp; deepfake voice analysis for criminal investigations</div>
+            <div style="height: 3.2rem;"></div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("➜", key="start_btn"):
+        st.session_state["entered"] = True
+        st.rerun()
+    st.markdown('<div class="start-label">Start</div>', unsafe_allow_html=True)
+
+
 def main():
+    # Landing page shown first on every new browser session
+    if not st.session_state.get("entered", False):
+        render_landing_page()
+        return
+
     # Session Authentication Gate
     session_id = st.session_state.get("session_id")
     session = validate_session(session_id, db)
@@ -531,6 +609,11 @@ def render_case_management():
 
             submitted = st.form_submit_button("Register Forensic Case")
             if submitted:
+                try:
+                    require_permission(st.session_state.get("session_id"), "create_cases", db)
+                except InsufficientPermissionsError as pe:
+                    st.error(f"Authorization denied: {pe}")
+                    st.stop()
                 if not case_id or not case_title:
                     st.error("Case Reference ID and Title are required.")
                 elif db.get_case(case_id):
@@ -624,6 +707,11 @@ def render_evidence_upload():
     )
 
     if uploaded_files and st.button("🔒 Securely Ingest Evidence Files"):
+        try:
+            require_permission(st.session_state.get("session_id"), "upload_evidence", db)
+        except InsufficientPermissionsError as pe:
+            st.error(f"Authorization denied: {pe}")
+            st.stop()
         progress_bar = st.progress(0, text="Ingesting evidence...")
         ingested_count = 0
 
@@ -774,6 +862,11 @@ def render_ai_detection():
         examiner = st.text_input("Examiner Name", value="Lead Forensic Examiner")
 
     if st.button("🚀 Execute Calibrated Forensic Detection"):
+        try:
+            require_permission(st.session_state.get("session_id"), "run_examinations", db)
+        except InsufficientPermissionsError as pe:
+            st.error(f"Authorization denied: {pe}")
+            st.stop()
         with st.spinner("Executing non-destructive 12-step detection pipeline..."):
             try:
                 res = predict_audio(
@@ -1289,8 +1382,13 @@ def render_phase7_forensic_intelligence():
             run_xai_btn = st.button("🚀 Run Explainability Analysis", key="btn_run_xai")
 
         if run_xai_btn:
+            try:
+                require_permission(st.session_state.get("session_id"), "run_xai", db)
+            except InsufficientPermissionsError as pe:
+                st.error(f"Authorization denied: {pe}")
+                st.stop()
             with st.spinner("Computing Shapley sampling attributions and feature occlusion..."):
-                waveform, sr = load_audio(stored_file, target_sr=16000, mono=True)
+                waveform, sr = load_audio(stored_file, sample_rate=16000, mono=True)
                 raw_feats = extract_basic_features(waveform, sample_rate=sr, n_mfcc=20)
                 feat_vec = align_feature_vector(raw_feats, engine.feature_names)
 
@@ -1385,8 +1483,13 @@ def render_phase7_forensic_intelligence():
         noise_shift = c_th3.slider("Noise Floor Shift Threshold (dB)", min_value=3.0, max_value=12.0, value=6.0, step=0.5)
 
         if st.button("⚡ Execute Signal Tampering Analysis", key="btn_run_tamp"):
+            try:
+                require_permission(st.session_state.get("session_id"), "run_tampering_analysis", db)
+            except InsufficientPermissionsError as pe:
+                st.error(f"Authorization denied: {pe}")
+                st.stop()
             with st.spinner("Extracting short-time spectral dynamics and tracking discontinuities..."):
-                waveform, sr = load_audio(stored_file, target_sr=16000, mono=True)
+                waveform, sr = load_audio(stored_file, sample_rate=16000, mono=True)
                 tamp_res = analyze_audio_tampering(
                     waveform,
                     sr,
@@ -1477,8 +1580,8 @@ def render_phase7_forensic_intelligence():
 
             if st.button("🔬 Compute Acoustic Distance Baseline", key="btn_run_spk"):
                 with st.spinner("Extracting acoustic vectors and calculating spectral distance..."):
-                    wf_a, sr_a = load_audio(stored_file, target_sr=16000, mono=True)
-                    wf_b, sr_b = load_audio(Path(exhibit_b["stored_path"]), target_sr=16000, mono=True)
+                    wf_a, sr_a = load_audio(stored_file, sample_rate=16000, mono=True)
+                    wf_b, sr_b = load_audio(Path(exhibit_b["stored_path"]), sample_rate=16000, mono=True)
 
                     raw_a = extract_basic_features(wf_a, sample_rate=sr_a, n_mfcc=20)
                     raw_b = extract_basic_features(wf_b, sample_rate=sr_b, n_mfcc=20)
@@ -1515,7 +1618,7 @@ def render_phase7_forensic_intelligence():
 
         if st.button("🔍 Profile Vocoder Bandwidth & Artifacts", key="btn_run_gen"):
             with st.spinner("Analyzing spectral energy distribution and cutoff frequencies..."):
-                wf, sr = load_audio(stored_file, target_sr=16000, mono=True)
+                wf, sr = load_audio(stored_file, sample_rate=16000, mono=True)
                 gen_res = profile_generator_artifacts(wf, sr, evidence_id=exhibit["evidence_id"])
 
                 c_g1, c_g2, c_g3 = st.columns(3)
@@ -1539,7 +1642,7 @@ def render_phase7_forensic_intelligence():
 
         if st.button("🚨 Run Anomaly Screening", key="btn_run_anom"):
             with st.spinner("Fitting unsupervised manifold and computing frame anomaly scores..."):
-                wf, sr = load_audio(stored_file, target_sr=16000, mono=True)
+                wf, sr = load_audio(stored_file, sample_rate=16000, mono=True)
                 anom_res = detect_acoustic_anomalies(
                     wf, sr, evidence_id=exhibit["evidence_id"], contamination=anom_contam, method=anom_method
                 )
@@ -1573,7 +1676,7 @@ def render_phase7_forensic_intelligence():
     # -------------------------------------------------------------------------
     with t_sig:
         st.markdown("#### 🔬 Advanced Signal Laboratory & Playback Inspection")
-        wf, sr = load_audio(stored_file, target_sr=16000, mono=True)
+        wf, sr = load_audio(stored_file, sample_rate=16000, mono=True)
         dur = len(wf) / sr
 
         st.audio(str(stored_file))
@@ -1613,9 +1716,14 @@ def render_phase7_forensic_intelligence():
             exhibit_b = other_opts[target_ev_label]
 
             if st.button("🔗 Execute Multi-Evidence Correlation", key="btn_run_corr"):
+                try:
+                    require_permission(st.session_state.get("session_id"), "correlate_evidence", db)
+                except InsufficientPermissionsError as pe:
+                    st.error(f"Authorization denied: {pe}")
+                    st.stop()
                 with st.spinner("Performing cross-exhibit hash comparison, temporal offset search, and acoustic correlation..."):
-                    wf_a, sr_a = load_audio(stored_file, target_sr=16000, mono=True)
-                    wf_b, sr_b = load_audio(Path(exhibit_b["stored_path"]), target_sr=16000, mono=True)
+                    wf_a, sr_a = load_audio(stored_file, sample_rate=16000, mono=True)
+                    wf_b, sr_b = load_audio(Path(exhibit_b["stored_path"]), sample_rate=16000, mono=True)
 
                     raw_a = extract_basic_features(wf_a, sample_rate=sr_a, n_mfcc=20)
                     raw_b = extract_basic_features(wf_b, sample_rate=sr_b, n_mfcc=20)
@@ -1749,6 +1857,11 @@ def render_settings_and_diagnostics():
         )
 
         if st.button("🚀 Trigger Online Hot System Backup", key="btn_hot_backup"):
+            try:
+                require_permission(st.session_state.get("session_id"), "manage_backups", db)
+            except InsufficientPermissionsError as pe:
+                st.error(f"Authorization denied: {pe}")
+                st.stop()
             with st.spinner("Executing non-blocking online database backup and archive compression..."):
                 active_user = st.session_state.get("user", {}).get("username", "Examiner")
                 backup_res = create_system_backup(db, operator=active_user)
@@ -1787,6 +1900,11 @@ def render_settings_and_diagnostics():
                 add_btn = st.form_submit_button("Register Forensic User")
 
                 if add_btn:
+                    try:
+                        require_permission(st.session_state.get("session_id"), "manage_users", db)
+                    except InsufficientPermissionsError as pe:
+                        st.error(f"Authorization denied: {pe}")
+                        st.stop()
                     if not new_u or not new_pwd:
                         st.error("Username and password are required.")
                     else:
