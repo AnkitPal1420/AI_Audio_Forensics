@@ -79,3 +79,4 @@ Tested in `tests/test_phase7_forensic_intelligence.py`:
 - `test_speaker_comparison_baseline`: Verifies calculation of cosine similarity and Euclidean distance, asserts that `status == "EXPERIMENTAL_INDETERMINATE"`, confirms `identity_claim_permitted is False`, and verifies that the prerequisite list and scientific limitation disclaimer are present.
 
 Passed cleanly with 100% assertion compliance.
+

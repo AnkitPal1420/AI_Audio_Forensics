@@ -18,6 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 import joblib
 import numpy as np
 
+from src.security import verify_model_artifact
 from src.utils import project_root
 
 logger = logging.getLogger(__name__)
@@ -80,6 +81,9 @@ class DeepfakeDetectionEngine:
         model_file = self.models_dir / MODEL_REGISTRY[model_key]
         if not model_file.is_file():
             raise FileNotFoundError(f"Model artifact not found at {model_file}")
+
+        # Cryptographic verification against model manifest to prevent insecure deserialization
+        verify_model_artifact(model_file)
 
         model = joblib.load(model_file)
         self._loaded_models[model_key] = model

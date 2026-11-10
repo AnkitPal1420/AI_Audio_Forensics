@@ -66,3 +66,4 @@ To upgrade from exploratory heuristic profiling to court-admissible generator at
 
 Tested in `tests/test_phase7_forensic_intelligence.py`:
 - `test_generator_analysis_bandwidth`: Verifies bandwidth calculation, spectral rolloff estimation, candidate tier hypothesis, and presence of mandatory scientific limitation notices. Passed cleanly.
+

@@ -86,3 +86,4 @@ Tested in `tests/test_phase7_forensic_intelligence.py`:
   - Asserts foreign key enforcement and retrieval.
 
 All assertions passed cleanly in automated CI testing.
+

@@ -166,3 +166,4 @@ def compare_acoustic_profiles(
         prerequisites_missing=prerequisites,
         scientific_disclaimer=disclaimer,
     )
+

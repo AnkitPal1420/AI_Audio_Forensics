@@ -48,3 +48,4 @@ The workspace provides four synchronized views:
 
 - Verified against large audio files up to 115 MB (`dataset/real/biden-original.wav`) with zero memory leakage and responsive sub-second UI updates.
 - Audio loading and resampling tested under `tests/test_preprocessing.py` and `tests/test_phase5_dashboard.py`.
+

@@ -141,3 +141,51 @@ class EvidenceComparisonRecord:
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
+
+
+# =============================================================================
+# Phase 8: Authentication & Role-Based Access Control (RBAC) Models
+# =============================================================================
+class UserRole:
+    ADMINISTRATOR = "Administrator"
+    FORENSIC_EXAMINER = "Forensic Examiner"
+    REVIEWING_OFFICER = "Reviewing Officer"
+    READ_ONLY_USER = "Read-only User"
+
+    ALL_ROLES = [ADMINISTRATOR, FORENSIC_EXAMINER, REVIEWING_OFFICER, READ_ONLY_USER]
+
+
+@dataclass
+class User:
+    user_id: str
+    username: str
+    password_hash: str
+    salt_hex: str
+    role: str  # Administrator, Forensic Examiner, Reviewing Officer, Read-only User
+    full_name: str
+    email: str = ""
+    is_active: bool = True
+    failed_attempts: int = 0
+    locked_until: Optional[str] = None
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    last_login_at: Optional[str] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class UserSession:
+    session_id: str
+    user_id: str
+    username: str
+    role: str
+    created_at: str
+    expires_at: str
+    is_revoked: bool = False
+    ip_address: str = "127.0.0.1"
+    user_agent: str = "ForensicDashboard/1.0"
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+

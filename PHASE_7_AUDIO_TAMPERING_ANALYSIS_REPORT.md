@@ -88,3 +88,4 @@ Tested in `tests/test_phase7_forensic_intelligence.py`:
 - `test_repeated_segment_detection`: Verifies that artificially duplicated signal slices are correctly matched with correlation $\ge 0.90$.
 
 All unit tests executed and passed cleanly.
+

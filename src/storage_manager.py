@@ -9,21 +9,85 @@ Ensures strict segregation of digital assets adhering to ISO/IEC 27037 principle
 
 from __future__ import annotations
 
+import ctypes
 import logging
+import os
 import re
 import shutil
+import stat
+import sys
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple, Union
 
 from database.database import ForensicDatabase
-from database.models import ForensicCase, ForensicEvidence
+from database.models import ForensicCase, ForensicEvidence, IntegrityRecord
 from src.audio_preprocessing import compute_file_hash, get_audio_metadata
 from src.forensic_integrity import compute_file_sha256, generate_evidence_id
 from src.utils import project_root
 
 logger = logging.getLogger(__name__)
+
+
+def apply_file_read_only(path: Union[str, Path]) -> None:
+    """Apply OS-level read-only file attributes to protect digital evidence from accidental modification."""
+    p = Path(path).resolve()
+    if not p.is_file():
+        return
+
+    try:
+        # Standard POSIX / cross-platform read-only mode
+        current_perms = os.stat(p).st_mode
+        read_only_perms = current_perms & ~(stat.S_IWRITE | stat.S_IWGRP | stat.S_IWOTH)
+        os.chmod(p, read_only_perms)
+
+        # Windows-specific API enforcement (FILE_ATTRIBUTE_READONLY = 0x01)
+        if sys.platform == "win32":
+            FILE_ATTRIBUTE_READONLY = 0x01
+            ctypes.windll.kernel32.SetFileAttributesW(str(p), FILE_ATTRIBUTE_READONLY)
+    except Exception as e:
+        logger.warning("Could not apply read-only file attribute to %s: %s", p, e)
+
+
+def verify_exhibit_integrity(evidence_id: str, db: ForensicDatabase) -> Tuple[bool, str, Dict[str, Any]]:
+    """Cryptographically verify an exhibit on disk against its intake SHA-256 record."""
+    evidence = db.get_evidence(evidence_id)
+    if not evidence:
+        return False, f"Evidence record '{evidence_id}' not found in database.", {}
+
+    stored_path = Path(evidence["stored_path"])
+    if not stored_path.is_file():
+        return False, f"Physical evidence file missing on disk at: {stored_path}", evidence
+
+    # Compute current live hash
+    live_hash = compute_file_sha256(stored_path)
+    recorded_hash = evidence["sha256_hash"].strip().lower()
+
+    is_intact = live_hash.lower() == recorded_hash
+    status = "VERIFIED" if is_intact else "HASH_MISMATCH"
+
+    # Log to integrity_checks table
+    rec = IntegrityRecord(
+        evidence_id=evidence_id,
+        recorded_sha256=recorded_hash,
+        checked_sha256=live_hash,
+        status=status,
+        verified_by="StorageManager.verify_exhibit_integrity",
+        notes="Automated pre-examination cryptographic audit check.",
+    )
+    db.record_integrity_check(rec)
+
+    if not is_intact:
+        logger.critical(
+            "INTEGRITY BREACH: Evidence %s hash mismatch! Recorded %s, Current %s",
+            evidence_id,
+            recorded_hash,
+            live_hash,
+        )
+        return False, f"CRITICAL INTEGRITY BREACH: SHA-256 mismatch for exhibit {evidence_id}!", evidence
+
+    return True, f"Exhibit {evidence_id} verified intact (SHA-256: {live_hash[:16]}...)", evidence
 
 
 def get_storage_paths() -> Dict[str, Path]:
@@ -98,6 +162,10 @@ def ingest_evidence_file(
 
     # Extract audio metadata
     meta = get_audio_metadata(dest_path)
+
+    # Apply OS-level read-only file permissions
+    if make_read_only:
+        apply_file_read_only(dest_path)
 
     logger.info("Ingested digital evidence exhibit %s -> %s (SHA-256: %s)", evidence_id, dest_path, sha256_hash)
     return dest_path, evidence_id, sha256_hash, meta

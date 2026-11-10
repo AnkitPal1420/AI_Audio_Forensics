@@ -77,3 +77,4 @@ The XAI engine is fully tested in `tests/test_phase7_forensic_intelligence.py`:
 - `test_explainable_ai_schema_rejection`: Asserts that mismatched feature vectors (e.g., 20 elements) are rejected immediately.
 
 All tests passed successfully in 10.75 seconds with zero regressions across 89 total project tests.
+

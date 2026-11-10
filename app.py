@@ -30,11 +30,24 @@ from database.models import (
     ForensicEvidence,
     ForensicExamination,
     IntegrityRecord,
+    User,
+    UserRole,
+    UserSession,
 )
 from src.anomaly_detection import detect_acoustic_anomalies
 from src.audio_prediction import align_feature_vector, predict_audio
 from src.audio_preprocessing import get_audio_metadata, load_audio
 from src.audio_quality import assess_audio_quality, assess_feature_distribution
+from src.auth import (
+    AccountLockedError,
+    AuthenticationError,
+    authenticate_user,
+    bootstrap_admin_user,
+    create_user_session,
+    has_permission,
+    validate_session,
+)
+from src.backup_manager import create_system_backup
 from src.batch_processing import process_audio_batch
 from src.deepfake_detection import DeepfakeDetectionEngine
 from src.evidence_correlation import correlate_exhibits
@@ -48,6 +61,8 @@ from src.forensic_integrity import (
 )
 from src.forensic_report import create_forensic_report
 from src.generator_analysis import profile_generator_artifacts
+from src.logging_config import get_system_diagnostics, log_security_event
+from src.security import validate_upload_payload
 from src.speaker_comparison import compare_acoustic_profiles
 from src.spectrogram_analysis import compute_spectral_trajectories, generate_forensic_visualizations
 from src.storage_manager import get_storage_paths, ingest_evidence_file, seed_default_cases_and_exhibits
@@ -235,41 +250,137 @@ def render_styled_table(data: list[dict]):
     st.markdown(table_html, unsafe_allow_html=True)
 
 
+def render_login_screen():
+    """Render secure forensic access portal with brute-force lockout defenses."""
+    st.markdown(
+        """
+        <div style="max-width: 460px; margin: 2rem auto; padding: 2rem; background: #161b22; border: 1px solid #30363d; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.6);">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span style="font-size: 3rem;">🛡️</span>
+                <div style="font-size: 1.45rem; font-weight: 800; color: #f0f6fc; margin-top: 0.5rem; letter-spacing: -0.02em;">VOICE FORENSICS LABORATORY</div>
+                <div style="font-size: 0.82rem; color: #8b949e; margin-top: 4px;">Criminal Investigation & Evidentiary Analysis Portal</div>
+            </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    users = db.list_users()
+    if not users:
+        st.info("No forensic users provisioned. Please initialize the primary Administrator account.")
+        with st.form("bootstrap_admin_form"):
+            admin_user = st.text_input("Administrator Username", value="admin")
+            admin_name = st.text_input("Full Legal Name", value="Primary Forensic Administrator")
+            admin_pwd = st.text_input("Master Password", type="password", help="Minimum 10 chars, upper/lower/digit/symbol.")
+            submit_btn = st.form_submit_button("🚀 Initialize Administrator Account")
+
+            if submit_btn:
+                try:
+                    u, _ = bootstrap_admin_user(db, username=admin_user, password=admin_pwd, full_name=admin_name)
+                    session = create_user_session(u, db)
+                    st.session_state["session_id"] = session.session_id
+                    st.session_state["user"] = u.to_dict()
+                    st.session_state["role"] = u.role
+                    st.session_state["authenticated"] = True
+                    log_security_event("ADMIN_BOOTSTRAPPED", {"username": u.username})
+                    st.success("Admin initialized! Accessing portal...")
+                    st.rerun()
+                except Exception as e:
+                    st.error(str(e))
+    else:
+        with st.form("forensic_login_form"):
+            uname = st.text_input("Examiner Username")
+            pword = st.text_input("Password", type="password")
+            login_btn = st.form_submit_button("🔒 Authenticate & Access Evidence")
+
+            if login_btn:
+                try:
+                    u = authenticate_user(uname, pword, db)
+                    session = create_user_session(u, db)
+                    st.session_state["session_id"] = session.session_id
+                    st.session_state["user"] = u.to_dict()
+                    st.session_state["role"] = u.role
+                    st.session_state["authenticated"] = True
+                    log_security_event("LOGIN_SUCCESS", {"user_id": u.user_id, "role": u.role}, username=u.username)
+                    st.success(f"Authenticated as {u.full_name} ({u.role})")
+                    st.rerun()
+                except AccountLockedError as ale:
+                    log_security_event("LOGIN_LOCKED", {"error": str(ale)}, username=uname)
+                    st.error(f"🛑 {ale}")
+                except AuthenticationError as ae:
+                    log_security_event("LOGIN_FAILED", {"error": str(ae)}, username=uname)
+                    st.error(f"⚠️ {ae}")
+                except Exception as ex:
+                    st.error(f"Authentication failure: {ex}")
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
 def main():
+    # Session Authentication Gate
+    session_id = st.session_state.get("session_id")
+    session = validate_session(session_id, db)
+    if not session:
+        st.session_state["authenticated"] = False
+        st.session_state["session_id"] = None
+        st.session_state["user"] = None
+        st.session_state["role"] = None
+        render_login_screen()
+        return
+
     # Sidebar Navigation
     with st.sidebar:
         st.markdown(
             """
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem;">
                 <span style="font-size: 2rem;">🛡️</span>
                 <div>
                     <div style="font-size: 1.1rem; font-weight: 800; color: #f0f6fc;">VOICE FORENSICS</div>
-                    <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 600;">PHASE 7 FORENSIC INTELLIGENCE</div>
+                    <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 600;">PHASE 8 PRODUCTION PLATFORM</div>
                 </div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
+        # Active Session Pill
+        role_badge_color = "#38bdf8" if session.role == UserRole.ADMINISTRATOR else "#3fb950"
+        st.markdown(
+            f"""
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 10px; font-size: 0.8rem; margin-bottom: 12px;">
+                <div style="color: #8b949e; font-size: 0.7rem; text-transform: uppercase;">Active Session</div>
+                <div style="font-weight: 700; color: #f0f6fc;">👤 {session.username}</div>
+                <div style="color: {role_badge_color}; font-weight: 600; font-size: 0.75rem;">● {session.role}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        if st.button("🚪 Sign Out", key="btn_logout"):
+            db.revoke_session(session.session_id)
+            log_security_event("LOGOUT", {"user_id": session.user_id}, username=session.username)
+            st.session_state.clear()
+            st.rerun()
+
         st.markdown("---")
 
-        page = st.radio(
-            "Forensic Workspace",
-            [
-                "🏠 Dashboard Overview",
-                "📁 Case Management",
-                "📤 Evidence Ingestion & Upload",
-                "🔬 Audio Examination Workspace",
-                "🤖 AI Detection & Consensus",
-                "🔒 Evidence Integrity Verification",
-                "📄 Forensic Report Center",
-                "📜 Examination Audit Trail",
-                "📊 Scientific Validation & Reliability",
-                "🧠 Forensic Intelligence & Manipulation",
-                "⚙️ System Settings & Diagnostics",
-            ],
-            index=0,
-        )
+        # RBAC-Aware Navigation Menu
+        user_role = session.role
+        all_pages = [
+            ("🏠 Dashboard Overview", True),
+            ("📁 Case Management", True),
+            ("📤 Evidence Ingestion & Upload", has_permission(user_role, "upload_evidence")),
+            ("🔬 Audio Examination Workspace", has_permission(user_role, "view_cases")),
+            ("🤖 AI Detection & Consensus", has_permission(user_role, "run_examinations")),
+            ("🔒 Evidence Integrity Verification", True),
+            ("📄 Forensic Report Center", True),
+            ("📜 Examination Audit Trail", has_permission(user_role, "view_audit_trail")),
+            ("📊 Scientific Validation & Reliability", True),
+            ("🧠 Forensic Intelligence & Manipulation", has_permission(user_role, "run_xai")),
+            ("⚙️ System Settings & Diagnostics", has_permission(user_role, "view_system_diagnostics")),
+        ]
+        available_pages = [name for name, allowed in all_pages if allowed]
+
+        page = st.radio("Forensic Workspace", available_pages, index=0)
 
         st.markdown("---")
 
@@ -279,8 +390,8 @@ def main():
             f"""
             <div style="background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
                 <div style="color: #8b949e; font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">Engine Status</div>
-                <div style="color: #3fb950; font-weight: 700;">● Online ({len(avail)} models loaded)</div>
-                <div style="color: #8b949e; margin-top: 4px;">Standard: ISO/IEC 27037 Technical Principles</div>
+                <div style="color: #3fb950; font-weight: 700;">● Online ({len(avail)} models sealed)</div>
+                <div style="color: #8b949e; margin-top: 4px;">Standard: ISO/IEC 27037 & NIST SP 800-63B</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -307,7 +418,7 @@ def main():
         render_scientific_validation_workspace()
     elif page == "🧠 Forensic Intelligence & Manipulation":
         render_phase7_forensic_intelligence()
-    else:
+    elif page == "⚙️ System Settings & Diagnostics":
         render_settings_and_diagnostics()
 
 
@@ -519,6 +630,14 @@ def render_evidence_upload():
         for i, up_file in enumerate(uploaded_files):
             progress_bar.progress((i + 1) / len(uploaded_files), text=f"Ingesting {up_file.name}...")
             bytes_data = up_file.read()
+
+            # Security Screening (SEC-06): Magic bytes, payload size ceiling, path traversal
+            is_valid_payload, payload_msg = validate_upload_payload(bytes_data, up_file.name)
+            if not is_valid_payload:
+                st.error(f"Security Alert: Ingestion rejected for '{up_file.name}': {payload_msg}")
+                log_security_event("UPLOAD_REJECTED", {"filename": up_file.name, "reason": payload_msg})
+                continue
+
             dest_path, evid_id, sha256_hash, meta = ingest_evidence_file(
                 bytes_data, up_file.name, assigned_case_id
             )
@@ -1579,45 +1698,150 @@ def render_phase7_forensic_intelligence():
 
 
 # =============================================================================
-# 11. System Settings & Diagnostics
+# 11. System Settings, Security & Operational Diagnostics (Phase 8)
 # =============================================================================
 def render_settings_and_diagnostics():
     st.markdown(
         """
         <div class="lab-header">
-            <div class="lab-title">System Settings & Diagnostics</div>
+            <div class="lab-title">⚙️ System Settings, Security & Diagnostics</div>
             <div class="lab-subtitle">
-                Runtime environment verification, model schema inspection, and OOD threshold calibration.
+                Operational telemetry, cryptographic model verification, online hot backups, and user access management.
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    c_d1, c_d2 = st.columns(2)
-    with c_d1:
-        st.markdown("#### 💻 Runtime Environment")
-        env = get_environment_metadata()
-        st.json(env)
+    t_diag, t_backup, t_users, t_p8_docs = st.tabs([
+        "📊 System Telemetry & Models",
+        "💾 Hot Online Backups",
+        "👥 Forensic User Management",
+        "📥 Phase 8 Production Reports",
+    ])
 
-    with c_d2:
-        st.markdown("#### 📏 Empirical OOD Threshold Bounds")
-        stats_path = root / "models" / "training_distribution_stats.json"
-        if stats_path.is_file():
-            with stats_path.open("r", encoding="utf-8") as f:
-                stats = json.load(f)
-            st.json(stats.get("ood_thresholds", {}))
-        else:
-            st.info("OOD statistics file not found.")
+    with t_diag:
+        st.markdown("#### 💻 Runtime & Filesystem Telemetry")
+        diag = get_system_diagnostics()
 
-    st.markdown("---")
-    st.markdown("#### 🗄️ Database Integrity Status")
-    db_file = db.db_path
-    st.markdown(f"Database Location: `{db_file}` (Size: {db_file.stat().st_size:,} bytes)")
-    if st.button("Run SQLite Integrity Check"):
-        with sqlite3.connect(db_file) as conn:
-            res = conn.execute("PRAGMA integrity_check;").fetchall()
-            st.success(f"SQLite PRAGMA integrity_check: {res[0][0]}")
+        c_d1, c_d2, c_d3, c_d4 = st.columns(4)
+        c_d1.metric("Python Runtime", f"v{diag['python_version']}")
+        c_d2.metric("Disk Free Headroom", f"{diag['disk_free_gb']} GB")
+        c_d3.metric("SQLite DB Size", f"{diag['database_size_bytes'] / 1024:.1f} KB")
+        c_d4.metric("Concurrency Mode", "WAL (Write-Ahead Log)")
+
+        st.markdown("##### 🛡️ Cryptographic Machine Learning Model Seals")
+        m_rows = [{"Model Artifact": k, "Cryptographic Status": v, "Algorithm Defense": "SHA-256 Verified Pre-Load"} for k, v in diag["models_status"].items()]
+        render_styled_table(m_rows)
+
+        st.markdown("---")
+        st.markdown("##### 🗄️ Database Integrity Verification")
+        if st.button("Run PRAGMA Integrity Check", key="btn_sqlite_check"):
+            with sqlite3.connect(db.db_path) as conn:
+                res = conn.execute("PRAGMA integrity_check;").fetchall()
+                st.success(f"SQLite PRAGMA integrity_check: {res[0][0]}")
+
+    with t_backup:
+        st.markdown("#### 💾 Online Hot Backup & Disaster Recovery")
+        st.info(
+            "Performs transaction-safe online hot backup using SQLite native backup API. "
+            "Bundles database, evidence manifests, configuration, and model checksums into a versioned, SHA-256 sealed archive."
+        )
+
+        if st.button("🚀 Trigger Online Hot System Backup", key="btn_hot_backup"):
+            with st.spinner("Executing non-blocking online database backup and archive compression..."):
+                active_user = st.session_state.get("user", {}).get("username", "Examiner")
+                backup_res = create_system_backup(db, operator=active_user)
+
+                st.success(f"System Backup Completed Successfully: {backup_res['archive_filename']}")
+                c_b1, c_b2 = st.columns(2)
+                c_b1.markdown(f"**Archive Path**: `{backup_res['archive_path']}`")
+                c_b2.markdown(f"**Archive SHA-256**: `{backup_res['archive_sha256']}`")
+
+    with t_users:
+        st.markdown("#### 👥 Forensic User Directory & Privilege Allocation")
+        all_users = db.list_users()
+
+        user_rows = [
+            {
+                "Username": u.username,
+                "Full Name": u.full_name,
+                "Role": u.role,
+                "Status": "ACTIVE" if u.is_active else "DEACTIVATED",
+                "Failed Attempts": u.failed_attempts,
+                "Last Login": u.last_login_at or "Never",
+            }
+            for u in all_users
+        ]
+        render_styled_table(user_rows)
+
+        # User Provisioning Form (Admin Only)
+        if st.session_state.get("role") == UserRole.ADMINISTRATOR:
+            st.markdown("---")
+            st.markdown("##### ➕ Provision New Forensic User")
+            with st.form("new_user_form"):
+                new_u = st.text_input("Username")
+                new_name = st.text_input("Full Legal Name")
+                new_role = st.selectbox("Assigned Role", UserRole.ALL_ROLES, index=1)
+                new_pwd = st.text_input("Temporary Password", type="password")
+                add_btn = st.form_submit_button("Register Forensic User")
+
+                if add_btn:
+                    if not new_u or not new_pwd:
+                        st.error("Username and password are required.")
+                    else:
+                        is_valid, msg = validate_password_complexity(new_pwd)
+                        if not is_valid:
+                            st.error(msg)
+                        else:
+                            pwd_hash, salt_hex = hash_password(new_pwd)
+                            nu = User(
+                                user_id=f"USER-{uuid.uuid4().hex[:8].upper()}",
+                                username=new_u.strip().lower(),
+                                password_hash=pwd_hash,
+                                salt_hex=salt_hex,
+                                role=new_role,
+                                full_name=new_name,
+                            )
+                            db.create_user(nu)
+                            st.success(f"User '{new_u}' provisioned successfully as {new_role}.")
+                            st.rerun()
+
+    with t_p8_docs:
+        st.markdown("#### 📥 Phase 8 Production & Security Documentation")
+        p8_reports = [
+            ("PHASE_8_PRE_IMPLEMENTATION_AUDIT.md", "Phase 8.0 Pre-Implementation Audit"),
+            ("PHASE_8_PRODUCTION_ARCHITECTURE_REPORT.md", "Phase 8.1 Production Architecture"),
+            ("PHASE_8_AUTHENTICATION_AND_RBAC_REPORT.md", "Phase 8.2 Authentication & RBAC"),
+            ("PHASE_8_CYBERSECURITY_ASSESSMENT_REPORT.md", "Phase 8.3 Cybersecurity Hardening"),
+            ("PHASE_8_EVIDENCE_STORAGE_SECURITY_REPORT.md", "Phase 8.4 Evidence Storage Security"),
+            ("PHASE_8_BACKUP_AND_DISASTER_RECOVERY_REPORT.md", "Phase 8.5 Backup & Disaster Recovery"),
+            ("PHASE_8_DATABASE_RELIABILITY_REPORT.md", "Phase 8.6 Database Reliability"),
+            ("PHASE_8_PERFORMANCE_BENCHMARK_REPORT.md", "Phase 8.7 Performance Benchmarking"),
+            ("PHASE_8_MONITORING_AND_LOGGING_REPORT.md", "Phase 8.8 Monitoring & Logging"),
+            ("PHASE_8_DEPLOYMENT_AUTOMATION_REPORT.md", "Phase 8.9 Deployment Automation"),
+            ("PHASE_8_SYSTEM_INTEGRATION_TESTING_REPORT.md", "Phase 8.10 System Integration Testing"),
+            ("PHASE_8_PRODUCTION_RELEASE_REPORT.md", "Phase 8.11 Production Release"),
+            ("PHASE_8_ADMINISTRATOR_GUIDE.md", "Phase 8.12 Administrator Guide"),
+            ("PHASE_8_USER_GUIDE.md", "Phase 8.13 Forensic User Guide"),
+            ("PHASE_8_FINAL_CONSOLIDATED_REPORT.md", "Phase 8.14 Master Consolidated Summary"),
+        ]
+
+        c_col1, c_col2 = st.columns(2)
+        for idx, (fname, desc) in enumerate(p8_reports):
+            fpath = root / fname
+            target_col = c_col1 if idx % 2 == 0 else c_col2
+            with target_col:
+                if fpath.is_file():
+                    target_col.download_button(
+                        f"📄 {desc}",
+                        data=fpath.read_text(encoding="utf-8"),
+                        file_name=fname,
+                        mime="text/markdown",
+                        key=f"dl_p8_{idx}",
+                    )
+                else:
+                    target_col.info(f"{fname} (Pending generation)")
 
 
 if __name__ == "__main__":

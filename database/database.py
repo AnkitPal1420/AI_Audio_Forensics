@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import sqlite3
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -17,6 +17,9 @@ from database.models import (
     ForensicEvidence,
     ForensicExamination,
     IntegrityRecord,
+    User,
+    UserRole,
+    UserSession,
 )
 from src.utils import project_root
 
@@ -199,9 +202,69 @@ def init_db(db_path: Optional[Union[str, Path]] = None) -> Path:
             );
         """)
 
+        # 9. Users Table (Phase 8 Authentication & RBAC)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT UNIQUE NOT NULL,
+                username TEXT UNIQUE NOT NULL,
+                password_hash TEXT NOT NULL,
+                salt_hex TEXT NOT NULL,
+                role TEXT NOT NULL,
+                full_name TEXT NOT NULL,
+                email TEXT,
+                is_active INTEGER NOT NULL DEFAULT 1,
+                failed_attempts INTEGER NOT NULL DEFAULT 0,
+                locked_until TEXT,
+                created_at TEXT NOT NULL,
+                last_login_at TEXT
+            );
+        """)
+
+        # 10. Sessions Table (Phase 8 Session Management)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS sessions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                session_id TEXT UNIQUE NOT NULL,
+                user_id TEXT NOT NULL,
+                username TEXT NOT NULL,
+                role TEXT NOT NULL,
+                created_at TEXT NOT NULL,
+                expires_at TEXT NOT NULL,
+                is_revoked INTEGER NOT NULL DEFAULT 0,
+                ip_address TEXT NOT NULL DEFAULT '127.0.0.1',
+                user_agent TEXT NOT NULL DEFAULT 'ForensicDashboard/1.0',
+                FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+            );
+        """)
+
+        # 11. Schema Version Tracking (Phase 8 Reliability)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS schema_version (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                version TEXT UNIQUE NOT NULL,
+                applied_at TEXT NOT NULL,
+                description TEXT NOT NULL
+            );
+        """)
+
+        # Record initial schema version
+        cursor.execute("""
+            INSERT OR IGNORE INTO schema_version (version, applied_at, description)
+            VALUES ('8.0.0', datetime('now'), 'Phase 8 Production Hardening & RBAC Schema');
+        """)
+
         conn.commit()
 
-    logger.info("Initialized forensic SQLite database at %s", path)
+        # Enable Write-Ahead Logging (WAL) and performance tuning outside active transaction
+        old_iso = conn.isolation_level
+        conn.isolation_level = None
+        conn.execute("PRAGMA journal_mode = WAL;")
+        conn.execute("PRAGMA synchronous = NORMAL;")
+        conn.execute("PRAGMA busy_timeout = 10000;")
+        conn.isolation_level = old_iso
+
+    logger.info("Initialized forensic SQLite database with WAL mode at %s", path)
     return path
 
 
@@ -212,9 +275,10 @@ class ForensicDatabase:
         self.db_path = init_db(db_path)
 
     def _get_connection(self) -> sqlite3.Connection:
-        conn = sqlite3.connect(self.db_path)
+        conn = sqlite3.connect(self.db_path, timeout=10.0)
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA foreign_keys = ON;")
+        conn.execute("PRAGMA busy_timeout = 10000;")
         return conn
 
     # =========================================================================
@@ -698,5 +762,182 @@ class ForensicDatabase:
             d.pop("id", None)
             d["sha_equal"] = bool(d["sha_equal"])
             return EvidenceComparisonRecord(**d)
+
+    # =========================================================================
+    # Phase 8 User Operations (Authentication & RBAC)
+    # =========================================================================
+    def create_user(self, user: User) -> User:
+        """Insert a new user record with hashed password."""
+        with self._get_connection() as conn:
+            conn.execute(
+                """
+                INSERT INTO users (
+                    user_id, username, password_hash, salt_hex, role, full_name,
+                    email, is_active, failed_attempts, locked_until, created_at, last_login_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    user.user_id,
+                    user.username.strip().lower(),
+                    user.password_hash,
+                    user.salt_hex,
+                    user.role,
+                    user.full_name,
+                    user.email,
+                    1 if user.is_active else 0,
+                    user.failed_attempts,
+                    user.locked_until,
+                    user.created_at,
+                    user.last_login_at,
+                ),
+            )
+            conn.commit()
+        return user
+
+    def get_user_by_username(self, username: str) -> Optional[User]:
+        """Fetch user record by normalized username."""
+        with self._get_connection() as conn:
+            cursor = conn.execute("SELECT * FROM users WHERE username = ?", (username.strip().lower(),))
+            row = cursor.fetchone()
+            if not row:
+                return None
+            d = dict(row)
+            d.pop("id", None)
+            d["is_active"] = bool(d["is_active"])
+            return User(**d)
+
+    def get_user_by_id(self, user_id: str) -> Optional[User]:
+        """Fetch user record by unique user_id."""
+        with self._get_connection() as conn:
+            cursor = conn.execute("SELECT * FROM users WHERE user_id = ?", (user_id,))
+            row = cursor.fetchone()
+            if not row:
+                return None
+            d = dict(row)
+            d.pop("id", None)
+            d["is_active"] = bool(d["is_active"])
+            return User(**d)
+
+    def list_users(self) -> List[User]:
+        """List all registered forensic users."""
+        with self._get_connection() as conn:
+            cursor = conn.execute("SELECT * FROM users ORDER BY created_at ASC")
+            users = []
+            for r in cursor.fetchall():
+                d = dict(r)
+                d.pop("id", None)
+                d["is_active"] = bool(d["is_active"])
+                users.append(User(**d))
+            return users
+
+    def update_user(self, user: User) -> None:
+        """Update user record attributes."""
+        with self._get_connection() as conn:
+            conn.execute(
+                """
+                UPDATE users SET
+                    password_hash = ?, salt_hex = ?, role = ?, full_name = ?,
+                    email = ?, is_active = ?, failed_attempts = ?, locked_until = ?, last_login_at = ?
+                WHERE user_id = ?
+                """,
+                (
+                    user.password_hash,
+                    user.salt_hex,
+                    user.role,
+                    user.full_name,
+                    user.email,
+                    1 if user.is_active else 0,
+                    user.failed_attempts,
+                    user.locked_until,
+                    user.last_login_at,
+                    user.user_id,
+                ),
+            )
+            conn.commit()
+
+    def record_login_success(self, user_id: str) -> None:
+        """Reset failed attempts and record login timestamp."""
+        now = datetime.now(timezone.utc).isoformat()
+        with self._get_connection() as conn:
+            conn.execute(
+                "UPDATE users SET failed_attempts = 0, locked_until = NULL, last_login_at = ? WHERE user_id = ?",
+                (now, user_id),
+            )
+            conn.commit()
+
+    def record_login_failure(self, user_id: str, lock_threshold: int = 5, lock_minutes: int = 15) -> Tuple[int, Optional[str]]:
+        """Increment failed attempts and lock account if threshold exceeded."""
+        now = datetime.now(timezone.utc)
+        with self._get_connection() as conn:
+            row = conn.execute("SELECT failed_attempts FROM users WHERE user_id = ?", (user_id,)).fetchone()
+            attempts = (row[0] if row else 0) + 1
+            locked_until_str = None
+
+            if attempts >= lock_threshold:
+                locked_dt = now + timedelta(minutes=lock_minutes)
+                locked_until_str = locked_dt.isoformat()
+
+            conn.execute(
+                "UPDATE users SET failed_attempts = ?, locked_until = ? WHERE user_id = ?",
+                (attempts, locked_until_str, user_id),
+            )
+            conn.commit()
+            return attempts, locked_until_str
+
+    # =========================================================================
+    # Phase 8 Session Operations
+    # =========================================================================
+    def create_session(self, session: UserSession) -> UserSession:
+        """Insert a new active session record."""
+        with self._get_connection() as conn:
+            conn.execute(
+                """
+                INSERT INTO sessions (
+                    session_id, user_id, username, role, created_at, expires_at,
+                    is_revoked, ip_address, user_agent
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    session.session_id,
+                    session.user_id,
+                    session.username,
+                    session.role,
+                    session.created_at,
+                    session.expires_at,
+                    1 if session.is_revoked else 0,
+                    session.ip_address,
+                    session.user_agent,
+                ),
+            )
+            conn.commit()
+        return session
+
+    def get_session(self, session_id: str) -> Optional[UserSession]:
+        """Fetch and validate a session record."""
+        with self._get_connection() as conn:
+            cursor = conn.execute("SELECT * FROM sessions WHERE session_id = ?", (session_id,))
+            row = cursor.fetchone()
+            if not row:
+                return None
+            d = dict(row)
+            d.pop("id", None)
+            d["is_revoked"] = bool(d["is_revoked"])
+            return UserSession(**d)
+
+    def revoke_session(self, session_id: str) -> None:
+        """Mark a session as revoked."""
+        with self._get_connection() as conn:
+            conn.execute("UPDATE sessions SET is_revoked = 1 WHERE session_id = ?", (session_id,))
+            conn.commit()
+
+    def cleanup_expired_sessions(self) -> int:
+        """Delete sessions that have passed their expiration timestamp."""
+        now = datetime.now(timezone.utc).isoformat()
+        with self._get_connection() as conn:
+            cursor = conn.execute("DELETE FROM sessions WHERE expires_at < ? OR is_revoked = 1", (now,))
+            deleted = cursor.rowcount
+            conn.commit()
+            return deleted
+
 
 

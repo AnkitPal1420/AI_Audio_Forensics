@@ -91,3 +91,4 @@ Tested in `tests/test_phase7_forensic_intelligence.py`:
 - `test_acoustic_anomaly_spectral_measures`: Verifies mathematical bounds: flatness $\in [0, 1]$, centroid $\ge 0$, and valid pitch tracking.
 
 Passed cleanly with zero errors.
+

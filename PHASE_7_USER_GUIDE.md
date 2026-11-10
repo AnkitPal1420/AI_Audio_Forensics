@@ -85,3 +85,4 @@ To access these capabilities:
 4. Review the **SHA-256 Identity**, **Metadata Differences**, and **Temporal Alignment Offset**.
    - If temporal alignment peak correlation $\ge 0.85$, the two exhibits are identical or excerpted copies with a measured time shift.
    - All comparison records are automatically saved to the case file in SQLite.
+
