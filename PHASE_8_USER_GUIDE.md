@@ -86,3 +86,4 @@ Navigate to **`🧠 Forensic Intelligence & Manipulation`** to access 7 speciali
 
 ## 3. Ending Your Session
 When casework is completed, click **`🚪 Sign Out`** in the left sidebar. This invalidates your session token in the database and clears browser memory.
+

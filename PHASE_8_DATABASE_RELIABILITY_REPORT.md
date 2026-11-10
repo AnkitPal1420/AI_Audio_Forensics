@@ -58,3 +58,4 @@ When new phases or schema alterations are deployed, the migration framework veri
   - Asserts `PRAGMA journal_mode` returns `"wal"`.
   - Asserts foreign key cascade deletion works as expected.
   - Verifies multi-threaded concurrent write and read operations without locking errors.
+

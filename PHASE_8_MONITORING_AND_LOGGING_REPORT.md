@@ -56,3 +56,4 @@ The subsystem exposes `get_system_diagnostics()`, returning a live telemetry sna
   - Asserts creation of `logs/operational.log` and `logs/security.log`.
   - Asserts that `log_security_event()` writes valid JSON entries with timestamp, event type, and IP.
   - Verifies that diagnostic telemetry accurately reports disk and database metrics.
+

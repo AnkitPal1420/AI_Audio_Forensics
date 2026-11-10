@@ -97,3 +97,4 @@ The restoration engine automatically verifies the archive's SHA-256 seal and val
 - **Operational Logs:** [`logs/operational.log`](file:///c:/Users/ANKIT/OneDrive/Desktop/AI_Audio_Forensics/logs/operational.log) — Audio decoding steps, model loads, warning events.
 - **Security Logs:** [`logs/security.log`](file:///c:/Users/ANKIT/OneDrive/Desktop/AI_Audio_Forensics/logs/security.log) — Authentication successes, failed logins, lockout triggers.
 - **Evidentiary Audit Stream:** [`logs/audit_events.jsonl`](file:///c:/Users/ANKIT/OneDrive/Desktop/AI_Audio_Forensics/logs/audit_events.jsonl) — Immutable exhibit intake records, hash verifications, and report generations.
+

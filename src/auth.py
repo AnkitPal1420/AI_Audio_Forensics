@@ -307,3 +307,4 @@ def bootstrap_admin_user(
     db.create_user(user)
     logger.info("Bootstrapped initial Administrator account '%s'", username)
     return user, password
+

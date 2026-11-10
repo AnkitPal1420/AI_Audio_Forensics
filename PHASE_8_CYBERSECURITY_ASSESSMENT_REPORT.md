@@ -67,3 +67,4 @@ Security screening functions are verified in the automated test suite:
 - Valid audio files pass with confirmed container format.
 - Disguised text/executable payloads are rejected immediately.
 - Modified model files trigger `ModelIntegrityError`.
+

@@ -68,3 +68,4 @@ VALUES (?, ?, ?, 'VERIFIED', 'StorageManager.verify_exhibit_integrity', 'Pre-exa
 ## 4. Verification & Testing
 
 - `test_phase8_production_readiness.py` asserts that ingested files receive read-only attributes, cannot be written to without permission reset, and accurately pass pre-examination hash checks.
+

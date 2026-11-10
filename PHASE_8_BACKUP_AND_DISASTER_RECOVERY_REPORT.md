@@ -65,3 +65,4 @@ The restoration engine (`restore_system_backup()`):
   - Verifies sidecar `.sha256` file.
   - Restores backup to a fresh target database via `restore_system_backup()`.
   - Asserts that all cases, evidence records, and audit events match with 100% data fidelity.
+

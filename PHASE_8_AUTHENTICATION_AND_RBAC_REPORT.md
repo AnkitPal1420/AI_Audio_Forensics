@@ -71,3 +71,4 @@ The system enforces 4 discrete roles across all application operations:
 ## 6. Zero Hardcoded Credentials
 
 The platform provides a secure bootstrapping utility (`bootstrap_admin_user()`). When initializing a fresh laboratory instance, the examiner must either supply a strong initial password or accept an auto-generated 16-character high-entropy secret. No default credentials exist in source code or configuration files.
+

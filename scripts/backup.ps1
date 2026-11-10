@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Automated Hot Backup Script for AI Audio Forensics.
 .DESCRIPTION
@@ -34,3 +34,4 @@ print(json.dumps(res, indent=2))
 Write-Host "======================================================================" -ForegroundColor Green
 Write-Host "✅ HOT BACKUP COMPLETED & VERIFIED" -ForegroundColor Green
 Write-Host "======================================================================" -ForegroundColor Green
+

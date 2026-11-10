@@ -134,3 +134,4 @@ def get_system_diagnostics() -> Dict[str, Any]:
         "models_status": models_status,
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
     }
+

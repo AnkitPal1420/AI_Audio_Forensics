@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Secure Startup Script for AI Audio Forensics Dashboard.
 .DESCRIPTION
@@ -30,3 +30,4 @@ if (-not (Test-Path $PythonExe)) {
     --server.port $Port `
     --server.headless true `
     --browser.gatherUsageStats false
+

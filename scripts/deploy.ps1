@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Automated Production Deployment & Health Verification Script for AI Audio Forensics.
 .DESCRIPTION
@@ -91,3 +91,4 @@ Write-Host "====================================================================
 Write-Host "✅ PRODUCTION DEPLOYMENT COMPLETE & VERIFIED" -ForegroundColor Green
 Write-Host "To start the dashboard, execute: .\scripts\start.ps1" -ForegroundColor Cyan
 Write-Host "======================================================================" -ForegroundColor Cyan
+

@@ -104,3 +104,4 @@ AI_Audio_Forensics/
 
 - **Development (`env = "development"`):** Debug logging enabled, test database seeded, verbose stack traces on error.
 - **Production (`env = "production"`):** Strict authentication required, loopback address enforced, generic courtroom-safe error messages surfaced in UI, stack traces routed exclusively to `logs/operational.log`.
+
