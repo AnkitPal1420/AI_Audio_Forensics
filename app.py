@@ -1,182 +1,179 @@
-"""Streamlit forensic audio examination web application.
+"""AI-Based Voice Analysis for Detecting Synthetic Audio in Criminal Investigations.
 
-Designed with Apple-inspired human interface guidelines:
-- Minimalist typography (SF Pro / Inter system font stack).
-- Frosted glassmorphism and subtle hair-line borders.
-- Monochromatic elegance with signature Apple electric accents.
-- Segmented controls, squircle cards, and micro-interactions.
-- ISO/IEC 27037 technical principles compliance.
+Phase 5 Forensic Web Dashboard:
+- Integrated Case Management & Digital Evidence Repository (SQLite).
+- Non-destructive 12-step Audio Examination Workspace.
+- Multi-Model AI Detection (Ensemble, Calibrated SVM, Random Forest, Logistic Regression).
+- Cryptographic SHA-256 Evidence Integrity Verification (ISO/IEC 27037).
+- Publication-Grade Acoustic Spectrogram & Waveform Visualizations.
+- Automated Forensic Report Center (Markdown & Court-Ready PDF).
+- Historical Case Audit Trail and KPI Analytics.
 """
 
 from __future__ import annotations
 
 import datetime
-import json
 from pathlib import Path
 import tempfile
+import json
+import sqlite3
 import streamlit as st
 import numpy as np
 
 # Antigravity audio forensics modules
+from database.database import ForensicDatabase
+from database.models import ForensicCase, ForensicEvidence, ForensicExamination, IntegrityRecord
 from src.audio_prediction import predict_audio
 from src.audio_preprocessing import load_audio, get_audio_metadata
 from src.audio_quality import assess_audio_quality, assess_feature_distribution
 from src.batch_processing import process_audio_batch
 from src.deepfake_detection import DeepfakeDetectionEngine
-from src.forensic_integrity import compute_file_sha256, generate_evidence_id, verify_evidence_immutability
+from src.forensic_integrity import compute_file_sha256, generate_evidence_id, verify_evidence_immutability, get_environment_metadata
 from src.forensic_report import create_forensic_report
-from src.spectrogram_analysis import generate_forensic_visualizations
+from src.spectrogram_analysis import generate_forensic_visualizations, compute_spectral_trajectories
+from src.storage_manager import get_storage_paths, ingest_evidence_file, seed_default_cases_and_exhibits
 from src.utils import project_root
 
 # Page Configuration
 st.set_page_config(
-    page_title="Voice Forensics — Audio Authenticity",
-    page_icon="🎙️",
+    page_title="Forensic Audio Intelligence | Phase 5 Dashboard",
+    page_icon="🛡️",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
-# Apple Design System CSS Injection
+# Dark Forensic Laboratory Theme CSS
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
     html, body, [class*="css"] {
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-        letter-spacing: -0.015em;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+        letter-spacing: -0.01em;
     }
 
-    /* Apple-style hero banner */
-    .apple-hero {
-        text-align: center;
-        padding: 2.5rem 1rem 2rem 1rem;
-        background: radial-gradient(circle at 50% 0%, rgba(0, 113, 227, 0.08) 0%, transparent 70%);
-        border-radius: 28px;
-        margin-bottom: 2rem;
+    code, .font-mono, pre {
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace !important;
     }
-    .apple-headline {
-        font-size: 2.75rem;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 1.1;
-        background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
+
+    /* Forensic Lab Header */
+    .lab-header {
+        background: linear-gradient(135deg, rgba(13, 17, 23, 0.95) 0%, rgba(22, 27, 34, 0.95) 100%);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        border-radius: 16px;
+        padding: 1.5rem 1.75rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .lab-title {
+        font-size: 1.85rem;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        background: linear-gradient(90deg, #f0f6fc 0%, #38bdf8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
     }
-    @media (prefers-color-scheme: dark) {
-        .apple-headline {
-            background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    }
-    .apple-subhead {
-        font-size: 1.15rem;
-        color: #86868b;
-        font-weight: 400;
-        max-width: 680px;
-        margin: 0 auto;
-        line-height: 1.45;
+    .lab-subtitle {
+        font-size: 0.9rem;
+        color: #8b949e;
+        line-height: 1.4;
     }
 
-    /* Apple Frosted Glass Card */
-    .apple-card {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 22px;
-        padding: 1.75rem;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        margin-bottom: 1.25rem;
+    /* Metric Cards */
+    .metric-card {
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 14px;
+        padding: 1.15rem 1.25rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        transition: border-color 0.2s ease;
     }
-    @media (prefers-color-scheme: dark) {
-        .apple-card {
-            background: rgba(28, 28, 30, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-        }
+    .metric-card:hover {
+        border-color: #38bdf8;
+    }
+    .metric-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #8b949e;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+    }
+    .metric-val {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #f0f6fc;
+        letter-spacing: -0.02em;
     }
 
-    /* Badges */
-    .apple-pill-real {
+    /* Forensic Status Pills */
+    .pill-genuine {
+        background: rgba(35, 134, 54, 0.2);
+        border: 1px solid #2ea043;
+        color: #3fb950;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        font-weight: 700;
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: #34c759;
-        color: #ffffff;
-        padding: 6px 16px;
-        border-radius: 9999px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
     }
-    .apple-pill-fake {
+    .pill-synthetic {
+        background: rgba(218, 54, 51, 0.2);
+        border: 1px solid #da3633;
+        color: #f85149;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        font-weight: 700;
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: #ff3b30;
-        color: #ffffff;
-        padding: 6px 16px;
-        border-radius: 9999px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
     }
-    .apple-pill-indet {
+    .pill-indeterminate {
+        background: rgba(187, 128, 9, 0.2);
+        border: 1px solid #bb8009;
+        color: #d29922;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        font-weight: 700;
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: #ff9500;
-        color: #ffffff;
-        padding: 6px 16px;
-        border-radius: 9999px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        box-shadow: 0 2px 8px rgba(255, 149, 0, 0.3);
     }
 
-    /* Code & Hash display */
-    .apple-hash {
-        background: rgba(0, 0, 0, 0.04);
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        border-radius: 12px;
-        padding: 8px 12px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        font-size: 0.8rem;
-        color: #0071e3;
+    /* Cryptographic Hash Container */
+    .hash-display {
+        background: #0d1117;
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        padding: 0.6rem 0.85rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        color: #38bdf8;
         word-break: break-all;
     }
-    @media (prefers-color-scheme: dark) {
-        .apple-hash {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #2997ff;
-        }
-    }
 
-    /* Apple-style primary action button */
+    /* Primary Action Buttons */
     div.stButton > button:first-child {
-        background-color: #0071e3 !important;
-        color: white !important;
-        border-radius: 9999px !important;
+        background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%) !important;
+        color: #ffffff !important;
+        border: 1px solid #38bdf8 !important;
+        border-radius: 10px !important;
         font-weight: 600 !important;
-        font-size: 0.95rem !important;
-        padding: 0.65rem 1.75rem !important;
-        border: none !important;
-        box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25) !important;
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1.5rem !important;
+        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
         transition: all 0.2s ease !important;
     }
     div.stButton > button:first-child:hover {
-        background-color: #0077ed !important;
-        transform: scale(1.015) !important;
-        box-shadow: 0 6px 18px rgba(0, 113, 227, 0.35) !important;
+        background: linear-gradient(180deg, #0369a1 0%, #075985 100%) !important;
+        border-color: #7dd3fc !important;
+        transform: translateY(-1px) !important;
     }
     </style>
     """,
@@ -184,375 +181,744 @@ st.markdown(
 )
 
 root = project_root()
+storage = get_storage_paths()
+db = ForensicDatabase()
+seed_default_cases_and_exhibits(db)
+engine = DeepfakeDetectionEngine()
 
 
 def main():
-    # Apple Navigation Header
-    st.markdown(
-        """
-        <div class="apple-hero">
-            <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 0.75rem;">
-                <span style="font-size: 1.5rem;">🎙️</span>
-                <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #0071e3;">
-                    Forensic Intelligence Engine
-                </span>
-            </div>
-            <h1 class="apple-headline">Voice Analysis. Engineered for Truth.</h1>
-            <p class="apple-subhead">
-                A calibrated, non-destructive digital audio forensics platform adhering to ISO/IEC 27037 evidentiary standards.
-            </p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    # Segmented Navigation
-    nav_mode = st.segmented_control(
-        "Navigation",
-        options=["🔬 Single Exhibit Analysis", "📁 Batch Case Investigation", "🗄️ Evidence Exhibit Catalog", "⚖️ Evidentiary Methodology"],
-        default="🔬 Single Exhibit Analysis",
-        label_visibility="collapsed",
-    )
-
-    engine = DeepfakeDetectionEngine()
-
-    if nav_mode == "🔬 Single Exhibit Analysis":
-        render_single_analysis(engine)
-    elif nav_mode == "📁 Batch Case Investigation":
-        render_batch_investigation(engine)
-    elif nav_mode == "🗄️ Evidence Exhibit Catalog":
-        render_catalog_view()
-    else:
-        render_methodology_view()
-
-
-def render_single_analysis(engine: DeepfakeDetectionEngine):
-    # Two-column layout
-    col_input, col_meta = st.columns([1.1, 0.9], gap="large")
-
-    target_path: Path | None = None
-
-    with col_input:
+    # Sidebar Navigation
+    with st.sidebar:
         st.markdown(
             """
-            <div class="apple-card">
-                <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem;">Digital Evidence Ingestion</h3>
-                <p style="font-size: 0.85rem; color: #86868b; margin-bottom: 1rem;">
-                    Submit a physical audio recording or choose from preserved case exhibits.
-                </p>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                <span style="font-size: 2rem;">🛡️</span>
+                <div>
+                    <div style="font-size: 1.1rem; font-weight: 800; color: #f0f6fc;">VOICE FORENSICS</div>
+                    <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 600;">PHASE 5 WEB DASHBOARD</div>
+                </div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-        src_tab, catalog_tab = st.tabs(["Upload Exhibit", "Preserved Catalog"])
+        st.markdown("---")
 
-        with src_tab:
-            uploaded = st.file_uploader(
-                "Upload digital recording",
-                type=["wav", "mp3", "flac", "ogg", "m4a"],
-                help="Supported: WAV, MP3, FLAC, OGG",
-                label_visibility="collapsed",
-            )
-            if uploaded:
-                t_dir = Path(tempfile.gettempdir()) / "audio_forensics_apple"
-                t_dir.mkdir(parents=True, exist_ok=True)
-                p = t_dir / uploaded.name
-                p.write_bytes(uploaded.getbuffer())
-                target_path = p
+        page = st.radio(
+            "Forensic Workspace",
+            [
+                "🏠 Dashboard Overview",
+                "📁 Case Management",
+                "📤 Evidence Ingestion & Upload",
+                "🔬 Audio Examination Workspace",
+                "🤖 AI Detection & Consensus",
+                "🔒 Evidence Integrity Verification",
+                "📄 Forensic Report Center",
+                "📜 Examination Audit Trail",
+                "⚙️ System Settings & Diagnostics",
+            ],
+            index=0,
+        )
 
-        with catalog_tab:
-            real_dir = root / "dataset" / "real"
-            fake_dir = root / "dataset" / "fake"
-            exhibits = []
-            if real_dir.is_dir():
-                for f in sorted(real_dir.glob("*.*")):
-                    if f.suffix.lower() in [".wav", ".mp3", ".flac"]:
-                        exhibits.append(f)
-            if fake_dir.is_dir():
-                for f in sorted(fake_dir.glob("*.*")):
-                    if f.suffix.lower() in [".wav", ".mp3", ".flac"]:
-                        exhibits.append(f)
+        st.markdown("---")
 
-            if exhibits:
-                selected = st.selectbox(
-                    "Choose Exhibit",
-                    options=exhibits,
-                    format_func=lambda p: f"[{'GENUINE' if 'real' in str(p) else 'SYNTHETIC'}] {p.name}",
-                    label_visibility="collapsed",
-                )
-                if uploaded is None:
-                    target_path = selected
+        # Active Model Pill
+        avail = engine.get_available_models()
+        st.markdown(
+            f"""
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 10px; font-size: 0.78rem;">
+                <div style="color: #8b949e; font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">Engine Status</div>
+                <div style="color: #3fb950; font-weight: 700;">● Online ({len(avail)} models loaded)</div>
+                <div style="color: #8b949e; margin-top: 4px;">Standard: ISO/IEC 27037 Technical Principles</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-    with col_meta:
-        if target_path and target_path.is_file():
-            meta = get_audio_metadata(target_path)
-            sha = compute_file_sha256(target_path)
-            evid_id = generate_evidence_id(target_path.name, sha)
+    # Route Page
+    if page == "🏠 Dashboard Overview":
+        render_home_dashboard()
+    elif page == "📁 Case Management":
+        render_case_management()
+    elif page == "📤 Evidence Ingestion & Upload":
+        render_evidence_upload()
+    elif page == "🔬 Audio Examination Workspace":
+        render_audio_examination()
+    elif page == "🤖 AI Detection & Consensus":
+        render_ai_detection()
+    elif page == "🔒 Evidence Integrity Verification":
+        render_integrity_verification()
+    elif page == "📄 Forensic Report Center":
+        render_report_center()
+    elif page == "📜 Examination Audit Trail":
+        render_examination_history()
+    else:
+        render_settings_and_diagnostics()
 
+
+# =============================================================================
+# 1. Dashboard Overview
+# =============================================================================
+def render_home_dashboard():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">Forensic Laboratory Overview</div>
+            <div class="lab-subtitle">
+                Centralized investigative dashboard for digital voice analysis, deepfake detection, and cryptographic evidence tracking.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    metrics = db.get_dashboard_metrics()
+
+    c1, c2, c3, c4, c5 = st.columns(5)
+    with c1:
+        st.markdown(f'<div class="metric-card"><div class="metric-label">Active Cases</div><div class="metric-val">{metrics["total_cases"]}</div></div>', unsafe_allow_html=True)
+    with c2:
+        st.markdown(f'<div class="metric-card"><div class="metric-label">Exhibits Logged</div><div class="metric-val">{metrics["total_evidence"]}</div></div>', unsafe_allow_html=True)
+    with c3:
+        st.markdown(f'<div class="metric-card"><div class="metric-label">Examinations</div><div class="metric-val">{metrics["total_examinations"]}</div></div>', unsafe_allow_html=True)
+    with c4:
+        st.markdown(f'<div class="metric-card"><div class="metric-label">Genuine Speech</div><div class="metric-val" style="color: #3fb950;">{metrics["genuine_count"]}</div></div>', unsafe_allow_html=True)
+    with c5:
+        st.markdown(f'<div class="metric-card"><div class="metric-label">Synthetic / Deepfake</div><div class="metric-val" style="color: #f85149;">{metrics["synthetic_count"]}</div></div>', unsafe_allow_html=True)
+
+    st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
+
+    col_recent, col_models = st.columns([1.4, 1], gap="medium")
+
+    with col_recent:
+        st.markdown("### 📋 Recent Forensic Cases")
+        cases = db.list_cases()
+        if cases:
+            case_data = []
+            for c in cases[:6]:
+                evids = db.list_evidence_by_case(c["case_id"])
+                case_data.append({
+                    "Case ID": c["case_id"],
+                    "Case Title": c["title"],
+                    "Investigator": c["investigator"],
+                    "Exhibits": len(evids),
+                    "Status": c["status"],
+                    "Created": c["created_at"][:10],
+                })
+            st.dataframe(case_data, use_container_width=True, hide_index=True)
+        else:
+            st.info("No cases created yet.")
+
+    with col_models:
+        st.markdown("### 🤖 Model Verification Status")
+        models = [
+            ("Ensemble (Soft Voting)", "models/ensemble_voting_model.joblib", "Verified Active", "#3fb950"),
+            ("Calibrated SVM (RBF)", "models/calibrated_svm_model.joblib", "Platt Scaled (Verified)", "#3fb950"),
+            ("Random Forest (100 Trees)", "models/rf_model.joblib", "Verified Active", "#3fb950"),
+            ("Logistic Regression", "models/logistic_regression_model.joblib", "Linear Baseline", "#38bdf8"),
+        ]
+        for name, path_s, status, color in models:
             st.markdown(
                 f"""
-                <div class="apple-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #86868b; letter-spacing: 0.05em;">Evidence Provenance</span>
-                        <span style="font-size: 0.75rem; font-weight: 600; color: #34c759; background: rgba(52, 199, 89, 0.12); padding: 3px 10px; border-radius: 999px;">Verified Immutable</span>
+                <div style="background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.88rem; color: #f0f6fc;">{name}</div>
+                        <div style="font-family: monospace; font-size: 0.75rem; color: #8b949e;">{path_s}</div>
                     </div>
-                    <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">{target_path.name}</div>
-                    <div style="font-size: 0.85rem; color: #86868b; margin-bottom: 1rem;">Tracking ID: <strong>{evid_id}</strong></div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.82rem; margin-bottom: 1rem;">
-                        <div>Container: <strong>{meta.get('format', 'N/A').upper()}</strong></div>
-                        <div>Duration: <strong>{meta.get('file_size_bytes', 0) / 1024:.1f} KB</strong></div>
-                        <div>Sampling: <strong>{meta.get('sample_rate', 0):,} Hz</strong></div>
-                        <div>Channels: <strong>{meta.get('channels', 1)} Ch (Standardized to Mono)</strong></div>
-                    </div>
-                    <div style="font-size: 0.75rem; color: #86868b; margin-bottom: 4px;">Cryptographic SHA-256 Digest:</div>
-                    <div class="apple-hash">{sha}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-            st.audio(str(target_path))
-        else:
-            st.markdown(
-                """
-                <div class="apple-card" style="text-align: center; padding: 3rem 1.5rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.5;">🎧</div>
-                    <div style="font-weight: 600; font-size: 1rem; margin-bottom: 0.25rem;">No Evidence Loaded</div>
-                    <div style="font-size: 0.85rem; color: #86868b;">Select or upload an audio exhibit to view cryptographic provenance and playback.</div>
+                    <span style="font-size: 0.78rem; font-weight: 700; color: {color};">{status}</span>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
-    if not target_path:
+
+# =============================================================================
+# 2. Case Management
+# =============================================================================
+def render_case_management():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">Forensic Case Management</div>
+            <div class="lab-subtitle">
+                Create incident investigations, track evidence custody, and manage multi-exhibit criminal audio files.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    t_list, t_create = st.tabs(["🗂️ Active Case Registry", "➕ Create New Forensic Case"])
+
+    with t_create:
+        with st.form("new_case_form"):
+            c1, c2 = st.columns(2)
+            with c1:
+                auto_id = f"CASE-{datetime.date.today().strftime('%Y%m%d')}-{len(db.list_cases()) + 1:03d}"
+                case_id = st.text_input("Case Reference Identifier", value=auto_id)
+                case_title = st.text_input("Case Title / Subject", placeholder="e.g. VIP Voice Cloning Extortion Incident")
+            with c2:
+                investigator = st.text_input("Lead Forensic Examiner", value="Special Agent Analyst")
+                case_status = st.selectbox("Initial Case Status", ["ACTIVE", "PENDING_REVIEW", "ARCHIVED"])
+
+            description = st.text_area("Case Incident Summary & Investigative Context", placeholder="Document the origin of evidence, acquisition warrants, and acoustic context...")
+
+            submitted = st.form_submit_button("Register Forensic Case")
+            if submitted:
+                if not case_id or not case_title:
+                    st.error("Case Reference ID and Title are required.")
+                elif db.get_case(case_id):
+                    st.error(f"Case with ID '{case_id}' already exists.")
+                else:
+                    new_case = ForensicCase(
+                        case_id=case_id,
+                        title=case_title,
+                        description=description,
+                        investigator=investigator,
+                        status=case_status,
+                    )
+                    db.create_case(new_case)
+                    db.log_audit_event("CASE_CREATED", new_case.to_dict(), case_id=case_id)
+                    st.success(f"Forensic case '{case_id}' successfully created!")
+                    st.rerun()
+
+    with t_list:
+        c_search, c_filter = st.columns([2, 1])
+        with c_search:
+            search_term = st.text_input("Search Cases", placeholder="Filter by Case ID, Title, or Investigator...", label_visibility="collapsed")
+        with c_filter:
+            status_filter = st.selectbox("Status Filter", ["ALL", "ACTIVE", "PENDING_REVIEW", "CLOSED", "ARCHIVED"], label_visibility="collapsed")
+
+        cases = db.list_cases(search=search_term, status=status_filter)
+        if cases:
+            for c in cases:
+                with st.expander(f"📁 {c['case_id']} — {c['title']} ({c['status']})", expanded=False):
+                    col_info1, col_info2 = st.columns([1.5, 1])
+                    with col_info1:
+                        st.markdown(f"**Investigator:** {c['investigator']}")
+                        st.markdown(f"**Description:** {c['description'] or 'No summary provided.'}")
+                        st.markdown(f"**Date Created (UTC):** `{c['created_at']}`")
+                    with col_info2:
+                        new_stat = st.selectbox("Update Status", ["ACTIVE", "PENDING_REVIEW", "CLOSED", "ARCHIVED"], index=["ACTIVE", "PENDING_REVIEW", "CLOSED", "ARCHIVED"].index(c["status"]), key=f"stat_{c['case_id']}")
+                        if new_stat != c["status"]:
+                            db.update_case_status(c["case_id"], new_stat)
+                            st.success(f"Updated status of {c['case_id']} to {new_stat}")
+                            st.rerun()
+
+                    # Exhibits under this case
+                    evs = db.list_evidence_by_case(c["case_id"])
+                    st.markdown(f"#### Digital Evidence Exhibits ({len(evs)})")
+                    if evs:
+                        ev_table = []
+                        for e in evs:
+                            ev_table.append({
+                                "Evidence ID": e["evidence_id"],
+                                "Filename": e["original_filename"],
+                                "Duration (s)": e["duration_seconds"],
+                                "Sampling Rate": f"{e['sample_rate']:,} Hz",
+                                "SHA-256 Digest": e["sha256_hash"][:16] + "...",
+                            })
+                        st.dataframe(ev_table, use_container_width=True, hide_index=True)
+                    else:
+                        st.info("No audio evidence exhibits uploaded to this case yet.")
+        else:
+            st.info("No forensic cases found matching the criteria.")
+
+
+# =============================================================================
+# 3. Audio Evidence Upload
+# =============================================================================
+def render_evidence_upload():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">Audio Evidence Ingestion & Upload</div>
+            <div class="lab-subtitle">
+                Securely ingest digital audio exhibits, compute cryptographic intake digests, and catalog provenance.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    cases = db.list_cases()
+    if not cases:
+        st.warning("No forensic cases exist. Please create a case first under 'Case Management'.")
         return
 
-    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+    case_options = {f"{c['case_id']} — {c['title']}": c["case_id"] for c in cases}
+    selected_case_label = st.selectbox("Assign to Forensic Case", options=list(case_options.keys()))
+    assigned_case_id = case_options[selected_case_label]
 
-    # Examination Controls
-    c_btn, c_model, c_ex = st.columns([1.5, 1, 1], gap="medium")
-    with c_btn:
-        run_btn = st.button("🚀 Execute Forensic Authenticity Examination", use_container_width=True)
-    with c_model:
-        model_choice = st.selectbox(
-            "Classifier Pipeline",
-            options=["ensemble", "calibrated_svm", "random_forest", "logistic_regression"],
-            label_visibility="collapsed",
+    uploaded_files = st.file_uploader(
+        "Submit Audio Evidence Exhibits",
+        type=["wav", "mp3", "flac", "ogg", "m4a"],
+        accept_multiple_files=True,
+        help="WAV, MP3, FLAC, and OGG containers supported.",
+    )
+
+    if uploaded_files and st.button("🔒 Securely Ingest Evidence Files"):
+        progress_bar = st.progress(0, text="Ingesting evidence...")
+        ingested_count = 0
+
+        for i, up_file in enumerate(uploaded_files):
+            progress_bar.progress((i + 1) / len(uploaded_files), text=f"Ingesting {up_file.name}...")
+            bytes_data = up_file.read()
+            dest_path, evid_id, sha256_hash, meta = ingest_evidence_file(
+                bytes_data, up_file.name, assigned_case_id
+            )
+
+            # Register in database
+            ev_record = ForensicEvidence(
+                evidence_id=evid_id,
+                case_id=assigned_case_id,
+                original_filename=up_file.name,
+                stored_path=str(dest_path),
+                file_size_bytes=meta.get("file_size_bytes", len(bytes_data)),
+                duration_seconds=round(meta.get("duration_seconds", 0.0), 2),
+                sample_rate=meta.get("sample_rate", 16000),
+                channels=meta.get("channels", 1),
+                container_format=meta.get("format", up_file.name.split(".")[-1].upper()),
+                sha256_hash=sha256_hash,
+            )
+            db.add_evidence(ev_record)
+            db.log_audit_event("EVIDENCE_INGESTED", ev_record.to_dict(), evidence_id=evid_id, case_id=assigned_case_id)
+            ingested_count += 1
+
+        st.success(f"Successfully ingested and cryptographically fingerprinted {ingested_count} evidence file(s) into case '{assigned_case_id}'.")
+
+
+# =============================================================================
+# 4. Audio Examination Workspace
+# =============================================================================
+def render_audio_examination():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">Audio Examination Workspace</div>
+            <div class="lab-subtitle">
+                Interactive acoustic signal processing: waveforms, STFT linear spectrograms, 128-band Mel representations, and MFCC dynamics.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    all_evidence = db.list_all_evidence()
+    if not all_evidence:
+        st.warning("No evidence exhibits found in database. Ingest audio under 'Evidence Ingestion' or select an exhibit.")
+        return
+
+    ev_options = {f"[{e['case_id']}] {e['original_filename']} ({e['evidence_id']})": e for e in all_evidence}
+    selected_ev_label = st.selectbox("Select Exhibit for Examination", options=list(ev_options.keys()))
+    exhibit = ev_options[selected_ev_label]
+
+    stored_file = Path(exhibit["stored_path"])
+    if not stored_file.is_file():
+        st.error(f"Stored evidence file not found at: {stored_file}")
+        return
+
+    # Playback & Metadata Bar
+    col_play, col_meta = st.columns([1.2, 1], gap="medium")
+    with col_play:
+        st.markdown("#### 🎧 Audio Playback")
+        st.audio(str(stored_file))
+    with col_meta:
+        st.markdown("#### 📋 Exhibit Metadata")
+        st.markdown(f"**Evidence ID:** `{exhibit['evidence_id']}`")
+        st.markdown(f"**Format:** {exhibit['container_format']} | **Duration:** {exhibit['duration_seconds']:.2f}s | **Sampling:** {exhibit['sample_rate']:,} Hz")
+        st.markdown(f'<div class="hash-display">{exhibit["sha256_hash"]}</div>', unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    # Generate & Display Visualizations
+    with st.spinner("Computing Short-Time Fourier Transforms and Mel-frequency filterbanks..."):
+        wave, sr = load_audio(stored_file, sample_rate=16_000, mono=True, normalize=True)
+        visuals = generate_forensic_visualizations(
+            wave, sr, output_dir=storage["visualizations"], file_stem=Path(exhibit["original_filename"]).stem
         )
-    with c_ex:
-        examiner = st.text_input("Examiner", value="Lead Forensic Analyst", label_visibility="collapsed")
+        trajectories = compute_spectral_trajectories(wave, sr)
 
-    if run_btn:
-        with st.spinner("Executing calibrated 12-step forensic examination pipeline..."):
+    t_overview, t_trajectories, t_stats = st.tabs(["📊 Master 6-Panel Spectrogram", "📈 Trajectory Dynamics", "🔢 Acoustic Numerical Summary"])
+
+    with t_overview:
+        if "overview" in visuals and Path(visuals["overview"]).is_file():
+            st.image(str(visuals["overview"]), caption="Forensic Overview (16 kHz Mono, Hann 2048, Hop 512, Slaney 128 Mel bands)", use_container_width=True)
+
+    with t_trajectories:
+        st.markdown("#### Frame-Level Acoustic Trajectories")
+        c_tr1, c_tr2 = st.columns(2)
+        with c_tr1:
+            st.line_chart({"Centroid (Hz)": trajectories["centroid"][:400], "Rolloff (Hz)": trajectories["rolloff"][:400]})
+        with c_tr2:
+            st.line_chart({"RMS Energy": trajectories["rms"][:400], "ZCR": trajectories["zcr"][:400]})
+
+    with t_stats:
+        st.markdown("#### Acoustic & Spectral Feature Statistics (Distinguished from Trained Features)")
+        st.caption("Note: Below are exploratory signal metrics. Baseline models specifically employ 26 standardized Mel & spectral features.")
+        c_st1, c_st2, c_st3, c_st4 = st.columns(4)
+        c_st1.metric("Mean Centroid", f"{np.mean(trajectories['centroid']):.1f} Hz")
+        c_st2.metric("Mean Rolloff (85%)", f"{np.mean(trajectories['rolloff']):.1f} Hz")
+        c_st3.metric("Mean RMS Energy", f"{np.mean(trajectories['rms']):.4f}")
+        c_st4.metric("Mean ZCR", f"{np.mean(trajectories['zcr']):.4f}")
+
+
+# =============================================================================
+# 5. AI Detection & Consensus
+# =============================================================================
+def render_ai_detection():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">AI Detection & Multi-Model Consensus Engine</div>
+            <div class="lab-subtitle">
+                Calibrated machine learning inference across multiple classifiers with automated disagreement analysis.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    all_evidence = db.list_all_evidence()
+    if not all_evidence:
+        st.warning("No evidence exhibits available.")
+        return
+
+    ev_options = {f"[{e['case_id']}] {e['original_filename']} ({e['evidence_id']})": e for e in all_evidence}
+    selected_label = st.selectbox("Choose Exhibit for Detection", options=list(ev_options.keys()))
+    exhibit = ev_options[selected_label]
+    stored_file = Path(exhibit["stored_path"])
+
+    c_cfg1, c_cfg2 = st.columns([1.5, 1])
+    with c_cfg1:
+        model_name = st.selectbox(
+            "Primary Classification Pipeline",
+            options=["ensemble", "calibrated_svm", "random_forest", "logistic_regression"],
+            help="Ensemble: Soft voting across SVM, RF, and LR. Calibrated SVM: Platt-scaled RBF SVM.",
+        )
+    with c_cfg2:
+        examiner = st.text_input("Examiner Name", value="Lead Forensic Examiner")
+
+    if st.button("🚀 Execute Calibrated Forensic Detection"):
+        with st.spinner("Executing non-destructive 12-step detection pipeline..."):
             try:
                 res = predict_audio(
-                    target_path,
-                    model_name=model_choice,
+                    stored_file,
+                    model_name=model_name,
                     run_multi_model=True,
                     generate_visuals=True,
+                    output_dir=storage["visualizations"],
                 )
-                rep_md = create_forensic_report(res, examiner_name=examiner, generate_pdf=True)
-                st.session_state["apple_analysis"] = res
-                st.session_state["apple_report"] = rep_md
-                st.session_state["apple_stem"] = target_path.stem
-                st.toast("Forensic examination completed.", icon="✅")
+
+                # Generate reports
+                rep_md_path = storage["reports"] / f"FORENSIC_REPORT_{Path(exhibit['original_filename']).stem}.md"
+                create_forensic_report(
+                    res,
+                    case_number=exhibit["case_id"],
+                    examiner_name=examiner,
+                    output_path=rep_md_path,
+                    generate_pdf=True,
+                )
+                rep_pdf_path = rep_md_path.with_suffix(".pdf")
+
+                # Record into SQLite database
+                exam_id = f"EXAM-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
+                q = res.get("quality_assessment", {})
+                ood = res.get("distribution_assessment", {})
+                multi = res.get("multi_model_analysis", {})
+
+                exam_record = ForensicExamination(
+                    examination_id=exam_id,
+                    evidence_id=exhibit["evidence_id"],
+                    case_id=exhibit["case_id"],
+                    model_name=model_name,
+                    predicted_label=res["predicted_label"],
+                    confidence=res.get("confidence", 0.0),
+                    prob_synthetic=res.get("calibrated_probability_synthetic"),
+                    prob_genuine=res.get("calibrated_probability_genuine"),
+                    decision_score=res.get("decision_score"),
+                    status=res.get("status", "COMPLETED"),
+                    estimated_snr_db=q.get("estimated_snr_db"),
+                    clipping_ratio=q.get("clipping_ratio"),
+                    silence_ratio=q.get("silence_ratio"),
+                    is_in_distribution=ood.get("is_in_distribution", True),
+                    max_z_score=ood.get("max_z_score"),
+                    multi_model_consensus=multi.get("consensus_label") if multi else None,
+                    forensic_assessment=res.get("forensic_assessment", ""),
+                    overview_figure_path=res.get("visualizations", {}).get("overview"),
+                    report_md_path=str(rep_md_path),
+                    report_pdf_path=str(rep_pdf_path) if rep_pdf_path.is_file() else None,
+                )
+                db.add_examination(exam_record)
+                db.log_audit_event("EXAMINATION_COMPLETED", exam_record.to_dict(), evidence_id=exhibit["evidence_id"], case_id=exhibit["case_id"])
+
+                st.session_state["active_exam"] = res
+                st.session_state["active_exam_db"] = exam_record
+                st.success("Forensic detection completed and recorded in database!")
             except Exception as e:
-                st.error(f"Examination encountered an error: {e}")
-                return
+                st.error(f"Inference failed: {e}")
 
-    # Render Examination Outcome
-    if "apple_analysis" in st.session_state:
-        res = st.session_state["apple_analysis"]
-        rep_md = st.session_state.get("apple_report", "")
-        file_stem = st.session_state.get("apple_stem", "exhibit")
-
+    # Render Current Finding
+    if "active_exam" in st.session_state:
+        res = st.session_state["active_exam"]
         pred_label = res["predicted_label"]
-        p_synth = res.get("calibrated_probability_synthetic")
-        p_real = res.get("calibrated_probability_genuine")
 
-        st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
-
-        # Primary Verdict Hero Card
-        pill_html = (
-            f'<span class="apple-pill-real">● GENUINE HUMAN SPEECH</span>'
-            if pred_label == "GENUINE"
-            else (f'<span class="apple-pill-fake">● SYNTHETIC / DEEPFAKE</span>' if pred_label == "SYNTHETIC" else f'<span class="apple-pill-indet">● INDETERMINATE</span>')
-        )
-        main_prob_str = f"{p_synth:.2%}" if pred_label == "SYNTHETIC" else (f"{p_real:.2%}" if p_real is not None else "N/A")
-        prob_title = "Synthetic Posterior Probability" if pred_label == "SYNTHETIC" else "Genuine Posterior Probability"
+        st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
+        pill_class = "pill-genuine" if pred_label == "GENUINE" else ("pill-synthetic" if pred_label == "SYNTHETIC" else "pill-indeterminate")
 
         st.markdown(
             f"""
-            <div class="apple-card" style="border-left: 6px solid {'#34c759' if pred_label == 'GENUINE' else ('#ff3b30' if pred_label == 'SYNTHETIC' else '#ff9500')};">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 1rem;">
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                     <div>
-                        <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #86868b; letter-spacing: 0.05em; margin-bottom: 4px;">Forensic Finding</div>
-                        {pill_html}
+                        <div style="font-size: 0.75rem; color: #8b949e; font-weight: 700; text-transform: uppercase;">Primary Finding</div>
+                        <span class="{pill_class}">● {pred_label}</span>
                     </div>
                     <div style="text-align: right;">
-                        <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #86868b; letter-spacing: 0.05em;">{prob_title}</div>
-                        <div style="font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: {'#34c759' if pred_label == 'GENUINE' else ('#ff3b30' if pred_label == 'SYNTHETIC' else '#ff9500')};">
-                            {main_prob_str}
-                        </div>
+                        <div style="font-size: 0.75rem; color: #8b949e; font-weight: 700; text-transform: uppercase;">Confidence</div>
+                        <div style="font-size: 1.75rem; font-weight: 800; color: #f0f6fc;">{res.get('confidence', 0.0):.2%}</div>
                     </div>
                 </div>
-                <div style="font-size: 0.9rem; line-height: 1.5; color: #1d1d1f; dark:color: #f5f5f7; margin-bottom: 1rem;">
+                <div style="font-size: 0.92rem; color: #f0f6fc; line-height: 1.5;">
                     {res.get('forensic_assessment')}
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.06);">
-                    <div><span style="font-size: 0.75rem; color: #86868b;">Estimated SNR</span><br><strong>{res.get('quality_assessment', {}).get('estimated_snr_db', 0.0):.1f} dB</strong></div>
-                    <div><span style="font-size: 0.75rem; color: #86868b;">Clipping</span><br><strong>{res.get('quality_assessment', {}).get('clipping_ratio', 0.0):.2%}</strong></div>
-                    <div><span style="font-size: 0.75rem; color: #86868b;">Silence Ratio</span><br><strong>{res.get('quality_assessment', {}).get('silence_ratio', 0.0):.1%}</strong></div>
-                    <div><span style="font-size: 0.75rem; color: #86868b;">Feature Domain</span><br><strong style="color: #34c759;">{res.get('distribution_assessment', {}).get('status', 'IN_DISTRIBUTION')}</strong></div>
-                </div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-        # Tabs for Visuals, Consensus, and Report
-        t_vis, t_cons, t_rep = st.tabs(["Visual Evidence (Spectrograms)", "Multi-Model Consensus", "Court-Ready Forensic Report"])
-
-        with t_vis:
-            visuals = res.get("visualizations", {})
-            if "overview" in visuals and Path(visuals["overview"]).is_file():
-                st.image(visuals["overview"], caption="Master 6-Panel Forensic Overview (Sampling: 16,000 Hz, Hann 2048, Hop 512, 128 Mel bands)", use_container_width=True)
-            else:
-                st.info("Visual spectrogram generation complete.")
-
-        with t_cons:
-            multi = res.get("multi_model_analysis", {})
-            if multi and "individual_models" in multi:
-                st.markdown(f"**Consensus Status:** `{multi.get('consensus_label')}` (Probability Spread: `{multi.get('probability_spread', 0.0):.1%}`)")
-                table_rows = []
-                for m_k, m_v in multi["individual_models"].items():
-                    if isinstance(m_v, dict) and "predicted_label" in m_v:
-                        table_rows.append({
-                            "Classifier": m_k.upper(),
-                            "Predicted Class": m_v["predicted_label"],
-                            "Synthetic Prob": f"{m_v.get('probability_synthetic', 0.0):.1%}" if m_v.get("probability_synthetic") is not None else "N/A",
-                            "Confidence": f"{m_v.get('confidence', 0.0):.1%}",
-                        })
-                st.table(table_rows)
-
-        with t_rep:
-            pdf_path = root / "results" / "reports" / f"FORENSIC_EXAMINATION_REPORT_{file_stem}.pdf"
-            c_d1, c_d2 = st.columns(2)
-            with c_d1:
-                st.download_button("📥 Download Formal Report (Markdown)", data=rep_md, file_name=f"FORENSIC_REPORT_{file_stem}.md", mime="text/markdown", use_container_width=True)
-            with c_d2:
-                if pdf_path.is_file():
-                    st.download_button("📄 Download Court-Ready PDF Report", data=pdf_path.read_bytes(), file_name=f"FORENSIC_REPORT_{file_stem}.pdf", mime="application/pdf", use_container_width=True)
-
-            with st.expander("Preview Complete 10-Section Markdown Report", expanded=False):
-                st.markdown(rep_md)
+        # Multi-model table
+        multi = res.get("multi_model_analysis")
+        if multi and "individual_models" in multi:
+            st.markdown("#### Multi-Model Comparison & Disagreement Assessment")
+            m_data = []
+            for m_k, m_v in multi["individual_models"].items():
+                if isinstance(m_v, dict) and "predicted_label" in m_v:
+                    m_data.append({
+                        "Classifier": m_k.upper(),
+                        "Predicted Class": m_v["predicted_label"],
+                        "Synthetic Prob": f"{m_v.get('probability_synthetic', 0.0):.2%}" if m_v.get("probability_synthetic") is not None else "N/A",
+                        "Genuine Prob": f"{m_v.get('probability_genuine', 0.0):.2%}" if m_v.get("probability_genuine") is not None else "N/A",
+                        "Confidence": f"{m_v.get('confidence', 0.0):.2%}",
+                    })
+            st.table(m_data)
 
 
-def render_batch_investigation(engine: DeepfakeDetectionEngine):
+# =============================================================================
+# 6. Evidence Integrity Verification
+# =============================================================================
+def render_integrity_verification():
     st.markdown(
         """
-        <div class="apple-card">
-            <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem;">Batch Evidence Processing & Incident Case Management</h3>
-            <p style="font-size: 0.85rem; color: #86868b;">
-                Ingest and examine entire evidence directories containing multiple audio recordings in a single auditable run.
-            </p>
+        <div class="lab-header">
+            <div class="lab-title">Evidence Integrity & Cryptographic Verification</div>
+            <div class="lab-subtitle">
+                On-demand SHA-256 bitstream re-hashing and tampering detection conforming to ISO/IEC 27037 standards.
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    col_b1, col_b2 = st.columns([1.5, 1])
-    with col_b1:
-        folder_option = st.selectbox(
-            "Evidence Target Directory",
-            options=["dataset/real", "dataset/fake", "dataset/preprocessed/real", "dataset/preprocessed/fake"],
+    all_evidence = db.list_all_evidence()
+    if not all_evidence:
+        st.warning("No evidence exhibits available.")
+        return
+
+    ev_options = {f"[{e['case_id']}] {e['original_filename']} ({e['evidence_id']})": e for e in all_evidence}
+    selected_label = st.selectbox("Select Exhibit for Immutability Audit", options=list(ev_options.keys()))
+    exhibit = ev_options[selected_label]
+    stored_file = Path(exhibit["stored_path"])
+
+    recorded_hash = exhibit["sha256_hash"]
+
+    c_rec1, c_rec2 = st.columns(2)
+    with c_rec1:
+        st.markdown("**Recorded Intake SHA-256:**")
+        st.markdown(f'<div class="hash-display">{recorded_hash}</div>', unsafe_allow_html=True)
+    with c_rec2:
+        st.markdown("**Evidence Tracking ID:**")
+        st.markdown(f"**`{exhibit['evidence_id']}`** (Stored at `{stored_file.name}`)")
+
+    verifier_name = st.text_input("Verifying Agent", value="Automated Integrity Monitor")
+    notes = st.text_input("Verification Notes / Reason", value="Routine Case Integrity Audit")
+
+    if st.button("🔒 Recalculate SHA-256 and Verify Bitstream Immutability"):
+        if not stored_file.is_file():
+            st.error("Evidence file missing from disk! Integrity violation.")
+            return
+
+        recalc_hash = compute_file_sha256(stored_file)
+        is_match = (recalc_hash.lower() == recorded_hash.lower())
+        status_str = "VERIFIED" if is_match else "HASH_MISMATCH"
+
+        record = IntegrityRecord(
+            evidence_id=exhibit["evidence_id"],
+            recorded_sha256=recorded_hash,
+            checked_sha256=recalc_hash,
+            status=status_str,
+            verified_by=verifier_name,
+            notes=notes,
         )
-    with col_b2:
-        case_code = st.text_input("Case Code", value=f"CASE-{datetime.date.today().strftime('%Y%m%d')}-001")
+        db.record_integrity_check(record)
+        db.log_audit_event("INTEGRITY_CHECK", record.to_dict(), evidence_id=exhibit["evidence_id"], case_id=exhibit["case_id"])
 
-    run_batch_btn = st.button("🚀 Process Entire Evidence Folder", use_container_width=True)
+        if is_match:
+            st.success("✅ CRYPTOGRAPHIC INTEGRITY VERIFIED: Current file bitstream strictly matches intake digest.")
+        else:
+            st.error("🚨 CRITICAL ALERT: SHA-256 DIGEST MISMATCH! The file on disk has been altered or corrupted.")
 
-    if run_batch_btn:
-        target_dir = root / folder_option
-        progress_bar = st.progress(0, text="Initializing batch evidence ingestion...")
+    st.markdown("---")
+    st.markdown("#### 📜 Historical Integrity Audits for this Exhibit")
+    checks = db.list_integrity_checks(evidence_id=exhibit["evidence_id"])
+    if checks:
+        st.dataframe(checks, use_container_width=True, hide_index=True)
+    else:
+        st.info("No prior integrity audits recorded for this exhibit.")
 
-        def on_prog(curr, tot, fname):
-            progress_bar.progress(curr / tot, text=f"Processing exhibit {curr}/{tot}: {fname}")
+    st.caption("Forensic Disclaimer: A verified matching hash establishes that the examined digital file has not been altered since intake. It does not independently establish the authenticity or origin of the acoustic content itself.")
 
-        try:
-            summary = process_audio_batch(
-                target_dir,
-                case_id=case_code,
-                model_name="ensemble",
-                progress_callback=on_prog,
-                generate_visuals=False,
+
+# =============================================================================
+# 7. Forensic Report Center
+# =============================================================================
+def render_report_center():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">Forensic Report Center</div>
+            <div class="lab-subtitle">
+                Download formal 10-section examination reports in GitHub-flavored Markdown and court-ready PDF formats.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    exams = db.list_examinations()
+    if not exams:
+        st.info("No completed examinations found. Run an analysis under 'AI Detection' to generate reports.")
+        return
+
+    ex_options = {f"[{ex['created_at'][:19]}] {ex['case_id']} — {ex['evidence_id']} ({ex['predicted_label']})": ex for ex in exams}
+    selected_label = st.selectbox("Select Examination Report", options=list(ex_options.keys()))
+    exam = ex_options[selected_label]
+
+    md_path = Path(exam["report_md_path"]) if exam.get("report_md_path") else None
+    pdf_path = Path(exam["report_pdf_path"]) if exam.get("report_pdf_path") else None
+
+    c_dl1, c_dl2 = st.columns(2)
+    with c_dl1:
+        if md_path and md_path.is_file():
+            st.download_button(
+                "📥 Download Formal Report (Markdown .md)",
+                data=md_path.read_text(encoding="utf-8"),
+                file_name=md_path.name,
+                mime="text/markdown",
+                use_container_width=True,
             )
-            progress_bar.progress(1.0, text="Batch processing completed.")
-            st.session_state["batch_summary"] = summary
-            st.toast("Batch examination completed.", icon="📁")
-        except Exception as e:
-            st.error(f"Batch processing error: {e}")
+        else:
+            st.warning("Markdown report not found.")
 
-    if "batch_summary" in st.session_state:
-        b_sum = st.session_state["batch_summary"]
-        stats = b_sum.get("statistics", {})
+    with c_dl2:
+        if pdf_path and pdf_path.is_file():
+            st.download_button(
+                "📄 Download Court-Ready Report (PDF .pdf)",
+                data=pdf_path.read_bytes(),
+                file_name=pdf_path.name,
+                mime="application/pdf",
+                use_container_width=True,
+            )
+        else:
+            st.info("PDF document compilation unavailable.")
 
-        st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
-        st.markdown(
-            f"""
-            <div class="apple-card">
-                <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #86868b; margin-bottom: 8px;">Master Case Ledger — {b_sum.get('case_id')}</div>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 1rem;">
-                    <div><span style="font-size: 0.75rem; color: #86868b;">Total Exhibits</span><br><strong style="font-size: 1.25rem;">{stats.get('total_exhibits')}</strong></div>
-                    <div><span style="font-size: 0.75rem; color: #86868b;">Genuine Speech</span><br><strong style="font-size: 1.25rem; color: #34c759;">{stats.get('genuine_count')}</strong></div>
-                    <div><span style="font-size: 0.75rem; color: #86868b;">Synthetic / Deepfake</span><br><strong style="font-size: 1.25rem; color: #ff3b30;">{stats.get('synthetic_count')}</strong></div>
-                    <div><span style="font-size: 0.75rem; color: #86868b;">Total Audio Duration</span><br><strong style="font-size: 1.25rem;">{stats.get('total_duration_seconds'):.1f}s</strong></div>
-                </div>
+    if md_path and md_path.is_file():
+        with st.expander("Preview Formal 10-Section Report", expanded=True):
+            st.markdown(md_path.read_text(encoding="utf-8"))
+
+
+# =============================================================================
+# 8. Examination Audit Trail
+# =============================================================================
+def render_examination_history():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">Examination Audit Trail & Event Logs</div>
+            <div class="lab-subtitle">
+                Comprehensive, append-only historical database of all computational transformations and forensic operations.
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-        # Exhibits Table
-        st.dataframe(b_sum.get("exhibits", []), use_container_width=True, height=350)
-
-
-def render_catalog_view():
-    st.markdown(
-        """
-        <div class="apple-card">
-            <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem;">Preserved Case Exhibits Catalog</h3>
-            <p style="font-size: 0.85rem; color: #86868b;">
-                Immutable cryptographic registry of all 66 original audio evidence exhibits.
-            </p>
         </div>
         """,
         unsafe_allow_html=True,
     )
-    manifest_path = root / "dataset" / "recording_level_manifest.json"
-    if manifest_path.is_file():
-        with manifest_path.open("r", encoding="utf-8") as f:
-            manifest = json.load(f)
-        st.dataframe(manifest, use_container_width=True, height=450)
+
+    t_exams, t_events = st.tabs(["📊 Completed Examinations", "🔒 System Audit Events"])
+
+    with t_exams:
+        c_f1, c_f2 = st.columns(2)
+        with c_f1:
+            lbl_filter = st.selectbox("Filter by Finding", ["ALL", "GENUINE", "SYNTHETIC", "INDETERMINATE"])
+        with c_f2:
+            case_filter = st.text_input("Filter by Case ID", placeholder="e.g. CASE-20261110-001")
+
+        exams = db.list_examinations(label=lbl_filter, case_id=case_filter if case_filter else None)
+        if exams:
+            st.dataframe(exams, use_container_width=True, hide_index=True)
+        else:
+            st.info("No examinations matching filter.")
+
+    with t_events:
+        events = db.list_audit_events(limit=50)
+        if events:
+            for ev in events:
+                with st.expander(f"📌 [{ev['timestamp_utc']}] {ev['event_type']} (Case: {ev.get('case_id') or 'N/A'})"):
+                    st.json(json.loads(ev["details_json"]))
+        else:
+            st.info("No audit events recorded.")
 
 
-def render_methodology_view():
+# =============================================================================
+# 9. System Settings & Diagnostics
+# =============================================================================
+def render_settings_and_diagnostics():
     st.markdown(
         """
-        <div class="apple-card">
-            <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem;">Adherence to ISO/IEC 27037 Technical Principles</h3>
-            <p style="font-size: 0.9rem; line-height: 1.6; color: #1d1d1f; dark:color: #f5f5f7;">
-                This system adheres to the international technical standards for digital evidence handling (ISO/IEC 27037:2012):
-                <br>• <strong>Identification:</strong> Documented provenance, subject IDs, and container metadata.
-                <br>• <strong>Collection & Acquisition:</strong> Bitstream cryptographic SHA-256 intake hashing.
-                <br>• <strong>Preservation:</strong> Read-only raw evidence storage with strictly non-destructive in-memory transformations.
-                <br><br>
-                <em>Legal Notice:</em> Automated classifications represent statistical screening indicators and do not independently establish criminal guilt or legal fabrication without corroborating investigative evidence.
-            </p>
+        <div class="lab-header">
+            <div class="lab-title">System Settings & Diagnostics</div>
+            <div class="lab-subtitle">
+                Runtime environment verification, model schema inspection, and OOD threshold calibration.
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
+
+    c_d1, c_d2 = st.columns(2)
+    with c_d1:
+        st.markdown("#### 💻 Runtime Environment")
+        env = get_environment_metadata()
+        st.json(env)
+
+    with c_d2:
+        st.markdown("#### 📏 Empirical OOD Threshold Bounds")
+        stats_path = root / "models" / "training_distribution_stats.json"
+        if stats_path.is_file():
+            with stats_path.open("r", encoding="utf-8") as f:
+                stats = json.load(f)
+            st.json(stats.get("ood_thresholds", {}))
+        else:
+            st.info("OOD statistics file not found.")
+
+    st.markdown("---")
+    st.markdown("#### 🗄️ Database Integrity Status")
+    db_file = db.db_path
+    st.markdown(f"Database Location: `{db_file}` (Size: {db_file.stat().st_size:,} bytes)")
+    if st.button("Run SQLite Integrity Check"):
+        with sqlite3.connect(db_file) as conn:
+            res = conn.execute("PRAGMA integrity_check;").fetchall()
+            st.success(f"SQLite PRAGMA integrity_check: {res[0][0]}")
 
 
 if __name__ == "__main__":

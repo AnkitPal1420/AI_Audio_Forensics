@@ -54,3 +54,19 @@ results/*
 !results/.gitkeep
 !results/reports/
 !results/graphs/
+
+# SQLite forensic databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Storage directories
+storage/original_evidence/*
+!storage/original_evidence/.gitkeep
+storage/processed_audio/*
+!storage/processed_audio/.gitkeep
+storage/visualizations/*
+!storage/visualizations/.gitkeep
+storage/reports/*
+!storage/reports/.gitkeep
+
