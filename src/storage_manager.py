@@ -185,3 +185,4 @@ def seed_default_cases_and_exhibits(db: ForensicDatabase) -> None:
         db.add_evidence(ev3)
 
     logger.info("Successfully seeded default forensic cases and exhibits into database.")
+

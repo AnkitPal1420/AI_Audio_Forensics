@@ -391,3 +391,4 @@ class ForensicDatabase:
                 "synthetic_count": c_fake,
                 "indeterminate_count": c_indet,
             }
+

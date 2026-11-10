@@ -99,3 +99,4 @@ The dashboard provides 9 specialized forensic workspaces accessible via the left
 
 > **IMPORTANT LEGAL NOTICE:**  
 > This system provides automated investigative screening indicators based on statistical signal processing. In accordance with ISO/IEC 27037 technical principles, its outputs represent analytical indicators and do **not** constitute definitive legal proof of authentic human origin or criminal forgery. All findings must be corroborated by chain of custody, witness testimony, contextual evidence, and independent expert review.
+

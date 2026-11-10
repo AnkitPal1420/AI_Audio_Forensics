@@ -14,3 +14,4 @@ echo Verifying codebase syntax and compilation...
 python -m compileall app.py database src tests
 echo.
 pause
+
