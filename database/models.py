@@ -80,3 +80,64 @@ class IntegrityRecord:
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
 
+
+@dataclass
+class AnalysisRun:
+    run_id: str
+    case_id: str
+    evidence_id: str
+    analysis_type: str  # XAI_EXPLANATION, AUDIO_MANIPULATION, ACOUSTIC_ANOMALY, ADVANCED_SIGNAL, EVIDENCE_CORRELATION, GENERATOR_ANALYSIS, SPEAKER_COMPARISON
+    algorithm_name: str
+    algorithm_version: str
+    software_versions_json: str
+    parameters_json: str
+    input_sha256: str
+    status: str  # COMPLETED, INCONCLUSIVE, EXPERIMENTAL, UNAVAILABLE
+    warnings_json: str
+    results_json: str
+    output_files_json: str
+    examination_id: Optional[str] = None
+    model_id: Optional[str] = None
+    model_version: Optional[str] = None
+    feature_schema_version: Optional[str] = None
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class AnalysisFinding:
+    finding_id: str
+    run_id: str
+    evidence_id: str
+    start_sec: float
+    end_sec: float
+    indicator: str  # SPECTRAL_FLUX_DISCONTINUITY, RMS_ENERGY_STEP, NOISE_FLOOR_SHIFT, REPEATED_SEGMENT, ACOUSTIC_OUTLIER
+    value: float
+    unit: str
+    threshold: float
+    severity: str  # LOW, MEDIUM, HIGH
+    interpretation_flag: str  # MEASUREMENT, INTERPRETATION
+    description: str
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class EvidenceComparisonRecord:
+    comparison_id: str
+    case_id: str
+    evidence_a_id: str
+    evidence_b_id: str
+    sha_equal: bool
+    metadata_diff_json: str
+    feature_distance_json: str
+    referenced_run_ids_json: str
+    notes: str = ""
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)

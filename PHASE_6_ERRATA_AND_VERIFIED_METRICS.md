@@ -88,3 +88,4 @@ The 9-condition stress test used **20 two-second excerpts (10 genuine, 10 synthe
 2. It **does not transfer** to an independent corpus (FoR): AUC ≈ 0.53 and 0.28.
 3. Training/inference feature extraction **may not match**; this must be resolved before any forensic use.
 4. Therefore model generalization is **UNVALIDATED** and the classifier must not be used for evidentiary classification. It may only be shown as an experimental indicator.
+

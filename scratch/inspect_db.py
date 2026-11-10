@@ -5,3 +5,4 @@ for (n,) in c.execute("select name from sqlite_master where type='table' and nam
     cnt = c.execute(f"select count(*) from {n}").fetchone()[0]
     print(f"{n} rows={cnt} cols={cols}")
 print("fk:", c.execute("pragma foreign_keys").fetchone())
+

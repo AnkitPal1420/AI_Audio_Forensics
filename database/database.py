@@ -9,7 +9,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from database.models import ForensicCase, ForensicEvidence, ForensicExamination, IntegrityRecord
+from database.models import (
+    AnalysisFinding,
+    AnalysisRun,
+    EvidenceComparisonRecord,
+    ForensicCase,
+    ForensicEvidence,
+    ForensicExamination,
+    IntegrityRecord,
+)
 from src.utils import project_root
 
 logger = logging.getLogger(__name__)
@@ -119,6 +127,75 @@ def init_db(db_path: Optional[Union[str, Path]] = None) -> Path:
                 evidence_id TEXT,
                 case_id TEXT,
                 details_json TEXT NOT NULL
+            );
+        """)
+
+        # 6. Analysis Runs Table (Phase 7 Intelligence)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS analysis_runs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                run_id TEXT UNIQUE NOT NULL,
+                case_id TEXT NOT NULL,
+                evidence_id TEXT NOT NULL,
+                examination_id TEXT,
+                analysis_type TEXT NOT NULL,
+                algorithm_name TEXT NOT NULL,
+                algorithm_version TEXT NOT NULL,
+                software_versions_json TEXT NOT NULL,
+                parameters_json TEXT NOT NULL,
+                input_sha256 TEXT NOT NULL,
+                status TEXT NOT NULL,
+                warnings_json TEXT NOT NULL,
+                results_json TEXT NOT NULL,
+                output_files_json TEXT NOT NULL,
+                model_id TEXT,
+                model_version TEXT,
+                feature_schema_version TEXT,
+                created_at TEXT NOT NULL,
+                FOREIGN KEY (case_id) REFERENCES cases(case_id) ON DELETE CASCADE,
+                FOREIGN KEY (evidence_id) REFERENCES evidence(evidence_id) ON DELETE CASCADE
+            );
+        """)
+
+        # 7. Analysis Findings Table (Phase 7 Signal-Level Timestamped Indicators)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS analysis_findings (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                finding_id TEXT UNIQUE NOT NULL,
+                run_id TEXT NOT NULL,
+                evidence_id TEXT NOT NULL,
+                start_sec REAL NOT NULL,
+                end_sec REAL NOT NULL,
+                indicator TEXT NOT NULL,
+                value REAL NOT NULL,
+                unit TEXT NOT NULL,
+                threshold REAL NOT NULL,
+                severity TEXT NOT NULL,
+                interpretation_flag TEXT NOT NULL,
+                description TEXT NOT NULL,
+                created_at TEXT NOT NULL,
+                FOREIGN KEY (run_id) REFERENCES analysis_runs(run_id) ON DELETE CASCADE,
+                FOREIGN KEY (evidence_id) REFERENCES evidence(evidence_id) ON DELETE CASCADE
+            );
+        """)
+
+        # 8. Evidence Comparisons Table (Phase 7 Multi-Evidence Correlation)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS evidence_comparisons (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                comparison_id TEXT UNIQUE NOT NULL,
+                case_id TEXT NOT NULL,
+                evidence_a_id TEXT NOT NULL,
+                evidence_b_id TEXT NOT NULL,
+                sha_equal INTEGER NOT NULL,
+                metadata_diff_json TEXT NOT NULL,
+                feature_distance_json TEXT NOT NULL,
+                referenced_run_ids_json TEXT NOT NULL,
+                notes TEXT,
+                created_at TEXT NOT NULL,
+                FOREIGN KEY (case_id) REFERENCES cases(case_id) ON DELETE CASCADE,
+                FOREIGN KEY (evidence_a_id) REFERENCES evidence(evidence_id) ON DELETE CASCADE,
+                FOREIGN KEY (evidence_b_id) REFERENCES evidence(evidence_id) ON DELETE CASCADE
             );
         """)
 
@@ -391,4 +468,235 @@ class ForensicDatabase:
                 "synthetic_count": c_fake,
                 "indeterminate_count": c_indet,
             }
+
+    # =========================================================================
+    # Phase 7 Analysis Runs Operations
+    # =========================================================================
+    def create_analysis_run(self, run: AnalysisRun) -> AnalysisRun:
+        """Insert a Phase 7 forensic analysis run record."""
+        with self._get_connection() as conn:
+            conn.execute(
+                """
+                INSERT INTO analysis_runs (
+                    run_id, case_id, evidence_id, examination_id, analysis_type,
+                    algorithm_name, algorithm_version, software_versions_json, parameters_json,
+                    input_sha256, status, warnings_json, results_json, output_files_json,
+                    model_id, model_version, feature_schema_version, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    run.run_id,
+                    run.case_id,
+                    run.evidence_id,
+                    run.examination_id,
+                    run.analysis_type,
+                    run.algorithm_name,
+                    run.algorithm_version,
+                    run.software_versions_json,
+                    run.parameters_json,
+                    run.input_sha256,
+                    run.status,
+                    run.warnings_json,
+                    run.results_json,
+                    run.output_files_json,
+                    run.model_id,
+                    run.model_version,
+                    run.feature_schema_version,
+                    run.created_at,
+                ),
+            )
+            conn.commit()
+        return run
+
+    def get_analysis_run(self, run_id: str) -> Optional[AnalysisRun]:
+        """Retrieve a specific analysis run by ID."""
+        with self._get_connection() as conn:
+            cursor = conn.execute("SELECT * FROM analysis_runs WHERE run_id = ?", (run_id,))
+            row = cursor.fetchone()
+            if not row:
+                return None
+            data = dict(row)
+            data.pop("id", None)
+            return AnalysisRun(**data)
+
+    def list_analysis_runs(
+        self,
+        case_id: Optional[str] = None,
+        evidence_id: Optional[str] = None,
+        analysis_type: Optional[str] = None,
+    ) -> List[AnalysisRun]:
+        """List analysis runs filtered by case, evidence, or type."""
+        query = "SELECT * FROM analysis_runs WHERE 1=1"
+        params: List[Any] = []
+        if case_id:
+            query += " AND case_id = ?"
+            params.append(case_id)
+        if evidence_id:
+            query += " AND evidence_id = ?"
+            params.append(evidence_id)
+        if analysis_type:
+            query += " AND analysis_type = ?"
+            params.append(analysis_type)
+        query += " ORDER BY created_at DESC"
+
+        with self._get_connection() as conn:
+            cursor = conn.execute(query, params)
+            runs = []
+            for r in cursor.fetchall():
+                d = dict(r)
+                d.pop("id", None)
+                runs.append(AnalysisRun(**d))
+            return runs
+
+    # =========================================================================
+    # Phase 7 Analysis Findings Operations
+    # =========================================================================
+    def create_analysis_finding(self, finding: AnalysisFinding) -> AnalysisFinding:
+        """Insert a timestamped forensic finding."""
+        with self._get_connection() as conn:
+            conn.execute(
+                """
+                INSERT INTO analysis_findings (
+                    finding_id, run_id, evidence_id, start_sec, end_sec, indicator,
+                    value, unit, threshold, severity, interpretation_flag, description, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    finding.finding_id,
+                    finding.run_id,
+                    finding.evidence_id,
+                    finding.start_sec,
+                    finding.end_sec,
+                    finding.indicator,
+                    finding.value,
+                    finding.unit,
+                    finding.threshold,
+                    finding.severity,
+                    finding.interpretation_flag,
+                    finding.description,
+                    finding.created_at,
+                ),
+            )
+            conn.commit()
+        return finding
+
+    def create_analysis_findings_batch(self, findings: List[AnalysisFinding]) -> None:
+        """Insert multiple forensic findings in a single transaction."""
+        if not findings:
+            return
+        with self._get_connection() as conn:
+            conn.executemany(
+                """
+                INSERT INTO analysis_findings (
+                    finding_id, run_id, evidence_id, start_sec, end_sec, indicator,
+                    value, unit, threshold, severity, interpretation_flag, description, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                [
+                    (
+                        f.finding_id,
+                        f.run_id,
+                        f.evidence_id,
+                        f.start_sec,
+                        f.end_sec,
+                        f.indicator,
+                        f.value,
+                        f.unit,
+                        f.threshold,
+                        f.severity,
+                        f.interpretation_flag,
+                        f.description,
+                        f.created_at,
+                    )
+                    for f in findings
+                ],
+            )
+            conn.commit()
+
+    def list_analysis_findings(
+        self,
+        run_id: Optional[str] = None,
+        evidence_id: Optional[str] = None,
+    ) -> List[AnalysisFinding]:
+        """List analysis findings filtered by run or evidence ID."""
+        query = "SELECT * FROM analysis_findings WHERE 1=1"
+        params: List[Any] = []
+        if run_id:
+            query += " AND run_id = ?"
+            params.append(run_id)
+        if evidence_id:
+            query += " AND evidence_id = ?"
+            params.append(evidence_id)
+        query += " ORDER BY start_sec ASC"
+
+        with self._get_connection() as conn:
+            cursor = conn.execute(query, params)
+            findings = []
+            for r in cursor.fetchall():
+                d = dict(r)
+                d.pop("id", None)
+                findings.append(AnalysisFinding(**d))
+            return findings
+
+    # =========================================================================
+    # Phase 7 Evidence Comparison Operations
+    # =========================================================================
+    def create_evidence_comparison(self, comp: EvidenceComparisonRecord) -> EvidenceComparisonRecord:
+        """Insert a multi-evidence correlation record."""
+        with self._get_connection() as conn:
+            conn.execute(
+                """
+                INSERT INTO evidence_comparisons (
+                    comparison_id, case_id, evidence_a_id, evidence_b_id,
+                    sha_equal, metadata_diff_json, feature_distance_json,
+                    referenced_run_ids_json, notes, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    comp.comparison_id,
+                    comp.case_id,
+                    comp.evidence_a_id,
+                    comp.evidence_b_id,
+                    1 if comp.sha_equal else 0,
+                    comp.metadata_diff_json,
+                    comp.feature_distance_json,
+                    comp.referenced_run_ids_json,
+                    comp.notes,
+                    comp.created_at,
+                ),
+            )
+            conn.commit()
+        return comp
+
+    def list_evidence_comparisons(self, case_id: Optional[str] = None) -> List[EvidenceComparisonRecord]:
+        """List evidence comparisons filtered by case ID."""
+        query = "SELECT * FROM evidence_comparisons WHERE 1=1"
+        params: List[Any] = []
+        if case_id:
+            query += " AND case_id = ?"
+            params.append(case_id)
+        query += " ORDER BY created_at DESC"
+
+        with self._get_connection() as conn:
+            cursor = conn.execute(query, params)
+            comps = []
+            for r in cursor.fetchall():
+                d = dict(r)
+                d.pop("id", None)
+                d["sha_equal"] = bool(d["sha_equal"])
+                comps.append(EvidenceComparisonRecord(**d))
+            return comps
+
+    def get_evidence_comparison(self, comparison_id: str) -> Optional[EvidenceComparisonRecord]:
+        """Retrieve a specific evidence comparison by ID."""
+        with self._get_connection() as conn:
+            cursor = conn.execute("SELECT * FROM evidence_comparisons WHERE comparison_id = ?", (comparison_id,))
+            row = cursor.fetchone()
+            if not row:
+                return None
+            d = dict(row)
+            d.pop("id", None)
+            d["sha_equal"] = bool(d["sha_equal"])
+            return EvidenceComparisonRecord(**d)
+
 

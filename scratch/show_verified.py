@@ -21,3 +21,4 @@ for s, v in d["for_external"].items():
 print("\nOOD thr", d["ood"]["maha_threshold_p99_train"])
 for k, v in d["ood"].items():
     if isinstance(v, dict): print(k, {a: round(b, 4) for a, b in v.items()})
+

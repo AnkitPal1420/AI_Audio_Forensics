@@ -155,3 +155,4 @@ for sub in sorted(set(FS)): out["ood"]["for_" + sub] = ood(FV[FS == sub])
 json.dump(out, open(root / "results/phase6_verified_metrics.json", "w", encoding="utf-8"), indent=2)
 print("OK -> results/phase6_verified_metrics.json")
 print("val-selected threshold:", best_t)
+

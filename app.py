@@ -22,16 +22,36 @@ import numpy as np
 
 # Antigravity audio forensics modules
 from database.database import ForensicDatabase
-from database.models import ForensicCase, ForensicEvidence, ForensicExamination, IntegrityRecord
-from src.audio_prediction import predict_audio
-from src.audio_preprocessing import load_audio, get_audio_metadata
+from database.models import (
+    AnalysisFinding,
+    AnalysisRun,
+    EvidenceComparisonRecord,
+    ForensicCase,
+    ForensicEvidence,
+    ForensicExamination,
+    IntegrityRecord,
+)
+from src.anomaly_detection import detect_acoustic_anomalies
+from src.audio_prediction import align_feature_vector, predict_audio
+from src.audio_preprocessing import get_audio_metadata, load_audio
 from src.audio_quality import assess_audio_quality, assess_feature_distribution
 from src.batch_processing import process_audio_batch
 from src.deepfake_detection import DeepfakeDetectionEngine
-from src.forensic_integrity import compute_file_sha256, generate_evidence_id, verify_evidence_immutability, get_environment_metadata
+from src.evidence_correlation import correlate_exhibits
+from src.explainable_ai import explain_prediction
+from src.feature_extraction import CANONICAL_FEATURE_NAMES, extract_basic_features
+from src.forensic_integrity import (
+    compute_file_sha256,
+    generate_evidence_id,
+    get_environment_metadata,
+    verify_evidence_immutability,
+)
 from src.forensic_report import create_forensic_report
-from src.spectrogram_analysis import generate_forensic_visualizations, compute_spectral_trajectories
+from src.generator_analysis import profile_generator_artifacts
+from src.speaker_comparison import compare_acoustic_profiles
+from src.spectrogram_analysis import compute_spectral_trajectories, generate_forensic_visualizations
 from src.storage_manager import get_storage_paths, ingest_evidence_file, seed_default_cases_and_exhibits
+from src.tampering_analysis import analyze_audio_tampering, compute_frame_stft
 from src.utils import project_root
 
 # Page Configuration
@@ -224,7 +244,7 @@ def main():
                 <span style="font-size: 2rem;">🛡️</span>
                 <div>
                     <div style="font-size: 1.1rem; font-weight: 800; color: #f0f6fc;">VOICE FORENSICS</div>
-                    <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 600;">PHASE 5 WEB DASHBOARD</div>
+                    <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 600;">PHASE 7 FORENSIC INTELLIGENCE</div>
                 </div>
             </div>
             """,
@@ -245,6 +265,7 @@ def main():
                 "📄 Forensic Report Center",
                 "📜 Examination Audit Trail",
                 "📊 Scientific Validation & Reliability",
+                "🧠 Forensic Intelligence & Manipulation",
                 "⚙️ System Settings & Diagnostics",
             ],
             index=0,
@@ -284,6 +305,8 @@ def main():
         render_examination_history()
     elif page == "📊 Scientific Validation & Reliability":
         render_scientific_validation_workspace()
+    elif page == "🧠 Forensic Intelligence & Manipulation":
+        render_phase7_forensic_intelligence()
     else:
         render_settings_and_diagnostics()
 
@@ -1082,7 +1105,481 @@ def render_scientific_validation_workspace():
 
 
 # =============================================================================
-# 10. System Settings & Diagnostics
+# 10. Phase 7: Forensic Intelligence & Audio Manipulation Analysis
+# =============================================================================
+def render_phase7_forensic_intelligence():
+    st.markdown(
+        """
+        <div class="lab-header">
+            <div class="lab-title">🧠 Forensic AI Intelligence & Audio Manipulation Analysis</div>
+            <div class="lab-subtitle">
+                Advanced AI explainability (XAI), signal-level edit detection, unsupervised anomaly scoring, vocoder profiling, and multi-evidence case correlation.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    all_evidence = db.list_all_evidence()
+    if not all_evidence:
+        st.warning("No evidence exhibits found in database. Ingest audio under 'Evidence Ingestion' to enable analysis.")
+        return
+
+    ev_options = {f"[{e['case_id']}] {e['original_filename']} ({e['evidence_id']})": e for e in all_evidence}
+    selected_ev_label = st.selectbox("Select Primary Exhibit for Forensic Intelligence", options=list(ev_options.keys()), key="p7_primary_ev")
+    exhibit = ev_options[selected_ev_label]
+    stored_file = Path(exhibit["stored_path"])
+
+    if not stored_file.is_file():
+        st.error(f"Evidence file not found on disk at: {stored_file}")
+        return
+
+    t_xai, t_tamp, t_spk, t_gen, t_anom, t_sig, t_corr, t_p7_docs = st.tabs([
+        "🔍 Explainable AI (XAI)",
+        "⚡ Manipulation & Splicing",
+        "👥 Speaker Comparison Baseline",
+        "🤖 Generator Characterization",
+        "🚨 Acoustic Anomaly Detection",
+        "🔬 Advanced Signal Workspace",
+        "🔗 Multi-Evidence Correlation",
+        "📥 Phase 7 Reports",
+    ])
+
+    # -------------------------------------------------------------------------
+    # TAB 1: Explainable AI (XAI)
+    # -------------------------------------------------------------------------
+    with t_xai:
+        st.markdown("#### 🔍 Feature Attribution & Decision Explainability")
+        st.error(
+            "⚠️ **MODEL UNVALIDATED WARNING**: The underlying classification models have unvalidated generalization "
+            "on unseen acoustic domains and G.711 telephony channels (FoR ROC-AUC 0.283 - 0.534). "
+            "Feature attributions indicate which statistical acoustic parameters influenced the algorithmic output; "
+            "they do NOT prove that the audio was synthetically synthesized or manipulated."
+        )
+
+        c_m1, c_m2 = st.columns([2, 1])
+        with c_m1:
+            chosen_model = st.selectbox(
+                "Select Model to Explain",
+                ["calibrated_svm", "random_forest", "logistic_regression"],
+                index=0,
+                key="p7_xai_model",
+            )
+        with c_m2:
+            st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+            run_xai_btn = st.button("🚀 Run Explainability Analysis", key="btn_run_xai")
+
+        if run_xai_btn:
+            with st.spinner("Computing Shapley sampling attributions and feature occlusion..."):
+                waveform, sr = load_audio(stored_file, target_sr=16000, mono=True)
+                raw_feats = extract_basic_features(waveform, sample_rate=sr, n_mfcc=20)
+                feat_vec = align_feature_vector(raw_feats, engine.feature_names)
+
+                xai_res = explain_prediction(
+                    feat_vec,
+                    evidence_id=exhibit["evidence_id"],
+                    model_key=chosen_model,
+                    compute_shapley=True,
+                )
+
+                # Persist Run
+                run_rec = AnalysisRun(
+                    run_id=xai_res.run_id,
+                    case_id=exhibit["case_id"],
+                    evidence_id=exhibit["evidence_id"],
+                    analysis_type="XAI_EXPLANATION",
+                    algorithm_name="explain_prediction",
+                    algorithm_version="1.0.0",
+                    software_versions_json=json.dumps({"numpy": np.__version__}),
+                    parameters_json=json.dumps({"model_key": chosen_model, "method": xai_res.method_used}),
+                    input_sha256=exhibit["sha256_hash"],
+                    status="COMPLETED",
+                    warnings_json=json.dumps([xai_res.unvalidated_model_warning]),
+                    results_json=json.dumps({
+                        "predicted_label": xai_res.predicted_label,
+                        "prob_synthetic": xai_res.predicted_prob_synthetic,
+                        "grouped_importance": xai_res.grouped_importance,
+                    }),
+                    output_files_json=json.dumps([]),
+                )
+                db.create_analysis_run(run_rec)
+                db.create_analysis_findings_batch(xai_res.findings)
+
+                # Display Results
+                st.markdown("---")
+                c_pred1, c_pred2, c_pred3 = st.columns(3)
+                label_color = "#f85149" if xai_res.predicted_label == "SYNTHETIC" else "#3fb950"
+                c_pred1.markdown(f"**Predicted Label**: <span style='color:{label_color}; font-weight:800;'>{xai_res.predicted_label}</span>", unsafe_allow_html=True)
+                c_pred2.markdown(f"**Synthetic Probability**: `{xai_res.predicted_prob_synthetic:.4f}`")
+                c_pred3.markdown(f"**Attribution Method**: `{xai_res.method_used}`")
+
+                st.markdown("##### 📊 Top Feature Drivers toward SYNTHETIC Classification")
+                if xai_res.top_synthetic_contributors:
+                    synth_rows = [
+                        {
+                            "Feature Name": c["feature_name"],
+                            "Value": f"{c['feature_value']:.4f}",
+                            "Group": c["group"],
+                            "Shapley Attribution": f"+{c['importance_score']:.4f}",
+                            "Influence Direction": "Pushed Toward SYNTHETIC",
+                        }
+                        for c in xai_res.top_synthetic_contributors
+                    ]
+                    render_styled_table(synth_rows)
+                else:
+                    st.info("No features exerted positive attribution toward synthetic prediction.")
+
+                st.markdown("##### 🛡️ Top Feature Drivers toward GENUINE Classification")
+                if xai_res.top_genuine_contributors:
+                    real_rows = [
+                        {
+                            "Feature Name": c["feature_name"],
+                            "Value": f"{c['feature_value']:.4f}",
+                            "Group": c["group"],
+                            "Shapley Attribution": f"{c['importance_score']:.4f}",
+                            "Influence Direction": "Pushed Toward GENUINE",
+                        }
+                        for c in xai_res.top_genuine_contributors
+                    ]
+                    render_styled_table(real_rows)
+                else:
+                    st.info("No features exerted negative attribution toward genuine prediction.")
+
+                st.markdown("##### 📈 Grouped Feature Attribution Share")
+                grp_rows = [{"Acoustic Dimension": k, "Relative Importance Share": f"{v * 100:.2f}%"} for k, v in xai_res.grouped_importance.items()]
+                render_styled_table(grp_rows)
+
+    # -------------------------------------------------------------------------
+    # TAB 2: Audio Manipulation & Splicing
+    # -------------------------------------------------------------------------
+    with t_tamp:
+        st.markdown("#### ⚡ Signal-Level Edit, Splice & Discontinuity Detection")
+        st.info(
+            "Detects micro-acoustic anomalies across 10ms-25ms analysis frames: "
+            "sharp spectral flux surges, RMS step transitions, background noise floor shifts, "
+            "and repeated waveform segments (audio clone-and-paste splicing)."
+        )
+
+        c_th1, c_th2, c_th3 = st.columns(3)
+        flux_sigma = c_th1.slider("Spectral Flux Sigma Threshold (σ)", min_value=2.0, max_value=6.0, value=3.5, step=0.1)
+        rms_sigma = c_th2.slider("RMS Step Sigma Threshold (σ)", min_value=2.0, max_value=6.0, value=3.5, step=0.1)
+        noise_shift = c_th3.slider("Noise Floor Shift Threshold (dB)", min_value=3.0, max_value=12.0, value=6.0, step=0.5)
+
+        if st.button("⚡ Execute Signal Tampering Analysis", key="btn_run_tamp"):
+            with st.spinner("Extracting short-time spectral dynamics and tracking discontinuities..."):
+                waveform, sr = load_audio(stored_file, target_sr=16000, mono=True)
+                tamp_res = analyze_audio_tampering(
+                    waveform,
+                    sr,
+                    evidence_id=exhibit["evidence_id"],
+                    flux_sigma_threshold=flux_sigma,
+                    rms_step_sigma_threshold=rms_sigma,
+                    noise_floor_shift_db=noise_shift,
+                )
+
+                # Persist Run
+                run_rec = AnalysisRun(
+                    run_id=tamp_res.run_id,
+                    case_id=exhibit["case_id"],
+                    evidence_id=exhibit["evidence_id"],
+                    analysis_type="AUDIO_MANIPULATION",
+                    algorithm_name="analyze_audio_tampering",
+                    algorithm_version="1.0.0",
+                    software_versions_json=json.dumps({"numpy": np.__version__}),
+                    parameters_json=json.dumps({"flux_sigma": flux_sigma, "rms_sigma": rms_sigma, "noise_shift_db": noise_shift}),
+                    input_sha256=exhibit["sha256_hash"],
+                    status="COMPLETED",
+                    warnings_json=json.dumps([]),
+                    results_json=json.dumps({"total_anomalies": tamp_res.total_anomalies}),
+                    output_files_json=json.dumps([]),
+                )
+                db.create_analysis_run(run_rec)
+                db.create_analysis_findings_batch(tamp_res.findings)
+
+                # Summary Metrics
+                c_k1, c_k2, c_k3, c_k4 = st.columns(4)
+                c_k1.metric("Total Flagged Indicators", tamp_res.total_anomalies)
+                flux_count = sum(1 for f in tamp_res.findings if f.indicator == "SPECTRAL_FLUX_DISCONTINUITY")
+                rms_count = sum(1 for f in tamp_res.findings if f.indicator == "RMS_ENERGY_STEP")
+                rep_count = sum(1 for f in tamp_res.findings if f.indicator == "REPEATED_SEGMENT")
+                c_k2.metric("Spectral Flux Surges", flux_count)
+                c_k3.metric("RMS Energy Steps", rms_count)
+                c_k4.metric("Repeated Segments", rep_count)
+
+                st.markdown("##### 📈 Frame-by-Frame Signal Trajectories")
+                c_ch1, c_ch2 = st.columns(2)
+                with c_ch1:
+                    st.caption("Spectral Flux Trajectory")
+                    st.line_chart(dict(time=tamp_res.time_points, flux=tamp_res.spectral_flux), x="time", y="flux")
+                with c_ch2:
+                    st.caption("RMS Energy & Noise Floor Trajectory")
+                    st.line_chart(dict(time=tamp_res.time_points, rms=tamp_res.rms_energy, noise=tamp_res.noise_floor), x="time", y=["rms", "noise"])
+
+                st.markdown("##### 📋 Timestamped Acoustic Findings")
+                if tamp_res.findings:
+                    f_rows = [
+                        {
+                            "Timestamp Window": f"{f.start_sec:.2f}s - {f.end_sec:.2f}s",
+                            "Indicator": f.indicator,
+                            "Measured Value": f"{f.value:.4f} {f.unit}",
+                            "Threshold": f"{f.threshold:.4f}",
+                            "Severity": f.severity,
+                            "Flag": f"[{f.interpretation_flag}]",
+                            "Description": f.description,
+                        }
+                        for f in tamp_res.findings
+                    ]
+                    render_styled_table(f_rows)
+                else:
+                    st.success("No sharp spectral or energy discontinuities detected above threshold.")
+
+                st.caption(f"ℹ️ {tamp_res.disclaimer}")
+
+    # -------------------------------------------------------------------------
+    # TAB 3: Speaker Comparison Baseline
+    # -------------------------------------------------------------------------
+    with t_spk:
+        st.markdown("#### 👥 Speaker Consistency & Acoustic Profile Comparison")
+        st.error(
+            "🛑 **CRITICAL FORENSIC LIMITATION & PROHIBITION**: Biometric speaker verification and individual "
+            "identity confirmation are strictly UNAVAILABLE in this release. The dataset lacks cross-channel speaker "
+            "identity ground-truth, and deep embedding networks (ECAPA-TDNN / x-vectors) are not installed. "
+            "The comparison below evaluates exploratory acoustic spectral distance only. Asserting speaker identity "
+            "from these metrics is scientifically invalid and legally impermissible."
+        )
+
+        other_evidence = [e for e in all_evidence if e["evidence_id"] != exhibit["evidence_id"]]
+        if not other_evidence:
+            st.warning("Case contains only one exhibit. Ingest a second audio file to perform acoustic comparison.")
+        else:
+            other_opts = {f"[{e['case_id']}] {e['original_filename']} ({e['evidence_id']})": e for e in other_evidence}
+            comp_label = st.selectbox("Select Comparison Exhibit (Exhibit B)", options=list(other_opts.keys()), key="p7_spk_b")
+            exhibit_b = other_opts[comp_label]
+
+            if st.button("🔬 Compute Acoustic Distance Baseline", key="btn_run_spk"):
+                with st.spinner("Extracting acoustic vectors and calculating spectral distance..."):
+                    wf_a, sr_a = load_audio(stored_file, target_sr=16000, mono=True)
+                    wf_b, sr_b = load_audio(Path(exhibit_b["stored_path"]), target_sr=16000, mono=True)
+
+                    raw_a = extract_basic_features(wf_a, sample_rate=sr_a, n_mfcc=20)
+                    raw_b = extract_basic_features(wf_b, sample_rate=sr_b, n_mfcc=20)
+                    vec_a = align_feature_vector(raw_a, engine.feature_names)
+                    vec_b = align_feature_vector(raw_b, engine.feature_names)
+
+                    spk_res = compare_acoustic_profiles(
+                        vec_a, vec_b, evidence_a_id=exhibit["evidence_id"], evidence_b_id=exhibit_b["evidence_id"]
+                    )
+
+                    c_s1, c_s2, c_s3 = st.columns(3)
+                    c_s1.metric("Cosine Similarity", f"{spk_res.cosine_similarity:.4f}")
+                    c_s2.metric("Euclidean Distance", f"{spk_res.euclidean_distance:.4f}")
+                    c_s3.metric("Acoustic Divergence", f"{spk_res.acoustic_divergence_pct:.1f}%")
+
+                    st.markdown("##### 🎚️ Sub-band Acoustic Similarity")
+                    band_rows = [{"Acoustic Band": k, "Cosine Resemblance": f"{v:.3f}"} for k, v in spk_res.band_similarity.items()]
+                    render_styled_table(band_rows)
+
+                    st.markdown("##### ⚠️ Missing Prerequisites for Legal Biometric Verification")
+                    for req in spk_res.prerequisites_missing:
+                        st.markdown(f"- ❌ {req}")
+
+    # -------------------------------------------------------------------------
+    # TAB 4: Generator Characterization
+    # -------------------------------------------------------------------------
+    with t_gen:
+        st.markdown("#### 🤖 Synthetic Generator & Vocoder Characterization")
+        st.warning(
+            "⚠️ **FORENSIC NOTICE**: Supervised multi-class generator attribution is UNAVAILABLE because training data "
+            "lacks vocoder class labels. The analysis below measures physical spectral bandwidth, high-frequency cutoff, "
+            "and rolloff characteristics to provide preliminary acoustic vocoder family hypotheses."
+        )
+
+        if st.button("🔍 Profile Vocoder Bandwidth & Artifacts", key="btn_run_gen"):
+            with st.spinner("Analyzing spectral energy distribution and cutoff frequencies..."):
+                wf, sr = load_audio(stored_file, target_sr=16000, mono=True)
+                gen_res = profile_generator_artifacts(wf, sr, evidence_id=exhibit["evidence_id"])
+
+                c_g1, c_g2, c_g3 = st.columns(3)
+                c_g1.metric("Effective Bandwidth", f"{gen_res.effective_bandwidth_hz:,.0f} Hz")
+                c_g2.metric("85% Spectral Rolloff", f"{gen_res.spectral_rolloff_85_hz:,.0f} Hz")
+                c_g3.metric("High-Frequency Ratio (>7kHz)", f"{gen_res.high_freq_energy_ratio * 100:.2f}%")
+
+                st.markdown(f"**Candidate Architecture Hypothesis**: `{gen_res.candidate_generator_class}`")
+                st.caption(f"Status: **{gen_res.confidence_level}** (Requires independent acoustic confirmation)")
+
+    # -------------------------------------------------------------------------
+    # TAB 5: Acoustic Anomaly Detection
+    # -------------------------------------------------------------------------
+    with t_anom:
+        st.markdown("#### 🚨 Unsupervised Frame-Level Acoustic Anomaly Detection")
+        st.info("Uses Isolation Forest / Local Outlier Factor over multi-feature acoustic manifolds to flag statistical outliers.")
+
+        c_a1, c_a2 = st.columns(2)
+        anom_method = c_a1.selectbox("Outlier Detection Algorithm", ["IsolationForest", "LOF"], index=0, key="p7_anom_alg")
+        anom_contam = c_a2.slider("Contamination Fraction", min_value=0.01, max_value=0.15, value=0.05, step=0.01, key="p7_anom_cont")
+
+        if st.button("🚨 Run Anomaly Screening", key="btn_run_anom"):
+            with st.spinner("Fitting unsupervised manifold and computing frame anomaly scores..."):
+                wf, sr = load_audio(stored_file, target_sr=16000, mono=True)
+                anom_res = detect_acoustic_anomalies(
+                    wf, sr, evidence_id=exhibit["evidence_id"], contamination=anom_contam, method=anom_method
+                )
+
+                c_am1, c_am2, c_am3 = st.columns(3)
+                c_am1.metric("Flagged Outlier Frames", anom_res.total_anomaly_frames)
+                c_am2.metric("Outlier Fraction", f"{anom_res.outlier_fraction * 100:.2f}%")
+                c_am3.metric("Anomaly Score Threshold", f"{anom_res.score_threshold:.4f}")
+
+                st.caption("Frame-by-Frame Anomaly Score Trajectory")
+                st.line_chart(dict(time=anom_res.time_points, anomaly_score=anom_res.anomaly_scores), x="time", y="anomaly_score")
+
+                if anom_res.findings:
+                    st.markdown("##### 🚩 Detected Acoustic Anomaly Clusters")
+                    anom_rows = [
+                        {
+                            "Timestamp Window": f"{f.start_sec:.2f}s - {f.end_sec:.2f}s",
+                            "Peak Anomaly Score": f"{f.value:.4f}",
+                            "Threshold": f"{f.threshold:.4f}",
+                            "Severity": f.severity,
+                            "Description": f.description,
+                        }
+                        for f in anom_res.findings
+                    ]
+                    render_styled_table(anom_rows)
+                else:
+                    st.success("No statistical acoustic outliers detected.")
+
+    # -------------------------------------------------------------------------
+    # TAB 6: Advanced Signal Forensic Workspace
+    # -------------------------------------------------------------------------
+    with t_sig:
+        st.markdown("#### 🔬 Advanced Signal Laboratory & Playback Inspection")
+        wf, sr = load_audio(stored_file, target_sr=16000, mono=True)
+        dur = len(wf) / sr
+
+        st.audio(str(stored_file))
+        st.markdown(f"**Duration**: `{dur:.2f}s` | **Sample Rate**: `{sr:,} Hz` | **Total Samples**: `{len(wf):,}`")
+
+        # Interactive Cropper
+        st.markdown("##### ✂️ Interactive Temporal Region Selector")
+        c_cr1, c_cr2 = st.columns(2)
+        start_crop = c_cr1.slider("Start Second", min_value=0.0, max_value=max(0.0, dur - 0.2), value=0.0, step=0.1)
+        end_crop = c_cr2.slider("End Second", min_value=min(dur, start_crop + 0.1), max_value=dur, value=min(dur, start_crop + 2.0), step=0.1)
+
+        idx_start = int(start_crop * sr)
+        idx_end = int(end_crop * sr)
+        sub_wf = wf[idx_start:idx_end]
+
+        if len(sub_wf) > 0:
+            st.caption(f"Inspecting window [{start_crop:.2f}s - {end_crop:.2f}s] ({len(sub_wf):,} samples)")
+            # Decimate for chart
+            step_sz = max(1, len(sub_wf) // 600)
+            dec_time = np.linspace(start_crop, end_crop, len(sub_wf[::step_sz]))
+            dec_wave = sub_wf[::step_sz]
+            st.line_chart(dict(time=dec_time, amplitude=dec_wave), x="time", y="amplitude")
+
+    # -------------------------------------------------------------------------
+    # TAB 7: Multi-Evidence Case Correlation
+    # -------------------------------------------------------------------------
+    with t_corr:
+        st.markdown("#### 🔗 Cross-Exhibit Case Correlation & Alignment")
+        st.caption("Correlates multiple exhibits in the same case for cryptographic identity, acoustic similarity, and temporal offset.")
+
+        other_evidence = [e for e in all_evidence if e["evidence_id"] != exhibit["evidence_id"]]
+        if not other_evidence:
+            st.warning("Only one exhibit exists. Upload an additional exhibit to correlate.")
+        else:
+            other_opts = {f"[{e['case_id']}] {e['original_filename']} ({e['evidence_id']})": e for e in other_evidence}
+            target_ev_label = st.selectbox("Select Exhibit to Correlate (Exhibit B)", options=list(other_opts.keys()), key="p7_corr_b")
+            exhibit_b = other_opts[target_ev_label]
+
+            if st.button("🔗 Execute Multi-Evidence Correlation", key="btn_run_corr"):
+                with st.spinner("Performing cross-exhibit hash comparison, temporal offset search, and acoustic correlation..."):
+                    wf_a, sr_a = load_audio(stored_file, target_sr=16000, mono=True)
+                    wf_b, sr_b = load_audio(Path(exhibit_b["stored_path"]), target_sr=16000, mono=True)
+
+                    raw_a = extract_basic_features(wf_a, sample_rate=sr_a, n_mfcc=20)
+                    raw_b = extract_basic_features(wf_b, sample_rate=sr_b, n_mfcc=20)
+                    vec_a = align_feature_vector(raw_a, engine.feature_names)
+                    vec_b = align_feature_vector(raw_b, engine.feature_names)
+
+                    ev_model_a = ForensicEvidence(**{k: v for k, v in exhibit.items() if k != "id"})
+                    ev_model_b = ForensicEvidence(**{k: v for k, v in exhibit_b.items() if k != "id"})
+
+                    corr_rep = correlate_exhibits(
+                        ev_model_a, ev_model_b, audio_a=wf_a, audio_b=wf_b, features_a=vec_a, features_b=vec_b, db=db
+                    )
+
+                    c_c1, c_c2, c_c3 = st.columns(3)
+                    sha_badge = "✅ IDENTICAL (Bit-Exact)" if corr_rep.sha256_match else "❌ DISTINCT"
+                    c_c1.markdown(f"**SHA-256 Identity**: {sha_badge}")
+                    c_c2.metric("Overall Correlation Score", f"{corr_rep.correlation_score * 100:.1f}%")
+                    c_c3.metric("Temporal Alignment Offset", f"{corr_rep.temporal_alignment.get('offset_seconds', 0.0):+.3f}s")
+
+                    st.markdown("##### 📋 Metadata Differences")
+                    m_rows = [
+                        {"Attribute": "Original Filenames", "Exhibit A": corr_rep.filename_a, "Exhibit B": corr_rep.filename_b},
+                        {"Attribute": "Duration (seconds)", "Exhibit A": f"{exhibit['duration_seconds']:.2f}s", "Exhibit B": f"{exhibit_b['duration_seconds']:.2f}s"},
+                        {"Attribute": "Sample Rate", "Exhibit A": f"{exhibit['sample_rate']:,} Hz", "Exhibit B": f"{exhibit_b['sample_rate']:,} Hz"},
+                        {"Attribute": "Container Format", "Exhibit A": exhibit['container_format'], "Exhibit B": exhibit_b['container_format']},
+                    ]
+                    render_styled_table(m_rows)
+
+                    if corr_rep.findings:
+                        st.markdown("##### 🚩 Correlation Findings")
+                        f_corr_rows = [
+                            {
+                                "Finding ID": f.finding_id,
+                                "Indicator": f.indicator,
+                                "Value": f"{f.value:.4f}",
+                                "Severity": f.severity,
+                                "Description": f.description,
+                            }
+                            for f in corr_rep.findings
+                        ]
+                        render_styled_table(f_corr_rows)
+
+    # -------------------------------------------------------------------------
+    # TAB 8: Phase 7 Reports
+    # -------------------------------------------------------------------------
+    with t_p7_docs:
+        st.markdown("#### 📥 Phase 7 Forensic Intelligence & Explainability Reports")
+        p7_reports = [
+            ("PHASE_7_PRE_IMPLEMENTATION_AUDIT.md", "Phase 7.0 Pre-Implementation Audit"),
+            ("PHASE_7_EXPLAINABLE_AI_REPORT.md", "Phase 7.1 Explainable AI & Attribution"),
+            ("PHASE_7_AUDIO_TAMPERING_ANALYSIS_REPORT.md", "Phase 7.2 Signal Manipulation & Splicing"),
+            ("PHASE_7_SPEAKER_COMPARISON_REPORT.md", "Phase 7.3 Speaker Consistency & Comparison"),
+            ("PHASE_7_SYNTHETIC_GENERATOR_ANALYSIS_REPORT.md", "Phase 7.4 Generator & Vocoder Profiling"),
+            ("PHASE_7_ACOUSTIC_ANOMALY_REPORT.md", "Phase 7.5 Acoustic Anomaly Detection"),
+            ("PHASE_7_SIGNAL_ANALYSIS_REPORT.md", "Phase 7.6 Advanced Signal Workspace"),
+            ("PHASE_7_EVIDENCE_CORRELATION_REPORT.md", "Phase 7.7 Multi-Evidence Case Correlation"),
+            ("PHASE_7_DASHBOARD_INTEGRATION_REPORT.md", "Phase 7.8 Dashboard Integration Architecture"),
+            ("PHASE_7_IMPLEMENTATION_REPORT.md", "Phase 7.9 Implementation Deliverable"),
+            ("PHASE_7_TESTING_REPORT.md", "Phase 7.10 Automated Testing & Validation"),
+            ("PHASE_7_USER_GUIDE.md", "Phase 7.11 Investigator Operating Guide"),
+            ("PHASE_7_SCIENTIFIC_LIMITATIONS_REPORT.md", "Phase 7.12 Forensic Scientific Limitations"),
+            ("PHASE_7_FINAL_CONSOLIDATED_REPORT.md", "Phase 7.13 Master Consolidated Summary"),
+        ]
+
+        c_col1, c_col2 = st.columns(2)
+        for idx, (fname, desc) in enumerate(p7_reports):
+            fpath = root / fname
+            target_col = c_col1 if idx % 2 == 0 else c_col2
+            with target_col:
+                if fpath.is_file():
+                    target_col.download_button(
+                        f"📄 {desc}",
+                        data=fpath.read_text(encoding="utf-8"),
+                        file_name=fname,
+                        mime="text/markdown",
+                        key=f"dl_p7_{idx}",
+                    )
+                else:
+                    target_col.info(f"{fname} (Pending generation)")
+
+
+# =============================================================================
+# 11. System Settings & Diagnostics
 # =============================================================================
 def render_settings_and_diagnostics():
     st.markdown(

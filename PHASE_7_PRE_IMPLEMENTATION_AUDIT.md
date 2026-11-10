@@ -104,3 +104,4 @@ Legend: **Feasible** = implementable now with installed packages · **Partial** 
 5. Authorise modifying `app.py` (including replacing hard-coded Phase 6 workspace values) and adding the DB tables above.
 
 **Not started (per instructions):** no Phase 7 code, schema or UI changes have been made. Awaiting explicit authorization.
+
