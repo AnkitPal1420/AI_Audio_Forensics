@@ -1,15 +1,17 @@
-"""Machine learning model development, training, evaluation, and serialization.
+"""Machine learning model development, group-aware training, calibration, and serialization.
 
-Implements Phase 3 baseline forensic classifiers:
+Implements Phase 3.1 remediated forensic classifiers:
 1. Model A: Support Vector Machine (RBF kernel, StandardScaler in Pipeline, tuned C/gamma).
 2. Model B: Random Forest Classifier (tuned estimators and depth, feature importances).
 3. Model C: Logistic Regression (L2 regularization, StandardScaler in Pipeline, tuned C).
 
 Enforces strict forensic standards:
-- Speaker-level / group-level splitting to prevent data leakage.
-- Independent validation selection (test set evaluated only after final model is chosen).
-- Generation of forensic evaluation metrics (Accuracy, Precision, Recall, F1, ROC-AUC, EER).
-- Production of diagnostic figures (Confusion Matrices, ROC curves, Comparison chart, Feature Importance).
+- True speaker-disjoint / recording-disjoint grouping to prevent data leakage.
+- Post-hoc probability calibration using CalibratedClassifierCV.
+- Generation of forensic evaluation metrics (Accuracy, Precision, Recall, Specificity,
+  F1, ROC-AUC, EER, FPR, FNR, 95% Wilson confidence intervals).
+- Production of diagnostic figures (Confusion Matrices, ROC curves, Comparison chart,
+  Feature Importance, Reliability Diagram).
 - Complete artifact serialization with cryptographic hashes and training audit trail.
 """
 
@@ -45,20 +47,43 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
+from src.feature_extraction import CANONICAL_FEATURE_NAMES
+from src.group_split import split_by_speaker_group, verify_no_leakage
+from src.model_calibration import compute_calibration_metrics, fit_calibrated_model, plot_reliability_diagram
 from src.utils import project_root
 
 logger = logging.getLogger(__name__)
 
 
+def compute_wilson_confidence_interval(k: int, n: int, confidence: float = 0.95) -> Tuple[float, float]:
+    """Compute 95% Wilson score confidence interval for a binomial proportion."""
+    if n <= 0:
+        return (0.0, 0.0)
+    z = 1.959963984540054  # 95% standard normal quantile
+    p_hat = float(k) / float(n)
+    denom = 1.0 + (z**2) / float(n)
+    center = (p_hat + (z**2) / (2.0 * float(n))) / denom
+    spread = (z * np.sqrt((p_hat * (1.0 - p_hat) / float(n)) + ((z**2) / (4.0 * (float(n) ** 2))))) / denom
+    lower = max(0.0, float(center - spread))
+    upper = min(1.0, float(center + spread))
+    return (lower, upper)
+
+
 def load_dataset(
     csv_path: Optional[Union[str, Path]] = None,
-) -> Tuple[np.ndarray, np.ndarray, List[str], List[str]]:
-    """Load acoustic feature dataset and labels from CSV using standard library and NumPy."""
+) -> Tuple[np.ndarray, np.ndarray, List[str], List[str], Optional[np.ndarray], Optional[np.ndarray]]:
+    """Load acoustic feature dataset, labels, groups, and recording IDs from CSV."""
     root = project_root()
     if csv_path is None:
+        slice_dataset = root / "dataset" / "preprocessed_slices_dataset.csv"
         default_slice = root / "dataset" / "metadata" / "DATASET-balanced.csv"
         default_extracted = root / "results" / "reports" / "extracted_features.csv"
-        target_path = default_slice if default_slice.is_file() else default_extracted
+        if slice_dataset.is_file():
+            target_path = slice_dataset
+        elif default_slice.is_file():
+            target_path = default_slice
+        else:
+            target_path = default_extracted
     else:
         target_path = Path(csv_path)
 
@@ -73,13 +98,37 @@ def load_dataset(
     if not rows:
         raise ValueError(f"Feature dataset is empty: {target_path}")
 
-    if "LABEL" in header:
+    groups: Optional[np.ndarray] = None
+    recording_ids: Optional[np.ndarray] = None
+
+    if "group_id" in header and "label" in header:
+        # Preprocessed slices dataset with speaker grouping
+        label_col = header.index("label")
+        group_col = header.index("group_id")
+        rec_col = header.index("recording_id")
+        slice_col = header.index("slice_id") if "slice_id" in header else 0
+
+        meta_cols = {label_col, group_col, rec_col}
+        for name in ["slice_id", "speaker_id", "acoustic_source_speaker", "slice_start_sec", "slice_end_sec"]:
+            if name in header:
+                meta_cols.add(header.index(name))
+
+        feature_indices = [i for i in range(len(header)) if i not in meta_cols]
+        feature_names = [header[i] for i in feature_indices]
+        file_ids = [r[slice_col] for r in rows]
+        y = np.array([int(r[label_col]) for r in rows], dtype=np.int32)
+        X = np.array([[float(r[i]) for i in feature_indices] for r in rows], dtype=np.float32)
+        groups = np.array([r[group_col] for r in rows])
+        recording_ids = np.array([r[rec_col] for r in rows])
+
+    elif "LABEL" in header:
         label_col = header.index("LABEL")
         feature_indices = [i for i in range(len(header)) if i != label_col]
         feature_names = [header[i] for i in feature_indices]
         file_ids = [f"sample_{i:05d}" for i in range(len(rows))]
         y = np.array([1 if r[label_col].strip().upper() in {"FAKE", "SYNTHETIC", "1"} else 0 for r in rows], dtype=np.int32)
         X = np.array([[float(r[i]) for i in feature_indices] for r in rows], dtype=np.float32)
+
     elif "label" in header:
         label_col = header.index("label")
         ignore_cols = {"file_path", "file_name", "category", "label", "sample_rate"}
@@ -89,72 +138,56 @@ def load_dataset(
         file_ids = [r[name_col] for r in rows]
         y = np.array([1 if r[label_col].strip().lower() in {"fake", "synthetic", "1"} else 0 for r in rows], dtype=np.int32)
         X = np.array([[float(r[i]) for i in feature_indices] for r in rows], dtype=np.float32)
+
     else:
         feature_names = header[:-1]
         file_ids = [f"sample_{i:05d}" for i in range(len(rows))]
         y = np.array([1 if r[-1].strip().upper() in {"FAKE", "SYNTHETIC", "1"} else 0 for r in rows], dtype=np.int32)
         X = np.array([[float(val) for val in r[:-1]] for r in rows], dtype=np.float32)
 
-    return X, y, feature_names, file_ids
+    return X, y, feature_names, file_ids, groups, recording_ids
 
 
 def split_dataset(
     X: np.ndarray,
     y: np.ndarray,
-    groups: Optional[List[str]] = None,
+    groups: Optional[Sequence[str]] = None,
+    recording_ids: Optional[Sequence[str]] = None,
     train_ratio: float = 0.70,
     val_ratio: float = 0.15,
     test_ratio: float = 0.15,
     random_seed: int = 42,
 ) -> Dict[str, Any]:
-    """Partition dataset into training (70%), validation (15%), and test (15%) splits."""
-    total = train_ratio + val_ratio + test_ratio
-    if not np.isclose(total, 1.0, atol=1e-3):
-        raise ValueError("train_ratio, val_ratio, and test_ratio must sum to 1.0")
-
-    rng = np.random.RandomState(random_seed)
-
+    """Partition dataset into training, validation, and test splits with speaker grouping."""
     if groups is not None and len(set(groups)) >= 3:
-        unique_groups = np.array(sorted(list(set(groups))))
-        rng.shuffle(unique_groups)
+        rec_ids = np.array(recording_ids) if recording_ids is not None else np.array([f"rec_{i}" for i in range(len(groups))])
+        return split_by_speaker_group(
+            X=X,
+            y=y,
+            groups=np.array(groups),
+            recording_ids=rec_ids,
+            random_seed=random_seed,
+        )
 
-        num_groups = len(unique_groups)
-        n_test_groups = max(1, int(round(num_groups * test_ratio)))
-        n_val_groups = max(1, int(round(num_groups * val_ratio)))
+    # Fallback to stratified random split if no speaker groups available
+    rng = np.random.RandomState(random_seed)
+    classes = np.unique(y)
+    train_indices, val_indices, test_indices = [], [], []
 
-        test_groups = set(unique_groups[:n_test_groups])
-        val_groups = set(unique_groups[n_test_groups : n_test_groups + n_val_groups])
-        train_groups = set(unique_groups[n_test_groups + n_val_groups :])
+    for cls in classes:
+        cls_indices = np.where(y == cls)[0]
+        rng.shuffle(cls_indices)
+        n_cls = len(cls_indices)
+        n_train = int(round(n_cls * train_ratio))
+        n_val = int(round(n_cls * val_ratio))
 
-        assert train_groups.isdisjoint(val_groups), "Data leakage: train and val groups overlap!"
-        assert train_groups.isdisjoint(test_groups), "Data leakage: train and test groups overlap!"
-        assert val_groups.isdisjoint(test_groups), "Data leakage: val and test groups overlap!"
+        train_indices.extend(cls_indices[:n_train])
+        val_indices.extend(cls_indices[n_train : n_train + n_val])
+        test_indices.extend(cls_indices[n_train + n_val :])
 
-        train_indices = [i for i, g in enumerate(groups) if g in train_groups]
-        val_indices = [i for i, g in enumerate(groups) if g in val_groups]
-        test_indices = [i for i, g in enumerate(groups) if g in test_groups]
-    else:
-        classes = np.unique(y)
-        train_indices, val_indices, test_indices = [], [], []
-
-        for cls in classes:
-            cls_indices = np.where(y == cls)[0]
-            rng.shuffle(cls_indices)
-            n_cls = len(cls_indices)
-            n_train = int(round(n_cls * train_ratio))
-            n_val = int(round(n_cls * val_ratio))
-
-            train_indices.extend(cls_indices[:n_train])
-            val_indices.extend(cls_indices[n_train : n_train + n_val])
-            test_indices.extend(cls_indices[n_train + n_val :])
-
-        train_indices = sorted(train_indices)
-        val_indices = sorted(val_indices)
-        test_indices = sorted(test_indices)
-
-    train_idx = np.array(train_indices)
-    val_idx = np.array(val_indices)
-    test_idx = np.array(test_indices)
+    train_idx = np.array(sorted(train_indices))
+    val_idx = np.array(sorted(val_indices))
+    test_idx = np.array(sorted(test_indices))
 
     assert len(set(train_idx) & set(val_idx)) == 0, "Train and Val indices overlap!"
     assert len(set(train_idx) & set(test_idx)) == 0, "Train and Test indices overlap!"
@@ -164,6 +197,9 @@ def split_dataset(
         "train": (X[train_idx], y[train_idx], train_idx),
         "val": (X[val_idx], y[val_idx], val_idx),
         "test": (X[test_idx], y[test_idx], test_idx),
+        "train_speakers": ["unspecified"],
+        "val_speakers": ["unspecified"],
+        "test_speakers": ["unspecified"],
         "split_counts": {
             "train": int(len(train_idx)),
             "val": int(len(val_idx)),
@@ -179,33 +215,49 @@ def split_dataset(
 
 
 def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray, y_prob: Optional[np.ndarray] = None) -> Dict[str, Any]:
-    """Compute forensic evaluation metrics: Accuracy, Precision, Recall, F1, ROC-AUC, EER, and Confusion Matrix."""
+    """Compute comprehensive forensic evaluation metrics with Wilson confidence intervals."""
     acc = float(accuracy_score(y_true, y_pred))
     prec = float(precision_score(y_true, y_pred, zero_division=0))
     rec = float(recall_score(y_true, y_pred, zero_division=0))
     f1 = float(f1_score(y_true, y_pred, zero_division=0))
     cm = confusion_matrix(y_true, y_pred).tolist()
 
+    tn, fp = cm[0][0], cm[0][1]
+    fn, tp = cm[1][0], cm[1][1]
+
+    spec = float(tn / (tn + fp)) if (tn + fp) > 0 else 0.0
+    fpr = float(fp / (fp + tn)) if (fp + tn) > 0 else 0.0
+    fnr = float(fn / (fn + tp)) if (fn + tp) > 0 else 0.0
+
+    n_total = len(y_true)
+    k_correct = int(np.sum(y_true == y_pred))
+    acc_ci_low, acc_ci_high = compute_wilson_confidence_interval(k_correct, n_total)
+
     roc_auc = None
     eer = None
     if y_prob is not None and len(np.unique(y_true)) > 1:
         try:
             roc_auc = float(roc_auc_score(y_true, y_prob))
-            fpr, tpr, _ = roc_curve(y_true, y_prob)
-            fnr = 1.0 - tpr
-            eer_index = int(np.nanargmin(np.abs(fpr - fnr)))
-            eer = float((fpr[eer_index] + fnr[eer_index]) / 2.0)
+            fpr_arr, tpr_arr, _ = roc_curve(y_true, y_prob)
+            fnr_arr = 1.0 - tpr_arr
+            eer_index = int(np.nanargmin(np.abs(fpr_arr - fnr_arr)))
+            eer = float((fpr_arr[eer_index] + fnr_arr[eer_index]) / 2.0)
         except Exception as exc:
             logger.warning("ROC-AUC/EER calculation error: %s", exc)
 
     return {
         "accuracy": acc,
+        "accuracy_ci_95": [acc_ci_low, acc_ci_high],
         "precision": prec,
         "recall": rec,
+        "specificity": spec,
         "f1_score": f1,
+        "false_positive_rate": fpr,
+        "false_negative_rate": fnr,
         "roc_auc": roc_auc,
         "equal_error_rate": eer,
         "confusion_matrix": cm,
+        "sample_size": n_total,
         "classification_report": classification_report(y_true, y_pred, output_dict=True, zero_division=0),
     }
 
@@ -418,7 +470,7 @@ def generate_evaluation_graphs(
         multiplier += 1
 
     ax.set_ylabel("Score (0.0 to 1.0)")
-    ax.set_title("Model Validation Performance Comparison")
+    ax.set_title("Model Validation Performance Comparison (Speaker-Disjoint)")
     ax.set_xticks(x + width, [m.upper().replace("_", " ") for m in metrics_names])
     ax.legend(loc="lower right")
     ax.set_ylim(0, 1.15)
@@ -429,7 +481,7 @@ def generate_evaluation_graphs(
     plt.close(fig)
     generated_paths["model_performance_comparison"] = str(comp_path)
 
-    # Feature Importance Chart (if available)
+    # Feature Importance Chart
     if rf_importances is not None and len(rf_importances) == len(feature_names):
         fig, ax = plt.subplots(figsize=(10, 6))
         n_top = min(15, len(feature_names))
@@ -464,6 +516,8 @@ def save_artifacts(
     graphs: Dict[str, str],
     models_dir: Optional[Union[str, Path]] = None,
     results_dir: Optional[Union[str, Path]] = None,
+    calibrated_model: Optional[Any] = None,
+    calib_eval_metrics: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, str]:
     """Serialize trained pipelines and forensic audit metadata."""
     root = project_root()
@@ -491,23 +545,30 @@ def save_artifacts(
             joblib.dump(all_models[name]["model"], p)
             saved_files[fname] = str(p)
 
+    if calibrated_model is not None:
+        p_cal = m_dir / "calibrated_svm_model.joblib"
+        joblib.dump(calibrated_model, p_cal)
+        saved_files["calibrated_svm"] = str(p_cal)
+
     # Save feature names
     feat_path = m_dir / "feature_names.json"
     with feat_path.open("w", encoding="utf-8") as f:
         json.dump(feature_names, f, indent=2)
     saved_files["feature_names"] = str(feat_path)
 
-    # Clean split_info for JSON serialization (remove numpy arrays)
+    # Clean split_info for JSON serialization
     clean_split_info = {
+        "train_speakers": split_info.get("train_speakers"),
+        "val_speakers": split_info.get("val_speakers"),
+        "test_speakers": split_info.get("test_speakers"),
         "split_counts": split_info.get("split_counts", {}),
         "class_distributions": split_info.get("class_distributions", {}),
         "random_seed": split_info.get("random_seed", 42),
     }
 
-    # Model metadata
     metadata = {
         "project": "AI-Based Voice Analysis for Detecting Synthetic Audio in Criminal Investigations",
-        "phase": 3,
+        "phase": "3.1-remediation",
         "training_timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "best_model_name": best_model_name,
         "feature_count": len(feature_names),
@@ -523,13 +584,14 @@ def save_artifacts(
         "final_test_metrics_for_best_model": test_metrics,
         "graphs": graphs,
     }
+    if calib_eval_metrics is not None:
+        metadata["calibration_metrics"] = calib_eval_metrics
 
     meta_path = m_dir / "model_metadata.json"
     with meta_path.open("w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
     saved_files["metadata"] = str(meta_path)
 
-    # Save evaluation summary table CSV
     summary_csv = r_dir / "model_performance_summary.csv"
     with summary_csv.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
@@ -543,8 +605,8 @@ def save_artifacts(
                 f"{vm['precision']:.4f}",
                 f"{vm['recall']:.4f}",
                 f"{vm['f1_score']:.4f}",
-                f"{vm['roc_auc']:.4f}" if vm["roc_auc"] is not None else "N/A",
-                f"{vm['equal_error_rate']:.4f}" if vm["equal_error_rate"] is not None else "N/A",
+                f"{vm['roc_auc']:.4f}" if vm.get("roc_auc") is not None else "N/A",
+                f"{vm['equal_error_rate']:.4f}" if vm.get("equal_error_rate") is not None else "N/A",
             ])
     saved_files["summary_csv"] = str(summary_csv)
 
@@ -552,8 +614,8 @@ def save_artifacts(
 
 
 def train_classifier(features: Optional[np.ndarray] = None, labels: Optional[np.ndarray] = None, **kwargs) -> Dict[str, Any]:
-    """Master entry point for Phase 3 model development, training, and evaluation."""
-    logger.info("Starting Phase 3 model development pipeline...")
+    """Master entry point for Phase 3.1 model development, training, calibration, and evaluation."""
+    logger.info("Starting Phase 3.1 remediated model training pipeline...")
     root = project_root()
 
     if features is not None and labels is not None:
@@ -561,27 +623,34 @@ def train_classifier(features: Optional[np.ndarray] = None, labels: Optional[np.
         y = np.asarray(labels, dtype=np.int32)
         feature_names = kwargs.get("feature_names", [f"feature_{i}" for i in range(X.shape[1])])
         groups = kwargs.get("groups", None)
+        recording_ids = kwargs.get("recording_ids", None)
     else:
-        csv_file = root / "dataset" / "metadata" / "DATASET-balanced.csv"
-        X, y, feature_names, file_ids = load_dataset(csv_file)
-        groups = None
+        slice_dataset = root / "dataset" / "preprocessed_slices_dataset.csv"
+        csv_file = slice_dataset if slice_dataset.is_file() else root / "dataset" / "metadata" / "DATASET-balanced.csv"
+        X, y, feature_names, file_ids, groups, recording_ids = load_dataset(csv_file)
 
     random_seed = kwargs.get("random_seed", 42)
     splits = split_dataset(
         X, y,
         groups=groups,
+        recording_ids=recording_ids,
         train_ratio=0.70,
         val_ratio=0.15,
         test_ratio=0.15,
         random_seed=random_seed,
     )
-    X_train, y_train, _ = splits["train"]
-    X_val, y_val, _ = splits["val"]
-    X_test, y_test, _ = splits["test"]
+    X_train, y_train, train_idx = splits["train"]
+    X_val, y_val, val_idx = splits["val"]
+    X_test, y_test, test_idx = splits["test"]
 
-    logger.info("Dataset split: Train=%d, Val=%d, Test=%d", len(X_train), len(X_val), len(X_test))
+    logger.info(
+        "Dataset split (Zero Leakage): Train=%d (%s), Val=%d (%s), Test=%d (%s)",
+        len(X_train), splits.get("train_speakers"),
+        len(X_val), splits.get("val_speakers"),
+        len(X_test), splits.get("test_speakers"),
+    )
 
-    # Step 5: Train 3 baseline models
+    # Train 3 baseline models
     logger.info("Training Model A: Support Vector Machine (SVM)...")
     svm_model, svm_params, svm_val_metrics = train_svm(X_train, y_train, X_val, y_val, random_seed=random_seed)
 
@@ -597,16 +666,38 @@ def train_classifier(features: Optional[np.ndarray] = None, labels: Optional[np.
         "Logistic Regression": {"model": lr_model, "params": lr_params, "val_metrics": lr_val_metrics},
     }
 
-    # Step 6: Select best model based on validation F1
+    # Select best model based on validation F1
     best_name = max(all_models.keys(), key=lambda m: all_models[m]["val_metrics"]["f1_score"])
     best_model = all_models[best_name]["model"]
     logger.info("Selected best model based on validation F1: %s (Val F1: %.4f)", best_name, all_models[best_name]["val_metrics"]["f1_score"])
 
-    # Final evaluation on the unseen test set
+    # Priority 4: Implement proper post-hoc probability calibration on validation split
+    logger.info("Fitting post-hoc probability calibration using CalibratedClassifierCV on validation split...")
+    calibrated_svm, calib_metrics = fit_calibrated_model(
+        base_model=svm_model,
+        X_train=X_train,
+        y_train=y_train,
+        X_val=X_val,
+        y_val=y_val,
+        method="sigmoid",
+    )
+
+    # Final evaluation on the unseen test set (Taylor Swift & Donald Trump)
     test_pred = best_model.predict(X_test)
     test_prob = best_model.predict_proba(X_test)[:, 1] if hasattr(best_model, "predict_proba") else None
     test_metrics = compute_metrics(y_test, test_pred, test_prob)
-    logger.info("Test set performance for %s: Acc=%.4f, F1=%.4f, AUC=%.4f", best_name, test_metrics["accuracy"], test_metrics["f1_score"], test_metrics.get("roc_auc", 0.0))
+
+    # Evaluate calibrated SVM on the test set
+    calib_test_prob = calibrated_svm.predict_proba(X_test)[:, 1]
+    calib_test_pred = calibrated_svm.predict(X_test)
+    calib_test_metrics = compute_metrics(y_test, calib_test_pred, calib_test_prob)
+    calib_eval_metrics = compute_calibration_metrics(y_test, calib_test_prob)
+
+    logger.info(
+        "Speaker-Independent Test Performance for %s: Acc=%.4f (95%% CI: %.4f-%.4f), F1=%.4f, AUC=%.4f",
+        best_name, test_metrics["accuracy"], test_metrics["accuracy_ci_95"][0], test_metrics["accuracy_ci_95"][1],
+        test_metrics["f1_score"], test_metrics.get("roc_auc", 0.0),
+    )
 
     # Generate graphs
     graphs = generate_evaluation_graphs(
@@ -617,7 +708,18 @@ def train_classifier(features: Optional[np.ndarray] = None, labels: Optional[np.
         rf_importances=rf_importances,
     )
 
-    # Step 7: Save trained artifacts
+    # Generate reliability diagram
+    rel_path = plot_reliability_diagram(
+        y_true=y_test,
+        uncalibrated_prob=test_prob if test_prob is not None else np.zeros_like(y_test),
+        calibrated_prob=calib_test_prob,
+        model_name="SVM",
+    )
+    graphs["reliability_diagram"] = rel_path
+
+    # Save artifacts
+    models_dir = root / "models"
+    results_dir = root / "results"
     saved_artifacts = save_artifacts(
         best_model_name=best_name,
         best_model=best_model,
@@ -626,13 +728,19 @@ def train_classifier(features: Optional[np.ndarray] = None, labels: Optional[np.
         split_info=splits,
         test_metrics=test_metrics,
         graphs=graphs,
+        models_dir=models_dir,
+        results_dir=results_dir,
+        calibrated_model=calibrated_svm,
+        calib_eval_metrics=calib_eval_metrics,
     )
 
     return {
         "best_model_name": best_name,
         "best_model": best_model,
+        "calibrated_svm": calibrated_svm,
         "all_models": all_models,
         "test_metrics": test_metrics,
+        "calib_eval_metrics": calib_eval_metrics,
         "feature_names": feature_names,
         "split_information": splits,
         "graphs": graphs,

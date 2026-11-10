@@ -1,0 +1,3002 @@
+[
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file100.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file100.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "85e439c59854e8047d640c5536e5640a8d40cf15391f4b4b92304cdd81220d76",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file100.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1000.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1000.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "2d7c44c842183f3757ee395485123f0f5a1991eb6a4713b8d6ef2e52910658c1",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1000.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1001.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1001.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "5179385e8dbbc9545295ba1ff9739e52dd9d24141a22768b62544b952271b772",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1001.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1004.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1004.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "857c2a533ed45739c71412ab53b7b01817e9419b83c675822d09ab962e48a6ae",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1004.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1005.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1005.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "08f87ddfeee0478287f55fdb5961324635e16550ebe1ca59c043c3d6ec432f9a",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1005.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1010.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1010.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "adf0ba17c2604c91b46b5d1048108770ba34e2887521aae69ae0d48bce6a9aae",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1010.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1018.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1018.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "83ccdf289c8903e9ddc05c58103d0b0740b047a9ddd09532920ff3ede79528fd",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1018.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1019.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1019.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "3953864f6ee4b29f8a0b33e44cf0a2dc36e69acbfb4e4be97c9466fd3a46c02a",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1019.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1021.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1021.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "14010abbd8f6405ff1aa48579aa1828c680003f8a880400fe85e079f13adda13",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1021.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1029.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1029.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "e0904477f270ec6c0cc893e62b385a4078d68c1695d117847fbc49fcff7a5456",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1029.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1038.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1038.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "daa5a2c206ff8949a9ec87c8e322232cc7fc00d07255cf5bff34d8798cbe8bd5",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1038.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1040.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1040.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "da15fb328d71db236cb34af2620c787e41783af1bb5a5419466ebb5d2e226c4f",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1040.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1045.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1045.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "61dd553ead91e903dea203bd5119ee3712ac23b7f40d9f41f56c8845718a704c",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1045.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1046.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1046.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "7e7d2a48ad0368e41de88ecb47194e2d293b311784fb5c82b842b4e03d8a8b28",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1046.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1047.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1047.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "8f559081f7dffaf4d18139bb39cf181037070ccec6a5baea33a1960337c3ee85",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1047.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1048.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1048.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "765546cc4c2f56558efd5be5fccf4fa9e0beae04b4788a182709f3c3e352c464",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1048.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1053.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1053.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "2ec6de31bed01987d5497b06e67c5990d5cb6514eb5e071cc800cda4ff38a56f",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1053.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1054.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1054.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "2c03d8bc597fccf78ba80de6d9c80c1362ab28695a520c38735f77cf5ee3f9c1",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1054.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1056.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1056.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "c061c58eade8d3e0c99780e0c08793427f2e8fe0796cc183aee152d01ca83a8c",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1056.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1067.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1067.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "f849834a6ebaaee4f494b71ada92f89541906260c1e193330939d63a872d6aff",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1067.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file107.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file107.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "b4a210ef4a1ec6dbdaefa62e2d1c5ba8925e535924408c9929d839f3c32c0635",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file107.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1070.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1070.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "37778c5d054bb40a87ad3d56bac0f560c22fafb00c7bd0259b0aa1eb81d2d043",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1070.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1074.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1074.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "9f28c003961796a041fe11f3a828e682d7d0a7ca99fb85c32bf40cc4438bae7c",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1074.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1075.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1075.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "08db4b5c010f1269ee9bf1b08ff179ec7be5ed825951682693faefb1fb0de144",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1075.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1083.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1083.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "cc11e7293ea836d42ad949fea20389674901589e61d1b486cac6f5214379d72b",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1083.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1087.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1087.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "44c1f74d84fd48d2ecb904d266af36f4cfd62bf58b186cca03ac9b3629a153f4",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1087.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1097.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1097.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "c4629b929cc60b0d0886705014e54527d0b15dc739c46c0bf756a3fb5d79cfe2",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1097.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1098.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1098.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0e831dceb4d65e15b490162cf867414fc7780293d92fb8cfc117f438896e8e75",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1098.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1099.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1099.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "aa96b3ca9b44e4e6feb4137c6be0dbf6591cbd156f9c8d0ce38867a232bb5ab7",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1099.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1102.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1102.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "db71807c05de4f76ff636773f0bc41b5dd2788bd561fc5c9d6f587443a3a1e12",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1102.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1104.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1104.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ad4349aeecd3e19e6feb6e6be99235b56a3906aade2094b94bece7f240dcdfa5",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1104.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1106.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1106.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "83d31aa3e5141197e25c74a9cc726dfb3786b567ae9bec3c0626d2c13a9097e4",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1106.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "a28b046789636261e68088818092ea29a33d2a2e5036a6c87007f97324ca6c76",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1121.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1121.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "77cb1ded4c4b5832b6aeccac03ea236981dd2ba9318f41df1e74ed2ca27c40be",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1121.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1125.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1125.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "c1d29522a9dc59f42f0125596c36ba84cc809bc7e2a593480c5f6a4052c7cb1d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1125.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1129.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1129.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "456879aca64af475b7c66ce31dade0e4c22e92585de6fd1da507cd456b8e3b0a",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1129.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file113.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file113.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0294ca38dff63e453027e5d3be50f2b08e985df5280450955dd142d48164efda",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file113.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "7fa65e9cd4023b18cdfe8fe9634ceef6ebec7ab16302cf7b5722f8e32afa6400",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "610e1626a4fd80b1a8ba77acadb9e35ff4f4ad9c574234ba8df536d2db937422",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1133.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1133.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "1d208cfa0ef0d9fdf560325e73bbb73157b534f8bd9ee6d9d9bcb64738c43f3d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1133.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1135.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1135.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "89cc832b862cda15c2595664cc7d578fba1150a52a73a8379c5e0ab1a5fb5d0e",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1135.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1149.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1149.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "d05a4034cc3f3b92b85db236488a6848b94d8e8e228025851b08663598017365",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1149.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1150.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1150.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "a6bb7f78f00263883446d1aa33d95ee1c0b89fc68ffbdb2e1ccc9d8a15ef7d57",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1150.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1152.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1152.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ab74ea3676dab5bab85157d28af9395c1c6014595b7fc77873ec8dc18ef5f164",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1152.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1157.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1157.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "d38563da34fddcf9f49d1458204be8e670cb7c403c941d436b3a799b8c476a8e",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1157.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file116.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file116.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0de79636ea91cdbe6eab4f41902a2990d8cef048fa4be74f52821a219419b0c8",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file116.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1162.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1162.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "28b7a006ad2d8c1c4100e324cb9a4293036e74578b58bac4efc5a4e8e2449dbb",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1162.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1170.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1170.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ab17876f1a4ce4d4f4445041f562f3baa1caf874b454c775bdc64e05eea18767",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1170.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1171.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1171.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ef1ce90bed35a8ca31829c01ec07c7c5b45842dd3b101b3577a68475b54f376c",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1171.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1172.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1172.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "a9ffec5cc48bcab07521a232476f1e48483a87011153f453564f93fa97478ad0",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1172.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1174.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1174.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "152e6e2e72e85f3199572dc33304204775bcf15220e6c42990bd79976ad287b4",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1174.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1183.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1183.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "62970a05abe7fe64ca014ad908c681ef25efbb145739f892001c3f4ff187096b",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1183.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1186.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1186.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "3eaa6000851925eb36c839927b9aea56138dacd9d2a4f82ab0ac34d3dc3b53c7",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1186.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1193.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1193.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "314469ec6694d2ac70034ffcee53d81f5ee3e70bdfe848812691093b32cec729",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1193.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1204.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1204.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0b3e13ceeb2418bc7717f5b663038775ae218729651e53888697e9e05121f28f",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1204.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1220.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1220.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "9511d8f357c067933c5a50f83733661647965b78dedba828fabb52a7c690742f",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1220.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1221.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1221.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "4f3e0c178e6a019858386d1dd79eb2e889dec8620b752c1f02a6ca050362ce34",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1221.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1223.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1223.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "2fab697a9422dcc61d6cd68e3057220b93b3b8180bfe6ba3673602eb97c8ef8d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1223.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1230.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1230.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "93dcf09f66a557754cb47acfc504ba9bdce0e4e29446cd58acb0488baba0d825",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1230.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1231.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1231.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "800daeb4fcc093dfbe0f79505fc3c1a661d00ac107ae0379e838cf36c06ee7d0",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1231.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1245.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1245.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "5715652fa13e94bb722c31609a18755037e693282cecde1268128d1ea0591dad",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1245.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1250.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1250.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "e150ee58959c2d79b7e44cfa63860209deb474f11171fc7c4f60ba4223331c23",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1250.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1253.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1253.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "e3cf197ede50728425d4bb53d1bf58b89a1d7acf1aef166abd49a1f02c169b8d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1253.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file126.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file126.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ae5a60e372c2ec240921b0d5a72894b84f6c207bae8eb1148022c3c9f244070d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file126.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1263.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1263.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "e53f695b90e0d75efbdecb15eaba6a06419ca5202452833fd83f3e4d638290ed",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1263.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1265.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1265.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "a368aa26bc74faa72c13eb4c9fdf9bd06129655e35db0ac010a47050b7c4a4bb",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1265.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1268.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1268.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "c373683024ae174b227d6c3320c60057d062f1b46463e722373b525863db1720",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1268.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1269.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1269.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "6a00094ada04febfedfb5319179259dbc9df53c6435a90454579d4deb2b8c0ca",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1269.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "b1ae078831b11b6bc648f529125d6a5e6f9f011ac6a73db550aca6fc87c479f5",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1270.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1270.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "372cf034718bbea44def178c87656b24a081d36bb9bf48485869079e4f3cb1a0",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1270.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1277.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1277.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0e8d2f7515e7a4046862c865349d6b01b3c24c38a22aa55cd80af27a1e9f7520",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1277.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1280.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1280.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "8fafe1fb1c7a6752412a591a768c987c76d149670ad29de0b9cb3631c0e7c7af",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1280.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1284.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1284.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "35f63c7b3d11513e6064d0e4810e6ec8de28e94be8fd8d0504e4ef96bbc5c7d1",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1284.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1286.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1286.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "4feb374b79a85ec0831d892ec633f6f84ead42cff7515301a86a4a2d5b15949f",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1286.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file129.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file129.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "28726201e9c98f8c35fb2414a4cbac9462259fed2414b0110f33a008b1fea93c",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file129.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1292.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1292.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "6f0d05ec2d8fa4fdf955ddb1b3c21d4e7349010e4ba0454be7892bacc46747b9",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1292.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1294.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1294.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "8e1376c917cb899b9cd570226fcd62d58cab926e240f9bc214b869a4afdb08cb",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1294.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1296.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1296.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "22905be14cf24d249d33fc995a9ad08c30404368420a64bfc6aa44309833d616",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1296.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file13.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file13.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "19b71e3abe48bed07258d5303cc4d48c7cd83a7c9becf722a29fb6909b2e4037",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file13.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "1d8bd5c83ff6cd2ee41dd919f99d6298b9b29815dee0161abb5c19a292ae87cd",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1305.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1305.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0c5b1a2a7c986ab3e748d3984b542b863bb5e794d273b388168ce668ae717f5b",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1305.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1306.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1306.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "26df92ab5d884cfa1d4fa9732ffb16afb068ed17c44e84cbab7ff0f0b81ddcbb",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1306.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1313.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1313.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "a4e2d8db3ed3b8dff94e20371bcc7b187d07a3909034ff214dd52ca3032bfe35",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1313.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1317.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1317.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "8cbda617e9dad2df5d81092078908ac0bd9efe2631ced06aa179fe904cc662fb",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1317.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1321.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1321.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "13aa50482064725bcb915c5993274321247fb78d019a76425cd7f216dbf2c5ec",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1321.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1323.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1323.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "675edd94371400f7d71b53669c9cae1b247dc9e9a832c02ec9a958a9430fc91e",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1323.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1325.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1325.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ec1300be3fa0a1fa667da107e3314fad1ff5128b097a113992f8dd595b4e958f",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1325.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1328.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1328.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "daae6d21e6b18d4095cac8bc2584016ea655ebdd1f3e659f50a22240508a1593",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1328.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1330.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1330.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "b7cffb9eb4267ec97aeb0f936cf97088ec788b06c6f74fed0c6dd2a0902fa39d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1330.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1331.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1331.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "58674f77365d288dd6a548fc6f66b71b93d3935791f181475484b9000e84a394",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1331.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1334.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1334.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0f35be4df53e9a3f666a9a16d37216d795e89d4303af38b7ec7b7aabac01fb08",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1334.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1339.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1339.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "265118ad48d12b945e29768fe62a9d20c27c289288b356139ccac86e50e544a4",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1339.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file134.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file134.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "b134b6c6535207a714b4f8454ce708ee4802b75260fe62ee7ba2f46ebad48a67",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file134.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1340.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1340.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "286f8b948961d4088392df72f0ff1a1c478054d5579562cc28130eac7510db1d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1340.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1346.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1346.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "8ee691a1029324a5e4e0ba45c58809660ba156e605ee0320e46bf5b779131541",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1346.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1349.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1349.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "f1289434557387eec35baffcbf2e48dc0c85dc23e1930c0b7762c2cd18c7d0e2",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1349.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1352.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1352.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "110685d012b06a019c81ad19d0ba56e92325393c81815fa17ccb6a3eb6044846",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1352.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1354.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1354.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "60dd61bead3c552b5001754b2df15a04d7a1636df6c24585748dd718bb6a3024",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1354.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1359.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1359.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "580a24eca1676e250445f4564b182062cdd80f7656cffb8751c398e823c1d7d7",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1359.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_fake\\file1361.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1361.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "935087ca3e931126023325c4c5b1d263e3b7a1344c3a4cfe06e15af00e500e6b",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/fake/file1361.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file10.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file10.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "eb5f9a0a0cebd4fb9a7002c2f7efef1ac2649269af0c7c5cf67136cb701d9ac5",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file10.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1006.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1006.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "980a059b7159ceae16036d4c65d50cffe83e70de851277efc4908157d96e1908",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1006.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1009.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1009.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "270dc4481c121f0bb0a63a00a678a29e863991499ca8bd6e4a2c38e5be6c93bf",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1009.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1010.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1010.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0bdb9fc0ac326190689dd4741fff2f99948fecbe695d396226902726078bc0e5",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1010.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1022.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1022.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "38e20a89423caef137a64d704efe6417c08cfb9feeac0dcb592438660e2c7eb4",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1022.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1031.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1031.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "289a6b4f640dd541bcda80c13f03a6d3fed2f7d0d0fa62a04d351a04a97d37ee",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1031.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1032.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1032.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "90a78f2c3541eb4dea295e4494adbabe6869223398a4117b77a41d03f6ffa2cd",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1032.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1039.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1039.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "6e2bfe722dca6570e828175c2232557bc65709352fa0a678829dd6aae2402eb0",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1039.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1044.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1044.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "5326647fd2a4020498b5a162d140102ca2d70103ede28a3b8dd045cf0ce4fbde",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1044.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1059.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1059.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "a1015e45d923cdaf4077bac476d7f328454b818a1a6e3a0c7d8db824f9b1af2f",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1059.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1068.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1068.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "3d169a74583288560423174b2d59c69b694a49c46f84320339af2df382507839",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1068.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1074.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1074.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "6d777d8a07c6f87c1235abeb7fb5f27c43808af07e45b84d4fba54f2e35dac5c",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1074.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1075.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1075.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "1cd64a3f1ca35caa34b1328325ac9497bd578217098d3d5d709b8a595cd18afa",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1075.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1080.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1080.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "a067ea9b39cc6ce73d4dac63abd491f14419331f1479ee8c532e4712894dbcec",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1080.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1083.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1083.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0fc545ee3ac668132ee0e895a6a296b89c041ae5dec154d706a2c5ed5869806d",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1083.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1087.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1087.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "40024c59701da80c6b86dc6aa1ddb0cd818045b7f813d3aad26c72d517dc3379",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1087.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1088.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1088.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "b750421e28f5996613eb0cd91e3994e91430fb44071927b5c1e66851dd49b9bb",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1088.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1089.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1089.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "e1b682b61e30164458c09e9006339d34142131c7f9d9cdd4e575bd32819e5c91",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1089.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1093.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1093.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "dc6a0200d4905a7b2c0c9961d706b007c143563896a6d01bbf8fac05b1fc7967",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1093.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1097.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1097.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "828cd70d92d34b496d4f41394836e23d449ffc2423656c6f5444d2a4ad507243",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1097.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "b9f7a3a436989859b5007a41e6679498349fc795e6bb632c1c1142091a913589",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1101.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1101.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "905047c588df379a67c9cef75af5ac416402febece89aaaec5d062b8967ed9ec",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1101.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1109.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1109.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0cfe93775758fe585dee085cab9329e08025644b4edd8e2b0b0ee1678cd00d12",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1109.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "4dd6536804b0f8125a390ebcc3ecc90c7791fe5e5ab6eafcc0378e829afcc207",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1110.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1114.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1114.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "df126f3ab570a337f8d647d23840d6a9f1f35efea490cc68a3f9ecc8a495202a",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1114.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1123.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1123.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "fc2484d5c833b14716016f1270da7806de89e3469c3e7f5a55ce30686c948487",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1123.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1125.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1125.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "03051a9e6711b907f3b1cf7d434b96c9b1f2c927d773faa1973a4e6891f9831b",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1125.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "64f40274dfabb723378ecd4753fc082bd0b5bba692127b420db193287b1b19c5",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1128.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1128.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "04745d5a59eb50c447da1f5fc9e12283675f819797e70887879a3fbc62669e59",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1128.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "78a69d6c4425edd4e29acda840a8758a88ae80e12f4df178e04ebc46a7517ddf",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "3bef72d78c70c8eb80abe330da5ef2c676fceb8133d6fc01f8e705270f543b38",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "1dcd72f6b994ddfdc0995cac1124109ebde304f5bca8caa664127b2e08bd446f",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1137.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1137.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "15d450eedea23fd09b27538a0d52863958f01c8b459c213cf9772dce1221bdd9",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1137.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file114.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file114.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "d0ce67ea7811f55800571853a56697608978bf352757c664d6c64bf9173c512f",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file114.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1142.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1142.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "d7dfd9f0352521adbc1566fb271ea5cac400489f5d4ae01ed80d929ce472de88",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1142.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file115.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file115.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "9d8d9d6a2852a0e393b2a41e7cba5619f70d1d1f8e7c18d2e49bc3ba47209dec",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file115.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1151.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1151.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "2e8c9c677abd66ae5db3d9fdd7e88c5b685811455616ec279f4b019a23f3ac4f",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1151.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1159.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1159.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "db03fab13a0b0842f9e40f338a68ce87767c7beb6088d4cfc4c0bc365953d958",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1159.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file117.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file117.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "32eae0508685e8a93cb9c3cce33ee216f4079824afcf122611e41fbab185ffd6",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file117.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1177.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1177.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "418809ad9e25f20ecd84d91d1762e38a7c67d7581ab7638dc25d64f0af3ddc4f",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1177.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file118.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file118.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "d621a08418366e86fee2e9c3b3782a308278498c4aa39773d1f0b1794887b6e8",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file118.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1180.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1180.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "b8c50199e63beb773221cb992da9b966d14e25a8e0051fda0725a38c981de21a",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1180.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1182.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1182.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ab63bc4ac468497221aa45ab4910f859b467082e4e298b51599d0659c978e5ff",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1182.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1183.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1183.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0ce9e4b5477532f28de3f3594d89751ecd00e53389d1887cf5732e9c1b3ef210",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1183.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1190.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1190.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "d72b99f97e39a3b1b14031b14c7f0cbd6ec1a11f3ea06c00f8b71332daf2ace3",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1190.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1196.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1196.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "19b43437e365f08e585391a0848870c7c2cdae97ed4ff5099bd8a2db31878bb4",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1196.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1198.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1198.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "968ba6e4cc7e75eacf2d3cf0e9da79e544cb5d68d82a2fcf775072715134b507",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1198.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1204.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1204.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "755de7aa6f139d3b5e6096fd4464db5ff57d0bb7eff4ae1634c2d1d0850e42b5",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1204.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1207.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1207.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "9016ed876cb850d2e01699e816dc819804be91a27f182b603ebe21e8d6a3f034",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1207.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1208.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1208.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ba8c7606547cef273648ff2f22632fd9021ca128235f56a05bef4021c120b5d3",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1208.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file121.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file121.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "7607f5f976c3382e0f73ccba21dbaba4ab6c8949aa47100a038805198045c06e",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file121.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1211.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1211.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "f5c791a7dc4978860dcd5ef1c7c9416c6f18221c98be6f97d2dc75e41e6c7af7",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1211.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1213.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1213.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "1e6b23f4bdbe240dc118c7e77dbb3379fded01bae2061003650b6d0d961d3705",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1213.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1216.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1216.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "8563702a7cc65290a486d524f16dc8c73bbe3bb336cf1bd7ba56a1a9ec268da1",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1216.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file122.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file122.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0254590e8353c3636e4e1c50e699e499b6fbb6c27dab969651d10905617132d6",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file122.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1221.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1221.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "72844e93a093d0e04f3c1c43d96580adf598f491684b62937cce64262aa3908b",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1221.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1222.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1222.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "e9f1f796b989a40de7c939e1b38b638f9332ca485b12cc7da11ed4e34bf09d47",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1222.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1230.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1230.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "bdf77e627fe5a6d98bc869e73c953a077c26c406195ef56a7a05e7c989c545ab",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1230.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1234.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1234.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "c47cef81221400740558962ef43ec4c3dd3e0b0069f8865a9b506cd36b84f11a",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1234.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1237.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1237.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "55ab5ae88b75e86b0376f17547b65105f4be66637522880025e9431c0e6f2d83",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1237.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file124.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file124.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "66f0f91c526a08982872df9ededa206bd737bbe91da7274d5d6333411c841793",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file124.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1245.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1245.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ae67dcfa4cd61a23fd13354324a7d780bdcac10586b65e6d07dc195e12ca1346",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1245.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1246.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1246.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "5d9af14a232c3454bb87852b1ce534b0c2a1df64de331c15a71b982d71b1ed53",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1246.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1248.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1248.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "d8883a8276db67a5fd4d9a77c0ac69c29b33c9bc09f074a387d1ffb326b59b74",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1248.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1249.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1249.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "f026bd24dd2d0b9368bcdddb5b05d2d43132146d4db5bc58cbc9dfde3d4824ab",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1249.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1251.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1251.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "33e33be3a07a030704aa3bb53a65b3c34ca81936e0dba8f1786869cbbcc1ce9c",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1251.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1257.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1257.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "6d246c78f18b4ec82fd7cdf119f5f629cdb2903794602a5868b72e0844b50f13",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1257.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1259.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1259.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "1f40441aeb021ff1a0ddcc4ad43e8e7661074134e946c5ea9a804642615e458d",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1259.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1260.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1260.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "c40f364531896cf851670d4d850da602982633c1311490ecc645ca0521cfd2cf",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1260.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1262.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1262.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "66ef21afb5ff7841c3f07cd70fc60272b68061adfd66c724a4926908f9511e5d",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1262.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1265.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1265.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "4b85e011a2ec381ac847febe71c269dd9b7bbf94c1204ee51866afabb24f6127",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1265.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1266.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1266.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "98cf05b919f714833e7e2378ad1a53add46ad8fc705fe3be2fd141bfe2082fef",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1266.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "0ec2556e64eb8f471458c1b86326c1e31981ea34839a9ac7e9c74cbd9ae0f9dc",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file127.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1270.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1270.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ca17e34de87a062fa9a98e046980a85476cf8ea96034bd5a0afc2fadfc0c7cd8",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1270.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1273.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1273.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "07e2deb0ba1b205ddd02954b66eb73520be062469b4a821dedc1a2988e851c1c",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1273.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1274.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1274.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "74c57246555a5a7262a6933d4909e2f60bf5acff1d0844dcabc40a70e6342c87",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1274.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1276.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1276.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "cf5b8fc737d7c08324871d4989b7a12d12f1d0d688c93d66d01806b2f0993d7c",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1276.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1278.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1278.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "86e0b1c063f0482393e6a95e27c6434cbddb2c59bbaf5d3c3e1d9863c2c32e03",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1278.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1279.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1279.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "902465681cdabc19b70471bcfd1ed3333d1ab2defb0df321191f39d9538a2865",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1279.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file128.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file128.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "7ec5d156545129ae533b978768417579219dbcae92926470c44660fb23f4519d",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file128.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1281.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1281.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "e6d1dc4ecc8b70759c0770cdd1dcda959bec10da637278052572ac0356c7ac8a",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1281.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1282.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1282.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "10e0b26959d3ed9cbf6e84111aa3d1755496261b7b25171097f13b0882cf2a87",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1282.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1288.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1288.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "d8110642d70d224ed1c58c51e0fb1b6ec2c8010b8a72eaec7a915f4b1d2826b1",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1288.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1297.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1297.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "78909914413deeafc371de8895ae80f807702a1b13e5b79bfe6d886a37d58345",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1297.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "15912dd69541d028b4bc233d1526f2436b6aa6080823fa8ded742b58122c0b19",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file130.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1305.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1305.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "a54796af526f12bfa65bf148a423fd838980777db18afd94a9267ba2a2bb2372",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1305.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1306.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1306.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "c8a33d92ec9849eedbd9f951e8a4135b89dadd09ae80e1364d257367b5425625",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1306.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "86fa46784acb3d113cf6d599063d9f17c09eae47139dc1a51300526faf9b8934",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file131.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1311.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1311.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "2287b75b6e5ac4fd40e766a22a482b3fdbe3e2eabf7fbc3a093f978b12fc105c",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1311.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1312.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1312.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "9af8c5fe68698250daa8932ca1042eaf3035c11db7e85d7f120afac21f4b7bd8",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1312.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1315.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1315.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "7a6f6791cbbf60cf8163edd472a5661784d0cf505bbe06d8d74e074fa46895ad",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1315.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1316.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1316.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "814d80608b18cd9c38edc587d6a62e926cfd1aaceb260c773ee03f1be8d07541",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1316.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "463d7e9bddd048209273fe463bbda9d63c5321d764ad1f10f96862c4d5d43766",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file132.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1322.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1322.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "2a22edd56351e1263b2c2b922f3e31ce7d309ebd98707bac2a3f0d6950c83740",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1322.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1328.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1328.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "dcce4be3ccf2d94d0ea169a0fc33161c20f9b0e156445a34e43ac4c796ac7906",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1328.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file133.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file133.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "cbc7ba4b6aa86c5404fcdb011b5c8a8f7120b50a8c4afd56b5d06c937e77a001",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file133.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1331.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1331.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "ffe6c72ee60b2cbd01293517ee9886905c93f64aa763acee5e0e0a32e9375192",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1331.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1337.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1337.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "38cd484749b318cec8cef69885b6cef872b0d3cb932d579444444fa531837b0f",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1337.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file134.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file134.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "7a6c6cc4bc1b061e43d7c0eab5b7dc25b282094221695e3ea8b45c3d2183efc5",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file134.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\clean_real\\file1340.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_name": "file1340.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "file_sha256": "f45cf9a87ebe098ed3e558bc92eb1d9f69f72e5c6a4149ab06cd6b4bf63f2e96",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_2sec_Clean",
+    "original_archive_member": "for-2sec/for-2seconds/testing/real/file1340.wav_16k.wav_norm.wav_mono.wav_silence.wav_2sec.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13014.wav_norm_mono.wav",
+    "file_name": "recording13014.wav_norm_mono.wav",
+    "file_sha256": "9ca71fc3e87b20a72c2f752809124ea48f44f9335071f15e8d6830786abd7f4d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13014.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13015.wav_norm_mono.wav",
+    "file_name": "recording13015.wav_norm_mono.wav",
+    "file_sha256": "e1c7d125d9f39e3253ac965338bba66027931137fc1d23cb4197f5572c4b69fc",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13015.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13017.wav_norm_mono.wav",
+    "file_name": "recording13017.wav_norm_mono.wav",
+    "file_sha256": "a180fa9a8df0d8f584e161900d83380be55c695ddd777479bc9e7ad43ce3d426",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13017.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13019.wav_norm_mono.wav",
+    "file_name": "recording13019.wav_norm_mono.wav",
+    "file_sha256": "6fc5989ac23c538895a1fcb46b82af660410c7e0adfc1a6aeb14195c3b0b21a1",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13019.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13020.wav_norm_mono.wav",
+    "file_name": "recording13020.wav_norm_mono.wav",
+    "file_sha256": "3981be8bd91647ddb678b28037352d1d8d2d870afa550497b6c81ca0e3db9838",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13020.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13021.wav_norm_mono.wav",
+    "file_name": "recording13021.wav_norm_mono.wav",
+    "file_sha256": "caa4a24ad31eccc1e4c705e7267e8bc79b60c8cb82ae12fcf2c1692fcb1c11c7",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13021.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13022.wav_norm_mono.wav",
+    "file_name": "recording13022.wav_norm_mono.wav",
+    "file_sha256": "38ee9d01e0226f0734697b1e679dfd4358f21e1f5b4a0ba66b09edb45d6868c3",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13022.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13023.wav_norm_mono.wav",
+    "file_name": "recording13023.wav_norm_mono.wav",
+    "file_sha256": "41498ac6da4f7e7348cd3a7ba3f30c2b0542dfae3bbf51342085ec552398e625",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13023.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13024.wav_norm_mono.wav",
+    "file_name": "recording13024.wav_norm_mono.wav",
+    "file_sha256": "700961d2f6e8e5541db6667ef4fee78ff48b6e417b58cd60e5a1b96a05a531c4",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13024.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13025.wav_norm_mono.wav",
+    "file_name": "recording13025.wav_norm_mono.wav",
+    "file_sha256": "a1a796a872fef0c09f25baef0cd8819c8944137c116fe60ee37130e55725e5f7",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13025.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13026.wav_norm_mono.wav",
+    "file_name": "recording13026.wav_norm_mono.wav",
+    "file_sha256": "fe4248a7e54aeb1200c66e1de55fd7b8de23fe13c918548eecfa3f774d783000",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13026.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13028.wav_norm_mono.wav",
+    "file_name": "recording13028.wav_norm_mono.wav",
+    "file_sha256": "8868966b64a505f747f78027ce59f7cbe62edf7cce4cf0dc7f57089676fc8ea3",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13028.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13029.wav_norm_mono.wav",
+    "file_name": "recording13029.wav_norm_mono.wav",
+    "file_sha256": "06b6d122acb7777af6238b7f9d23ce660a42f0211507185d60d7af5da9653e58",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13029.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13030.wav_norm_mono.wav",
+    "file_name": "recording13030.wav_norm_mono.wav",
+    "file_sha256": "6473356af6822e801f7ac9dc793646f7c6d4298600317795b2074299d278b1f9",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13030.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13031.wav_norm_mono.wav",
+    "file_name": "recording13031.wav_norm_mono.wav",
+    "file_sha256": "8daab92502d79009aa40420427b4dd3f697ce5f39cad75bdfbf24a785ed268be",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13031.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13032.wav_norm_mono.wav",
+    "file_name": "recording13032.wav_norm_mono.wav",
+    "file_sha256": "6b3e25c5dd0b4dc0e551a02b4031403233b33ea7dce2c6b1c613683a6f44ffd4",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13032.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13033.wav_norm_mono.wav",
+    "file_name": "recording13033.wav_norm_mono.wav",
+    "file_sha256": "9d1991928ba7d5eb7f21f4e6c52ea109f51de9360a6c1263ceea7e3ee87d09a7",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13033.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13034.wav_norm_mono.wav",
+    "file_name": "recording13034.wav_norm_mono.wav",
+    "file_sha256": "523a8973e614c3e1ed91a402532ec48fc5de52ce82c08af6c5c7bbbf3cbfd5a2",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13034.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13035.wav_norm_mono.wav",
+    "file_name": "recording13035.wav_norm_mono.wav",
+    "file_sha256": "0d29ae1ef1a687d74be4fa388e0f2afba65926bf56b3245fbe2f89e863360f87",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13035.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13036.wav_norm_mono.wav",
+    "file_name": "recording13036.wav_norm_mono.wav",
+    "file_sha256": "9d6f7eccf932875e7b4481cb3193694e8270306d7a4ede4dc5d1c0e4b3344d5d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13036.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13037.wav_norm_mono.wav",
+    "file_name": "recording13037.wav_norm_mono.wav",
+    "file_sha256": "87ae0e8d9bb097cb90262124d453c45c400ea226e21f98154a570d7e16735fdf",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13037.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13040.wav_norm_mono.wav",
+    "file_name": "recording13040.wav_norm_mono.wav",
+    "file_sha256": "b01afada8077d77544a19ef5e6c80909e088c777efe969d7cd8ed359c0c6262f",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13040.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13041.wav_norm_mono.wav",
+    "file_name": "recording13041.wav_norm_mono.wav",
+    "file_sha256": "086a19896f2b603e791a016707d66002a4cd8a7028e41a8c9be0fb4304ed8cbb",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13041.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13042.wav_norm_mono.wav",
+    "file_name": "recording13042.wav_norm_mono.wav",
+    "file_sha256": "1d2915b302a5a728d8e4a7763a3c65179e103b7f8542e3db83b006f3616cc004",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13042.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13043.wav_norm_mono.wav",
+    "file_name": "recording13043.wav_norm_mono.wav",
+    "file_sha256": "5a9280e8a5c438041dfcb77b35b85d2e6f197d36abae53efcb984ae161bcf9e8",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13043.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13044.wav_norm_mono.wav",
+    "file_name": "recording13044.wav_norm_mono.wav",
+    "file_sha256": "c46d3e875a60a53c2095b128f6d7e9300e7ef7053e7907cc28b95d3b9cb3dd50",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13044.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13045.wav_norm_mono.wav",
+    "file_name": "recording13045.wav_norm_mono.wav",
+    "file_sha256": "d946558113beddbe46dff0d302d781a0795419fb5afc3a2a6776cceb1ed9fcc8",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13045.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13046.wav_norm_mono.wav",
+    "file_name": "recording13046.wav_norm_mono.wav",
+    "file_sha256": "6c8e2e10d98a84477d6984c824c29f1a1fecce111997c0660a068dc32b32f6a2",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13046.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13047.wav_norm_mono.wav",
+    "file_name": "recording13047.wav_norm_mono.wav",
+    "file_sha256": "2b61db36ee68187d3902239cd8cdaea45049c393073ab50a77dba4873a062f23",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13047.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13048.wav_norm_mono.wav",
+    "file_name": "recording13048.wav_norm_mono.wav",
+    "file_sha256": "fcf243f5df86d840e4c42c46f25318ebb717ed4d3d7149d56bc394770dfb3c20",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13048.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13049.wav_norm_mono.wav",
+    "file_name": "recording13049.wav_norm_mono.wav",
+    "file_sha256": "30d834008691a2866fc8b0b221af482a1e3f451e372e150c729aebd30abe698d",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13049.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13050.wav_norm_mono.wav",
+    "file_name": "recording13050.wav_norm_mono.wav",
+    "file_sha256": "ccb4484d119ba9b25deb2f44741bebaa3676e2c9ec8cc4618860f42bdd31ae64",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13050.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13051.wav_norm_mono.wav",
+    "file_name": "recording13051.wav_norm_mono.wav",
+    "file_sha256": "af262d1faca7bfcd0fb4c0c25071c7838d3c6d353fb849418bbf10d2212af977",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13051.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13052.wav_norm_mono.wav",
+    "file_name": "recording13052.wav_norm_mono.wav",
+    "file_sha256": "219e595972e67b6661658c3ae98ce904bb7643c78c7332c9dd10e239cb8553eb",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13052.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13053.wav_norm_mono.wav",
+    "file_name": "recording13053.wav_norm_mono.wav",
+    "file_sha256": "e8cbb0ce0be572e61edab16ad9ede9572a582bf0b05155e3fd9df5bf40935b45",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13053.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13054.wav_norm_mono.wav",
+    "file_name": "recording13054.wav_norm_mono.wav",
+    "file_sha256": "73591550d70067a01fd51c512c4e202568f38dca15e5ca0b72f62958c2d02054",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13054.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13055.wav_norm_mono.wav",
+    "file_name": "recording13055.wav_norm_mono.wav",
+    "file_sha256": "6b88f899d7b03012bfe090df1c17a1c8c7c6d22ea980942829a2437fd8bc119b",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13055.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13056.wav_norm_mono.wav",
+    "file_name": "recording13056.wav_norm_mono.wav",
+    "file_sha256": "9e8acdd27ff3b8a312534cb96c57353908518b3c68efe9e963dd2fd6b1d55611",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13056.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13057.wav_norm_mono.wav",
+    "file_name": "recording13057.wav_norm_mono.wav",
+    "file_sha256": "9954b92c8d2312c1449a9bed4f989bc741e525c501939696e8c3afb2cd8f2746",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13057.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13060.wav_norm_mono.wav",
+    "file_name": "recording13060.wav_norm_mono.wav",
+    "file_sha256": "87ce0d0d40a622c4df32495898439847d1d2f0f595120e662a2627903e314534",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13060.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13061.wav_norm_mono.wav",
+    "file_name": "recording13061.wav_norm_mono.wav",
+    "file_sha256": "ebc8cd185745ae70a1905ceb05f3cb8e1677ee91b3a3e467da69ac7774c81cdb",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13061.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13062.wav_norm_mono.wav",
+    "file_name": "recording13062.wav_norm_mono.wav",
+    "file_sha256": "e14e6d06e191a34aeb9ac72d8c68716100803da8f3f78ddd00e86f09dca5c2cd",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13062.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13063.wav_norm_mono.wav",
+    "file_name": "recording13063.wav_norm_mono.wav",
+    "file_sha256": "48dbbc243ecf5181b8d258779451f23fd28df452c8a0eca0bc73b675fe490db1",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13063.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13066.wav_norm_mono.wav",
+    "file_name": "recording13066.wav_norm_mono.wav",
+    "file_sha256": "0cca0b7956a3a1853240e5059c430cb4b4b31c2b9db77ae0c25f8d56ad382ada",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13066.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13067.wav_norm_mono.wav",
+    "file_name": "recording13067.wav_norm_mono.wav",
+    "file_sha256": "afb9340719814610b662400c54ff0064e1d22590a63126b5aaee307ab472fd3a",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13067.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13068.wav_norm_mono.wav",
+    "file_name": "recording13068.wav_norm_mono.wav",
+    "file_sha256": "39f9566c26980b175ac231902383dbdaf27e333f1cd5b89e13dbc991b5ff6722",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13068.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13069.wav_norm_mono.wav",
+    "file_name": "recording13069.wav_norm_mono.wav",
+    "file_sha256": "7137a5da283662e5611aa5257257f784ced70048d837005f666f0023cd710e29",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13069.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13070.wav_norm_mono.wav",
+    "file_name": "recording13070.wav_norm_mono.wav",
+    "file_sha256": "b5d39c2379f61be7a946bd12dccdd075914333807e08cfdea83b17aa408693e4",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13070.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13071.wav_norm_mono.wav",
+    "file_name": "recording13071.wav_norm_mono.wav",
+    "file_sha256": "5ea76780fdfb4830a71dcc98e2c543f6a1f6543d5115f194cc660d9a9ec0f4f1",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13071.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_fake\\recording13072.wav_norm_mono.wav",
+    "file_name": "recording13072.wav_norm_mono.wav",
+    "file_sha256": "3650db9053603cfd43fba2347efdba8afa6406d081535fabc182f2549277fffd",
+    "label": "synthetic",
+    "label_idx": 1,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/fake/recording13072.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13532.wav_norm_mono.wav",
+    "file_name": "recording13532.wav_norm_mono.wav",
+    "file_sha256": "5e845cdfc7eac0f99540a3ae64d2baa8b5f5cd79966f79153e9ad9f819d95259",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13532.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13533.wav_norm_mono.wav",
+    "file_name": "recording13533.wav_norm_mono.wav",
+    "file_sha256": "dbb51abb75a7f147145ebe99951c55a259157ddbdb215bc7c64b02f7137de854",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13533.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13536.wav_norm_mono.wav",
+    "file_name": "recording13536.wav_norm_mono.wav",
+    "file_sha256": "2c7b0fce0eafe49f4a6d400099fac14e0ac72407150c16341daf194fb04c12e2",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13536.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13539.wav_norm_mono.wav",
+    "file_name": "recording13539.wav_norm_mono.wav",
+    "file_sha256": "2835bb047680b5b3095a88ebeaef982a10527973fb3b5e19b931d625e483314b",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13539.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13540.wav_norm_mono.wav",
+    "file_name": "recording13540.wav_norm_mono.wav",
+    "file_sha256": "31006eb7475e3837d9a83b0e3c27e447c67df7c9be216937dba424c527a49245",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13540.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13542.wav_norm_mono.wav",
+    "file_name": "recording13542.wav_norm_mono.wav",
+    "file_sha256": "5b96bc33504803565f462e80a786753e03ee1d98f1432e133ca6783dab1d9240",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13542.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13543.wav_norm_mono.wav",
+    "file_name": "recording13543.wav_norm_mono.wav",
+    "file_sha256": "9ff6833a9b6fd91a0d0297b3097169743f677424a121b25fc71223d50ebc6c01",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13543.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13544.wav_norm_mono.wav",
+    "file_name": "recording13544.wav_norm_mono.wav",
+    "file_sha256": "218b7a01e7658e95e0b720bfc3751a6ce4ffd6decfdddb586f579892a69035b5",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13544.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13545.wav_norm_mono.wav",
+    "file_name": "recording13545.wav_norm_mono.wav",
+    "file_sha256": "a9ca01ae4e6f970cc88e58f3700b6118501812f94da5c6febe0809c32d0f4301",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13545.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13546.wav_norm_mono.wav",
+    "file_name": "recording13546.wav_norm_mono.wav",
+    "file_sha256": "5d6ca1c23e2d7b697bbfac8b785da0975579490fece03bcc93c9e11b6a982070",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13546.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13548.wav_norm_mono.wav",
+    "file_name": "recording13548.wav_norm_mono.wav",
+    "file_sha256": "b376c52dce551f1f0fa4df5af4345d91041624c2e91d99dc264cce25f41843b7",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13548.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13550.wav_norm_mono.wav",
+    "file_name": "recording13550.wav_norm_mono.wav",
+    "file_sha256": "3fca8e43853a9b4dbba74d45594e8ae641cc0813790869e3d83a0c7e4b87ffc6",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13550.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13553.wav_norm_mono.wav",
+    "file_name": "recording13553.wav_norm_mono.wav",
+    "file_sha256": "1d2b0737fd246a05811e96e88b1086033ac32c0e7c24a4a2d5bcd521f5b55d55",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13553.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13554.wav_norm_mono.wav",
+    "file_name": "recording13554.wav_norm_mono.wav",
+    "file_sha256": "59b44e381a8ff3ca2508c4a7aa6762526cd66791183429265a0a227e1a96c339",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13554.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13555.wav_norm_mono.wav",
+    "file_name": "recording13555.wav_norm_mono.wav",
+    "file_sha256": "359cbec1a66ed1bd26bc17623b67c2dce2f01c306697e06ac64d3d247bf143c6",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13555.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13556.wav_norm_mono.wav",
+    "file_name": "recording13556.wav_norm_mono.wav",
+    "file_sha256": "6635414fd14fbc2a01dbe3977ec55e4180876ac42d65771d7479fa3813c4fffc",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13556.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13557.wav_norm_mono.wav",
+    "file_name": "recording13557.wav_norm_mono.wav",
+    "file_sha256": "ea01d473d5833ef9afb3eedd610f2e7be5a7ebf585ae286a25e4ecb99fa72345",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13557.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13558.wav_norm_mono.wav",
+    "file_name": "recording13558.wav_norm_mono.wav",
+    "file_sha256": "60a3085499436531dca5496d077a979b50fb484e803ef25640699e30657754ac",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13558.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13559.wav_norm_mono.wav",
+    "file_name": "recording13559.wav_norm_mono.wav",
+    "file_sha256": "0684899936666654cfb05a668d9e860adcea452962b97bbe5872b6c558db8392",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13559.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13560.wav_norm_mono.wav",
+    "file_name": "recording13560.wav_norm_mono.wav",
+    "file_sha256": "bb9cc52ffe63570321fdf1572d52c14ec5ed5a89f2e55253c022ba9ae65caaeb",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13560.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13561.wav_norm_mono.wav",
+    "file_name": "recording13561.wav_norm_mono.wav",
+    "file_sha256": "52b811a5189624c209e136e969663cbe70eaa49ec2b79b0649bedd8e009ee810",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13561.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13564.wav_norm_mono.wav",
+    "file_name": "recording13564.wav_norm_mono.wav",
+    "file_sha256": "7fa30db432f16ae5ee43df9fab90e74e61b53b9d78edf161420062f1a1db928d",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13564.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13565.wav_norm_mono.wav",
+    "file_name": "recording13565.wav_norm_mono.wav",
+    "file_sha256": "874da0a254cc3817ead4f8e5be8954727831cf8434548b3919d994cf9619f56a",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13565.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13566.wav_norm_mono.wav",
+    "file_name": "recording13566.wav_norm_mono.wav",
+    "file_sha256": "aba5dbdfcc69e275b9d8a0cf167abdb858b8bac295e23db1a5b33c335b469475",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13566.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13567.wav_norm_mono.wav",
+    "file_name": "recording13567.wav_norm_mono.wav",
+    "file_sha256": "cc7f6bc472c519285a282d06cd345492ccf67edf0dd70c0e45f186f403b9c628",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13567.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13568.wav_norm_mono.wav",
+    "file_name": "recording13568.wav_norm_mono.wav",
+    "file_sha256": "b2ba39a9eb0bb0c517f599fa21c94445b53ac8897fbaaf89816e697d9da4c78d",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13568.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13569.wav_norm_mono.wav",
+    "file_name": "recording13569.wav_norm_mono.wav",
+    "file_sha256": "c9ab219dbe768b3e8333014206a703d1f7fecb8a1f43a2984d610af28079c348",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13569.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13570.wav_norm_mono.wav",
+    "file_name": "recording13570.wav_norm_mono.wav",
+    "file_sha256": "292da4ea2eca2cb996385909a5bd6a56a5c0e6f54045bd05dc9ee7b70bf907e6",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13570.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13571.wav_norm_mono.wav",
+    "file_name": "recording13571.wav_norm_mono.wav",
+    "file_sha256": "1891841e27269faac500177069cb663dec57baba00f72bcb6b14cf388659db70",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13571.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13572.wav_norm_mono.wav",
+    "file_name": "recording13572.wav_norm_mono.wav",
+    "file_sha256": "a79d5e4941522d5076289ba634c130b520c2b595b42cd6850c05882d2c77249a",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13572.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13574.wav_norm_mono.wav",
+    "file_name": "recording13574.wav_norm_mono.wav",
+    "file_sha256": "4268fdc0afd5725f940da0c529f45034fda19b3f87b4ccb91f99bed3f2cfb83d",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13574.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13575.wav_norm_mono.wav",
+    "file_name": "recording13575.wav_norm_mono.wav",
+    "file_sha256": "5331c2a147b2b1f6ab341c031dcb48f2205e8946d9499870f27f98e0cc81e4cf",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13575.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13576.wav_norm_mono.wav",
+    "file_name": "recording13576.wav_norm_mono.wav",
+    "file_sha256": "2a0657ecf47d35ea0fc08ef1eed64b023653086d8e8e413d5cad25bb11904fb5",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13576.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13577.wav_norm_mono.wav",
+    "file_name": "recording13577.wav_norm_mono.wav",
+    "file_sha256": "c9f48578d09b45e75d2a6df99a612165b062a991ebcc8363f6190e99b6090b33",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13577.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13578.wav_norm_mono.wav",
+    "file_name": "recording13578.wav_norm_mono.wav",
+    "file_sha256": "7ac10251364232fd61c118e7d86e33b8bb41d0bd87f7e4c718bda4d0c845a7c2",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13578.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13579.wav_norm_mono.wav",
+    "file_name": "recording13579.wav_norm_mono.wav",
+    "file_sha256": "f5c9bb90a63020858433b3c23bbe5c5ddffb1e00d076affa1b97d9c8a1f4a8ac",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13579.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13580.wav_norm_mono.wav",
+    "file_name": "recording13580.wav_norm_mono.wav",
+    "file_sha256": "3c80d00a1e5996a83bfe43fb9fe2554988bf4a2e8a40fad241712046d0ea6afc",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13580.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13581.wav_norm_mono.wav",
+    "file_name": "recording13581.wav_norm_mono.wav",
+    "file_sha256": "89ab939e974fa2ccc60ec33f9f1455cbe7673195f1ce8919dfb33ab98f962104",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13581.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13584.wav_norm_mono.wav",
+    "file_name": "recording13584.wav_norm_mono.wav",
+    "file_sha256": "4fe9725839b43e644f304ef678eda099d5717852558a6e5d79b5baeab4f1d71b",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13584.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13585.wav_norm_mono.wav",
+    "file_name": "recording13585.wav_norm_mono.wav",
+    "file_sha256": "182200aa67e3e3cba34ab68c2e92b1e1a019d47546e8aa0b5a150bad395b8187",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13585.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13586.wav_norm_mono.wav",
+    "file_name": "recording13586.wav_norm_mono.wav",
+    "file_sha256": "d999e10eb7a474df9ee7411e03413e28336911814101cf97a21debea90fe51fd",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13586.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13587.wav_norm_mono.wav",
+    "file_name": "recording13587.wav_norm_mono.wav",
+    "file_sha256": "61c4d3cd24dc95063927b8ee196391060687590517ea730dcef455b8f1962342",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13587.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13588.wav_norm_mono.wav",
+    "file_name": "recording13588.wav_norm_mono.wav",
+    "file_sha256": "3bb6a418d8f9d382f94be253b6cac48f6b886266f6041c27229f3a9526a886c0",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13588.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13590.wav_norm_mono.wav",
+    "file_name": "recording13590.wav_norm_mono.wav",
+    "file_sha256": "e230771a270583c9f1a597b8e49cbc02cd72f51a60217c23b9fa23d9cde0cc5e",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13590.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13591.wav_norm_mono.wav",
+    "file_name": "recording13591.wav_norm_mono.wav",
+    "file_sha256": "53a1843f92530e37e4b888c9fca1410bd040b906fc1b3645880afcd5d68a7d50",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13591.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13592.wav_norm_mono.wav",
+    "file_name": "recording13592.wav_norm_mono.wav",
+    "file_sha256": "7365744fc0b5079720231df80f414aaae52f0f471667e6beeb81706ebab54a24",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13592.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13594.wav_norm_mono.wav",
+    "file_name": "recording13594.wav_norm_mono.wav",
+    "file_sha256": "7a0c49e533d53671f7f13cc574141f7d9128881fa97712e03042ffbf91d378a4",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13594.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13597.wav_norm_mono.wav",
+    "file_name": "recording13597.wav_norm_mono.wav",
+    "file_sha256": "f681a2d4a433b572f2427314491c06216f0a3c629ecb233875b827c9d984a743",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13597.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13598.wav_norm_mono.wav",
+    "file_name": "recording13598.wav_norm_mono.wav",
+    "file_sha256": "1c557a6937ffafb3e83c8accc1d6ea3ab7ed3185c46cbf3e30e5cb60c6e204e1",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13598.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  },
+  {
+    "file_path": "C:\\Users\\ANKIT\\OneDrive\\Desktop\\AI_Audio_Forensics\\dataset\\external_evaluation\\for_test\\rerec_real\\recording13599.wav_norm_mono.wav",
+    "file_name": "recording13599.wav_norm_mono.wav",
+    "file_sha256": "b33db559d7d350008881a741dc0e3f44419bf44283600169ee67dc4845616da7",
+    "label": "genuine",
+    "label_idx": 0,
+    "subset_type": "FoR_Rerecorded_Acoustic",
+    "original_archive_member": "for-rerec/for-rerecorded/testing/real/recording13599.wav_norm_mono.wav",
+    "dataset_provenance": "Fake-or-Real (FoR) External Benchmark"
+  }
+]

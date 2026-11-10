@@ -1,7 +1,7 @@
 # FORENSIC AUDIO EXAMINATION REPORT
 
 **Case Identifier:** `CASE-20261110-001`  
-**Examination Date:** 2026-11-10 06:01:05 UTC  
+**Examination Date:** 2026-11-10 06:53:20 UTC  
 **Examiner:** Automated Audio Forensics Unit  
 **Laboratory:** AI Audio Forensics Investigation Unit  
 **Status:** Completed Examination  
@@ -46,7 +46,7 @@ The audio exhibit was analyzed using standardized, reproducible signal processin
 
 ## 3. Examination Findings & Results
 
-Based on calibrated statistical acoustic evaluation, the findings are:
+Based on statistical acoustic evaluation and machine learning inference, the findings are:
 
 - **Classification Finding:** **SYNTHETIC**
 - **Decision Confidence:** **100.00%**
@@ -54,7 +54,7 @@ Based on calibrated statistical acoustic evaluation, the findings are:
 - **Posterior Probability (Genuine Speech):** **0.00%**
 
 ### Forensic Assessment Statement:
-> Acoustic feature analysis by SVM indicates high acoustic similarity to synthetic voice conversions (posterior probability: 100.00%). Investigative follow-up recommended.
+> Acoustic feature analysis by SVM indicates high acoustic similarity to synthetic voice conversions (posterior probability estimate: 100.00%). Investigative follow-up recommended.
 
 ---
 
@@ -70,7 +70,7 @@ Forensic voice analysis is inherently bounded by acoustic and acquisition condit
 ## 5. Mandatory Forensic Disclaimer
 
 > **IMPORTANT LEGAL NOTICE:**  
-> This examination report provides an investigative intelligence screening assessment based on automated acoustic signal analysis. In accordance with digital forensics standards (ISO/IEC 27037 and SWGDE recommendations), this finding does **not** constitute definitive legal proof of authentic human origin or criminal forgery. It must be evaluated in conjunction with corroborating investigative evidence, witness testimony, and verified chain of custody.
+> This examination report provides an investigative intelligence screening assessment based on automated acoustic signal analysis. In accordance with digital forensics principles (referencing ISO/IEC 27037 guidelines and SWGDE recommendations), this finding does **not** constitute definitive legal proof of authentic human origin or criminal forgery. It must be evaluated in conjunction with corroborating investigative evidence, witness testimony, and verified chain of custody.
 
 ---
 *End of Formal Report.*
